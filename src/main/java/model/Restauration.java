@@ -1,5 +1,5 @@
 package model;
-import javax.persistence.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,10 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
 public class Restauration {
-	@Id//Obligatoire
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
 	private List<Boisson> boisson = new ArrayList();
 	private List<Plat> plat = new ArrayList();
@@ -23,9 +20,6 @@ public class Restauration {
 		this.boisson = boisson;
 		this.plat = plat;
 	}
-	public Restauration() {
-	}
-	
 	public List<Boisson> getBoisson() {
 		return boisson;
 	}
