@@ -16,6 +16,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 
 public class App {
 
@@ -31,6 +35,12 @@ public class App {
 	static LinkedList<Famille> fileAttenteFP = new LinkedList();
 	static List <Marchandise> marchandise = new ArrayList();
 	static boolean fermeture = true;
+	
+	
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetJpa");
+	EntityManager em = emf.createEntityManager();
+	
+	
 
 	public static String saisieString(String msg)
 	{
@@ -72,8 +82,8 @@ public class App {
 		boisson.add(coca);
 		boisson.add(fanta);
 		
-		Attraction grand8 = new Attraction(1,"Grand 8", 25, 10, 150, 200, false );
-		Attraction asterix = new Attraction(2,"Asterix", 40, 15, 160, 220, false );
+		Attraction grand8 = new Attraction("Grand 8", 25, 10, 150, 200, false );
+		Attraction asterix = new Attraction("Asterix", 40, 15, 160, 220, false );
 		attraction.add(grand8);
 		attraction.add(asterix);
 		
