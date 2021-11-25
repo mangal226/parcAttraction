@@ -1,14 +1,29 @@
 package model;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import java.util.ArrayList;
 import java.util.*;
 
+@Entity //Obligatoire
 public class Attraction {
 
+
+	@Id//Obligatoire
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //Obligatoire*
+	private int id;
 	private String nom;
-	private int id, duree, capacite, tailleMin, tailleMax;
+	private int duree, capacite, tailleMin, tailleMax;
 	private boolean restHandi;
 	private LinkedList<Famille> queue=new LinkedList();
+	
+	public Attraction () {
+		
+	}
 	
 	public Attraction(String nom, int duree, int capacite, int tailleMin, int tailleMax, boolean restHandi) {
 		this.nom=nom;
@@ -19,20 +34,7 @@ public class Attraction {
 		this.restHandi = restHandi;
 	}
 
-	public Attraction(int id, String nom, int duree, int capacite, int tailleMin, int tailleMax, boolean restHandi) {
-		this.id=id;
-		this.nom=nom;
-		this.duree = duree;
-		this.capacite = capacite;
-		this.tailleMin = tailleMin;
-		this.tailleMax = tailleMax;
-		this.restHandi = restHandi;
-	}
-
 	
-
-
-
 	public int getId() {
 		return id;
 	}
