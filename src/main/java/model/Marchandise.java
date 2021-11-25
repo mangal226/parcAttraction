@@ -1,12 +1,25 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Marchandise {
+	@Id//Obligatoire
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int Id;
 	private double prix;
 	private String nom;
+	
+	
 	public Marchandise(double prix, String nom) {
 		super();
 		this.prix = prix;
 		this.nom = nom;
+	}
+	public Marchandise() {
 	}
 	
 	public double getPrix() {
