@@ -1,10 +1,23 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Famille {
 	
-	private int id, nombre, tailleMin, tailleMax, dureeSejour;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private int nombre, tailleMin, tailleMax, dureeSejour;
 	private boolean handicap;
 	private double depenses=0;
+	
+	public Famille() {
+	}
 	
 	public Famille(int nombre, int tailleMin, int tailleMax, int dureeSejour, boolean handicap,
 			double depenses) {
