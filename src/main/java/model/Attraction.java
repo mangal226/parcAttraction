@@ -17,7 +17,7 @@ public class Attraction {
 	private String nom;
 	private int duree, capacite, tailleMin, tailleMax;
 	private boolean restHandi;
-	@OneToMany(mappedBy = "attraction")
+	@OneToMany
 	private LinkedList<Famille> queue=new LinkedList();
 	
 	public Attraction() {
