@@ -92,7 +92,7 @@ public class App {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Bienvenue Ã  FISTILAND!!!!!!!!");
+		System.out.println("Bienvenue a� FISTILAND!!!!!!!!");
 		init();
 		menuPrincipal();
 
@@ -133,12 +133,12 @@ public class App {
 	}
 	public static void menuGerant(){
 		System.out.println("----- Menu Gerant -----");
-		System.out.println("1 - AccÃ¨s au menu Gestion Attractions");
-		System.out.println("2 - AccÃ¨s au menu Gestion Boutiques");
-		System.out.println("3 - AccÃ¨s au menu Gestion Restauration");
-		System.out.println("4 - Afficher le bilan financier de la journÃ©e");
+		System.out.println("1 - Acces au menu Gestion Attractions");
+		System.out.println("2 - Acces au menu Gestion Boutiques");
+		System.out.println("3 - Acces au menu Gestion Restauration");
+		System.out.println("4 - Afficher le bilan financier de la journee");
 		System.out.println("5 - Afficher la liste de tous les visiteurs");
-		System.out.println("6 - Se dÃ©connecter");
+		System.out.println("6 - Se deconnecter");
 
 		int choix = saisieInt("Choisir un menu : ");
 		switch(choix) 
@@ -162,7 +162,7 @@ public class App {
 	public static void menuCaissier(){
 		System.out.println("$$$ Menu caissier $$$");
 		System.out.println("1-Ajouter une famille dans le parc");
-		System.out.println("2-Se dÃ©connecter");
+		System.out.println("2-Se deconnecter");
 
 		int choix = saisieInt("Choisir un menu");
 		switch(choix)
@@ -174,7 +174,7 @@ public class App {
 
 	public static void ajoutFamille(){ //Ajout famille BDD liste d'attente
 		System.out.println("Accueilir familles et leur demander informations"); 
-		int id = saisieInt("Saisir le numÃ©ro de carte fidÃ©litÃ©");
+		int id = saisieInt("Saisir le numero de carte fidelite");
 
 		// Si famille pas dans BDD
 
@@ -183,18 +183,18 @@ public class App {
 			System.out.println("La famille est nouvelle dans le parc");
 			System.out.println("+++++ Ajout d'une nouvelle famille Ã  la file d'attente +++++");
 			int nombre = saisieInt("Saisir le nombre des membres de la famille");
-			int tailleMin = saisieInt("ðŸ‘¨â€� ðŸ¦²Saisir la taille minimale ðŸ‘¨â€�ðŸ¦²");
-			int tailleMax = saisieInt("ðŸ§’ Saisir la taille maximale ðŸ§’");
-			int dureeSejour= saisieInt("ðŸŽ¢Indiquer la durÃ©e du sÃ©jourðŸŽ¢");
-			Boolean handicap = saisieBoolean("ðŸ‘©â€�ðŸ¦¼ Etes-vous handicapÃ© ðŸ‘©â€�ðŸ¦¼?");
-			f = new Famille(nombre,tailleMin,tailleMax, dureeSejour, handicap,30);
+			int tailleMin = saisieInt("Saisir la taille minimale ");
+			int tailleMax = saisieInt("Saisir la taille maximale");
+			int dureeSejour= saisieInt("Indiquer la duree du sejour");
+			Boolean handicap = saisieBoolean(" Etes-vous handicapes");
+			f = new Famille(id, nombre,tailleMin,tailleMax, dureeSejour, handicap,30);
 			daoF.save(f);
 			//daoF.insert(f);
 		}
 
 		//si la famille est dans la base
 		else{
-			System.out.println("-----Ajout d'une famille existante Ã  la file d'attente-----");
+			System.out.println("-----Ajout d'une famille existante dans� la file d'attente-----");
 			System.out.println(f);
 			f.setDepenses(20);
 		}
@@ -234,8 +234,8 @@ public class App {
 	public static void menuGestionBoutiques(){
 		System.out.println("----- Menu Gestion Boutiques -----");
 		System.out.println("1 - Afficher la carte de la boutique");
-		System.out.println("2 - Ajouter un produit Ã  la carte");
-		System.out.println("3 - Retirer un produit Ã  la carte");
+		System.out.println("2 - Ajouter un produit a� la carte");
+		System.out.println("3 - Retirer un produit a� la carte");
 		System.out.println("4 - Fermeture des boutiques");
 		System.out.println("5 - Se deconnecter");
 
@@ -259,15 +259,15 @@ public class App {
 		List<Boutique> boutiques=new ArrayList();
 		for (Boutique b : boutiques)
 		{
-			if (fermeture == true) {System.out.println("ðŸ˜�Les boutiques sont fermÃ©esðŸ˜�");}
-			else {System.out.println(" ðŸ˜´Les boutiques sont fermÃ©esðŸ˜´");}
+			if (fermeture == true) {System.out.println("Les boutiques sont fermees");}
+			else {System.out.println(" Les boutiques sont fermees");}
 		}
 	}
 	
 	public static void afficherCarteBoutique(){
 
         System.out.println("Voici la liste des marchandises :");
-		for (Marchandise m : marchandise){System.out.println(m+" ("+m.getPrix()+"â‚¬)");}
+		for (Marchandise m : marchandise){System.out.println(m+" ("+m.getPrix()+"euros)");}
 		
 
 		String reponse=saisieString("Retourner au  menu restauration?(y/n)");
@@ -279,7 +279,7 @@ public class App {
 
 	public static void ajouterProduitBoutique(){
 
-		String produit = saisieString("Quel type de produit doit Ãªtre rajouter? (Boisson/Plat/Marchandise)");
+		String produit = saisieString("Quel type de produit doit etre rajouter? (Boisson/Plat/Marchandise)");
 		if (produit.equals("Boisson"))
 		{
 			System.out.println("Ajout d'une nouvelle boisson : ");
@@ -303,7 +303,7 @@ public class App {
 		{
 			System.out.println("Ajout d'une nouvelle marchandise");
 			String nom = saisieString("Nom de la marchandise");
-			double prix = saisieDouble("ðŸ¤‘ðŸ¤‘ Prix de la marchandise ðŸ¤‘ðŸ¤‘");
+			double prix = saisieDouble("Prix de la marchandise");
 			Marchandise m = new Marchandise(prix, nom);
 			marchandise.add(m);
 		}
@@ -313,7 +313,7 @@ public class App {
 
 	}
 	public static void retirerProduitBoutique(){
-    String produit = saisieString("Quel type de produit doit Ãªtre supprimÃ©? (Boisson/Plat/Marchandise)");
+    String produit = saisieString("Quel type de produit doit etre supprime? (Boisson/Plat/Marchandise)");
 		if (produit.equals("Boisson"))
 		{
 			System.out.println("Suppression d'une boisson : ");
@@ -354,10 +354,10 @@ public class App {
 	public static void menuGestionAttractions(){
 
 		System.out.println("----- Menu Gestion attraction -----");
-		System.out.println("1 - Modifier un paramÃ¨tre");
+		System.out.println("1 - Modifier un parametre");
 		System.out.println("2 - Ouvrir une attraction");
 		System.out.println("3 - Fermer une attraction");
-		System.out.println("4 - se dÃ©connecter");
+		System.out.println("4 - se drconnecter");
 
 		int choix = saisieInt("Choisir un menu : ");
 		switch(choix) 
@@ -378,14 +378,14 @@ public class App {
 		{
 			System.out.println(a);
 		}
-		int id = saisieInt("Saisir l'id de l'attraction Ã  modifier");
-		System.out.println("Modification de l'attraction nÂ° "+id);
+		int id = saisieInt("Saisir l'id de l'attraction a� modifier");
+		System.out.println("Modification de l'attraction � "+id);
 		String nom = saisieString("Saisir le nom");
 		int duree = saisieInt("Saisir la duree de l'attraction");
 		int capacite = saisieInt("Saisir la capacite maximale");
 		int tailleMin = saisieInt("Saisir la taille minimale");
 		int tailleMax = saisieInt("Saisir la taille maximale");
-		boolean restHandi = saisieBoolean("Y il a t'il des restrictions pour handicapÃ©? oui = 1, non = 0 ");
+		boolean restHandi = saisieBoolean("Y il a t'il des restrictions pour handicapes? oui = 1, non = 0 ");
 	
 		
 		Attraction attraction = new Attraction(nom,duree,capacite,tailleMin,tailleMax,restHandi);
@@ -406,7 +406,7 @@ public class App {
 		boolean ouverture = saisieBoolean("Voulez-vous ouvrir les attractions ? ");    
 		for (Attraction a : attraction) //	static boolean fermeture = false;
 		{
-			if (fermeture == false) {System.out.println("Les attractions sont fermÃ©es");}
+			if (fermeture == false) {System.out.println("Les attractions sont fermees");}
 			else {System.out.println("Les attractions sont ouvertes");}
 		}
 
@@ -418,7 +418,7 @@ public class App {
 		for (Attraction a : attraction) //	static boolean fermeture = false;
 		{
 			if (fermeture == false) {System.out.println("Les attractions sont ouvertes");}
-			else {System.out.println("Les attractions sont fermÃ©es");}
+			else {System.out.println("Les attractions sont fermees");}
 		}
 
 
@@ -427,7 +427,7 @@ public class App {
 
 	public static void menuOperateur(){
 
-		System.out.println("******* Menu OpÃ©rateur *******");
+		System.out.println("******* Menu Operateur *******");
 		System.out.println("1-Faire un tour d'attraction");
 		System.out.println("2-Partir en pause");
 		System.out.println("3-Afficher salaire");
@@ -463,10 +463,10 @@ public class App {
 	{
 		if (fermeture==false)
 		{
-			System.out.println("ðŸ¤¤ðŸ¤¤ Menu Restauration ðŸ¤¤ðŸ¤¤");
+			System.out.println("Menu Restauration ");
 			System.out.println("1 - Afficher la carte");
 			System.out.println("2 - Passer une commmande");
-			System.out.println("3 - Ajouter un produit Ã  la carte");
+			System.out.println("3 - Ajouter un produit a� la carte");
 			System.out.println("4 - Retirer un produit de la carte");
 			System.out.println("5 - Fermeture du restaurant");
 			System.out.println("6 - Retour");
@@ -485,7 +485,7 @@ public class App {
 		}
 		else
 		{
-			System.out.println("ðŸ¤¤ðŸ¤¤ Menu Restauration ðŸ¤¤ðŸ¤¤");
+			System.out.println(" Menu Restauration �");
 			System.out.println("1 - Afficher la carte");
 			System.out.println("2 - Ouverture du restaurant");
 			System.out.println("3 - Retour");
@@ -503,9 +503,9 @@ public class App {
 	public static void afficheCarte()
 	{
 		System.out.println("Voici la liste des boissons :");
-		for (Boisson b : boisson){System.out.println(b+" ("+b.getPrix()+"â‚¬)");}
+		for (Boisson b : boisson){System.out.println(b+" ("+b.getPrix()+"euros)");}
 		System.out.println("Voici la liste des plats :");
-		for (Plat p : plat){System.out.println(p+" ("+p.getPrix()+"â‚¬)");}
+		for (Plat p : plat){System.out.println(p+" ("+p.getPrix()+"euros)");}
 
 		String reponse=saisieString("Retourner au  menu restauration?(y/n)");
 		if(reponse.equals("y"))
@@ -524,7 +524,7 @@ public class App {
 			if(reponse.equals("y"))
 			{
 				System.out.println("Voici la liste des boissons :");
-				for (Boisson b : boisson){System.out.println(b+" ("+b.getPrix()+"â‚¬)");}
+				for (Boisson b : boisson){System.out.println(b+" ("+b.getPrix()+"euros)");}
 				String boissonString = saisieString("Saisir votre boisson : "); 
 
 				for (Boisson b : boisson){
@@ -551,7 +551,7 @@ public class App {
 	}
 	public static void ajouterProduitRestauration()
 	{
-		String produit = saisieString("Quel type de produit doit Ãªtre rajouter? (Boisson/Plat)");
+		String produit = saisieString("Quel type de produit doit etre rajouter? (Boisson/Plat)");
 		if (produit.equals("Boisson"))
 		{
 			System.out.println("Ajout d'une nouvelle boisson : ");
@@ -575,7 +575,7 @@ public class App {
 	}
 	public static void retirerProduitRestauration()
 	{
-		String produit = saisieString("Quel type de produit doit Ãªtre supprimer? (Boisson/Plat)");
+		String produit = saisieString("Quel type de produit doit etre supprimer? (Boisson/Plat)");
 		if (produit.equals("Boisson"))
 		{
 			System.out.println("Suppression d'une boisson : ");
