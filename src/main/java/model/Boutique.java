@@ -8,13 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 
-@Entity
 public class Boutique {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@OneToMany
 	private List <Marchandise> enVente = new ArrayList();
 	
 	public Boutique() {
