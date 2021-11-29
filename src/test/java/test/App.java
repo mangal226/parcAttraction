@@ -412,7 +412,7 @@ public class App {
 	public static void ouvrirAttraction() {
 
 		boolean ouverture = saisieBoolean("Voulez-vous ouvrir les attractions ? ");    
-		for (Attraction a : attraction) //	static boolean fermeture = false;
+		for (Attraction a : daoA.findAll()) //	static boolean fermeture = false;
 		{
 			if (fermeture == false) {System.out.println("Les attractions sont fermees");}
 			else {System.out.println("Les attractions sont ouvertes");}
@@ -423,7 +423,7 @@ public class App {
 	public static void fermerAttraction() {
 
 		Boolean fermeture = saisieBoolean("Voulez-vous fermer les attractions ? ");    
-		for (Attraction a : attraction) //	static boolean fermeture = false;
+		for (Attraction a : daoA.findAll()) //	static boolean fermeture = false;
 		{
 			if (fermeture == false) {System.out.println("Les attractions sont ouvertes");}
 			else {System.out.println("Les attractions sont fermees");}
@@ -525,6 +525,7 @@ public class App {
 		afficheCarte();
 		boolean choix=true;
 		Boisson choixBoisson=null;
+		Plat choixPlat=null;
 		Famille choixFamille=null;
 		while (choix==true)
 		{
@@ -532,16 +533,46 @@ public class App {
 			if(reponse.equals("y"))
 			{
 				System.out.println("Voici la liste des boissons :");
-				for (Boisson b : boisson){System.out.println(b+" ("+b.getPrix()+"euros)");}
+				for (Boisson b : daoB.findAll()){System.out.println(b+" ("+b.getPrix()+"euros)");}
 				String boissonString = saisieString("Saisir votre boisson : "); 
 
-				for (Boisson b : boisson){
+				for (Boisson b : daoB.findAll()){
 
 					if (b.getNom()==boissonString){
 						choixBoisson=b;
 					}
 				}
-				for (Famille f : famille){
+				for (Famille f : daoF.findAll()){
+
+					if (f.getId()==id_famille){
+						choixFamille=f;
+					}
+				}
+				double depenseActuelle=choixFamille.getDepenses();
+				choixFamille.setDepenses(depenseActuelle+choixBoisson.getPrix());
+
+
+			}
+			else
+			{choix=false;}
+
+		}
+		while (choix==true)
+		{
+			String reponse=saisieString("Voulez vous une plat ? (y/n)");
+			if(reponse.equals("y"))
+			{
+				System.out.println("Voici la liste des plats :");
+				for (Plat p : daoP.findAll()){System.out.println(p+" ("+p.getPrix()+"euros)");}
+				String platString = saisieString("Saisir votre plat : "); 
+
+				for (Plat p : daoP.findAll()){
+
+					if (p.getNom()==platString){
+						choixPlat=p;
+					}
+				}
+				for (Famille f : daoF.findAll()){
 
 					if (f.getId()==id_famille){
 						choixFamille=f;
@@ -566,7 +597,8 @@ public class App {
 			String nom = saisieString("Nom de la boisson :");
 			double prix= saisieDouble("Prix de la boisson :");
 			Boisson b = new Boisson(nom,prix);
-			boisson.add(b);
+			//boisson.add(b);
+			daoB.save(b);
 
 		}
 		else if(produit.equals("Plat"))
@@ -575,7 +607,8 @@ public class App {
 			String nom = saisieString("Nom du plat :");
 			double prix= saisieDouble("Prix deu plat :");
 			Plat p = new Plat(nom,prix);
-			plat.add(p);
+			//plat.add(p);
+			daoP.save(p);
 
 		}
 		else {System.out.println("La saisie est incorrecte");}
@@ -589,9 +622,9 @@ public class App {
 			System.out.println("Suppression d'une boisson : ");
 
 			String bstringsupp = saisieString("Saisir la boisson : ");
-			for (Boisson b : boisson)
+			for (Boisson b : daoB.findAll())
 			{
-				if (b.getNom()==bstringsupp){boisson.remove(b);}
+				if (b.getNom()==bstringsupp){daoB.delete(b.getId());}
 				else {System.out.println("Le nom de la boisson est incorrecte");}
 			}
 
@@ -602,9 +635,9 @@ public class App {
 			System.out.println("Suppression d un plat : ");
 
 			String pstringsupp = saisieString("Saisir le plat : ");
-			for (Plat p : plat)
+			for (Plat p : daoP.findAll())
 			{
-				if (p.getNom()==pstringsupp){plat.remove(p);}
+				if (p.getNom()==pstringsupp){daoP.delete(p.getId());}
 				else {System.out.println("Le nom du plat est incorrect");}
 			}
 		}
