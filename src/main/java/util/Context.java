@@ -32,7 +32,7 @@ public class Context {
 	/////
 	
 	
-	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("voyage");
+	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetJPA");
 	private static Context singleton=null;
 
 	private Context() {}
