@@ -2,39 +2,63 @@ package dao.jpa;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+
 import dao.IDAOMarchandise;
 import model.Marchandise;
+import util.Context;
 
 public class DAOMarchandise implements IDAOMarchandise{
 
+	static EntityManagerFactory emf = Context.getInstance().getEmf();
 	@Override
 	public Marchandise findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = emf.createEntityManager();
+		Marchandise objet = em.find(Marchandise.class, id);
+		em.close();
+		return objet;
 	}
 
 	@Override
 	public List<Marchandise> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public void update(Marchandise o) {
-		// TODO Auto-generated method stub
+
+		EntityManager em = emf.createEntityManager();
+	
+		List<Marchandise> objets = em.createQuery("from Marchandise").getResultList();
+		em.close();
+		return objets;
 		
 	}
 
 	@Override
-	public void insert(Marchandise o) {
-		// TODO Auto-generated method stub
-		
+	public Marchandise save(Marchandise objet) {
+		EntityManager em = emf.createEntityManager();
+
+		em.getTransaction().begin();
+
+		objet=em.merge(objet);
+
+		em.getTransaction().commit();
+		em.close();
+
+		return objet;
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
+		EntityManager em = emf.createEntityManager();
+		Marchandise objet = em.find(Marchandise.class, id);
+
+		em.getTransaction().begin();
 		
+		em.remove(objet);
+		
+		em.getTransaction().commit();
+		em.close();
+
 	}
 
 }
+
