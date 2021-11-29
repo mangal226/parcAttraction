@@ -1,15 +1,19 @@
 package model;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.*;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 
 @Entity
+
 public class Attraction {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,8 +21,9 @@ public class Attraction {
 	private String nom;
 	private int duree, capacite, tailleMin, tailleMax;
 	private boolean restHandi;
-	@OneToMany
-	private LinkedList<Famille> queue=new LinkedList();
+	
+	
+	private transient LinkedList<Famille> queue=new LinkedList();
 	
 	public Attraction() {
 		
@@ -101,8 +106,6 @@ public class Attraction {
 		this.nom = nom;
 	}
 
-
-
 	public LinkedList<Famille> getQueue() {
 		return queue;
 	}
@@ -110,6 +113,8 @@ public class Attraction {
 	public void setQueue(LinkedList<Famille> queue) {
 		this.queue = queue;
 	}
+
+	
 
 	@Override
 	public String toString() {

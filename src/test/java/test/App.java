@@ -42,8 +42,8 @@ public class App {
 	static boolean fermeture = true;
 	
 	
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetJpa");
-	EntityManager em = emf.createEntityManager();
+	
+	EntityManager em = Context.getInstance().getEmf().createEntityManager();
 	
 	
 
@@ -96,8 +96,10 @@ public class App {
 
 	public static void main(String[] args) {
 		System.out.println("Bienvenue a  FISTILAND!!!!!!!!");
+		/*
 		init();
 		menuPrincipal();
+		*/
 
 	}
 	public static void menuPrincipal(){
@@ -213,7 +215,7 @@ public class App {
 
 	}
 	
-	il reste une methode ici 
+	//il reste une methode ici 
 	public static void assignementAttraction(Famille f)
 	{
 		Random r  = new Random();
@@ -221,7 +223,7 @@ public class App {
 		for (Attraction a : attraction)
 		{
 			if(a.getId()==alea){
-				LinkedList<Famille> newQueue =a.getQueue();
+				List<Famille> newQueue =a.getQueue();
 				newQueue.add(f);
 				a.setQueue(newQueue);
 			}
@@ -451,7 +453,7 @@ public class App {
 		}
 
 	}
-	il reste des methodes ici
+	//il reste des methodes ici
 	public static void tourAttraction(){
 		int choixId=saisieInt("Choisir l'ID de l'attraction");
 		Attraction a = daoA.findById(choixId);

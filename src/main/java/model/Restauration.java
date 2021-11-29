@@ -13,26 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-@Entity
-@DiscriminatorColumn(name="carte_a_disposition")
 public class Restauration {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
 	
-	@ManyToMany
-	@JoinTable(
-			name="liste_boisson", //Rename la table
-			joinColumns = @JoinColumn(name="id_du_restaurant"), //rename la cl� principale (Personnage car on est dans la classe Personnage)
-			inverseJoinColumns = @JoinColumn(name="id_boisson") //rename l'autre cl�, celle de l'attribut donc Equipement ici
-			)
+	
 	private List<Boisson> boisson = new ArrayList();
-	@ManyToMany     
-	@JoinTable(
-			name="liste_plat", //Rename la table
-			joinColumns = @JoinColumn(name="id_du_restaurant"), //rename la cl� principale (Personnage car on est dans la classe Personnage)
-			inverseJoinColumns = @JoinColumn(name="id_plat") //rename l'autre cl�, celle de l'attribut donc Equipement ici
-			)
+	
 	private List<Plat> plat = new ArrayList();
 	
 	

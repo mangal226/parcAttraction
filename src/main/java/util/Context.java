@@ -23,6 +23,8 @@ public class Context {
 
 	//elements liés à NOTRE PROJET//
 	private Compte connected;
+	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetJPA");
+	
 	private IDAOCompte daoCompte = new DAOCompte();
 	private IDAOAttraction daoAttraction = new DAOAttraction();
 	private IDAOBoisson daoBoisson = new DAOBoisson();
@@ -32,7 +34,7 @@ public class Context {
 	/////
 	
 	
-	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetJPA");
+	
 	private static Context singleton=null;
 
 	private Context() {}

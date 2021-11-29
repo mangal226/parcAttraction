@@ -10,9 +10,10 @@ import model.Plat;
 import util.Context;
 
 public class DAOPlat implements IDAOPlat{
-	static EntityManagerFactory emf = Context.getInstance().getEmf();
+	
 	@Override
 	public Plat findById(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Plat objet = em.find(Plat.class, id);
 		em.close();
@@ -22,7 +23,7 @@ public class DAOPlat implements IDAOPlat{
 	@Override
 	public List<Plat> findAll() {
 
-
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 	
 		List<Plat> objets = em.createQuery("from Plat").getResultList();
@@ -33,6 +34,7 @@ public class DAOPlat implements IDAOPlat{
 
 	@Override
 	public Plat save(Plat objet) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
@@ -47,6 +49,7 @@ public class DAOPlat implements IDAOPlat{
 
 	@Override
 	public void delete(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Plat objet = em.find(Plat.class, id);
 
