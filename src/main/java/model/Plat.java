@@ -1,14 +1,25 @@
 package model;
+import javax.persistence.*;
 
+@Entity
+@DiscriminatorValue("plat")
 public class Plat {
+	@Id//Obligatoire
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int Id;
 	private String nom;
 	private double prix;
+	
 	
 	public Plat(String nom, double prix)
 	{
 		this.nom = nom;
 		this.prix = prix;
 	}
+	
+	public Plat(){
+	}
+	
 	
 	public String getNom() {
 		return nom;

@@ -1,5 +1,6 @@
 package model;
 
+
 public class Parc {
 	private double prixEntree, prixPass;
 

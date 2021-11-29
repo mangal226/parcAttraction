@@ -1,6 +1,7 @@
 package test;
 
 import model.*;
+import util.Context;
 import dao.*;
 
 import java.io.File;
@@ -16,21 +17,31 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 
 public class App {
 
 
-	static DAOFamille daoF = new DAOFamille();
+	static IDAOFamille daoF = Context.getInstance().getDaoFamille();
 	static List<Famille> famille = new ArrayList();
 	static List<Boisson> boisson = new ArrayList();
 	static List <Plat> plat = new ArrayList();
 	static List <Attraction> attraction = new ArrayList();
 	static Compte connected;
-	static DAOCompte daoC = new DAOCompte();
+	static IDAOCompte daoC = Context.getInstance().getDaoCompte();
 	static LinkedList<Famille> fileAttente = new LinkedList();
 	static LinkedList<Famille> fileAttenteFP = new LinkedList();
 	static List <Marchandise> marchandise = new ArrayList();
 	static boolean fermeture = true;
+	
+	
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("projetJpa");
+	EntityManager em = emf.createEntityManager();
+	
+	
 
 	public static String saisieString(String msg)
 	{
@@ -72,8 +83,8 @@ public class App {
 		boisson.add(coca);
 		boisson.add(fanta);
 		
-		Attraction grand8 = new Attraction(1,"Grand 8", 25, 10, 150, 200, false );
-		Attraction asterix = new Attraction(2,"Asterix", 40, 15, 160, 220, false );
+		Attraction grand8 = new Attraction("Grand 8", 25, 10, 150, 200, false );
+		Attraction asterix = new Attraction("Asterix", 40, 15, 160, 220, false );
 		attraction.add(grand8);
 		attraction.add(asterix);
 		
@@ -176,7 +187,8 @@ public class App {
 			int dureeSejour= saisieInt("ðŸŽ¢Indiquer la durÃ©e du sÃ©jourðŸŽ¢");
 			Boolean handicap = saisieBoolean("ðŸ‘©â€�ðŸ¦¼ Etes-vous handicapÃ© ðŸ‘©â€�ðŸ¦¼?");
 			f = new Famille(nombre,tailleMin,tailleMax, dureeSejour, handicap,30);
-			daoF.insert(f);
+			daoF.save(f);
+			//daoF.insert(f);
 		}
 
 		//si la famille est dans la base

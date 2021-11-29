@@ -10,9 +10,10 @@ import javax.persistence.Id;
 @Entity
 public class Famille {
 	
-	@id
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id, nombre, tailleMin, tailleMax, dureeSejour;
+	private int id;
+	private int nombre, tailleMin, tailleMax, dureeSejour;
 	private boolean handicap;
 	private double depenses=0;
 	
