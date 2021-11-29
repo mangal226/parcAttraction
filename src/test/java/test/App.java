@@ -27,6 +27,9 @@ public class App {
 
 	static IDAOFamille daoF = Context.getInstance().getDaoFamille();
 	static IDAOAttraction daoA = Context.getInstance().getDaoAttraction();
+	static IDAOBoisson daoB = Context.getInstance().getDaoBoisson();
+	static IDAOPlat daoP = Context.getInstance().getDaoPlat();
+	static IDAOMarchandise daoM = Context.getInstance().getDaoMarchandise();
 	static List<Famille> famille = new ArrayList();
 	static List<Boisson> boisson = new ArrayList();
 	static List <Plat> plat = new ArrayList();
@@ -287,6 +290,7 @@ public class App {
 			double prix= saisieDouble("Prix de la boisson :");
 			Boisson b = new Boisson(nom,prix);
 			boisson.add(b);
+			daoB.save(b);
 
 		}
 		else if(produit.equals("Plat"))
@@ -296,6 +300,7 @@ public class App {
 			double prix= saisieDouble("Prix du plat :");
 			Plat p = new Plat(nom,prix);
 			plat.add(p);
+			daoP.save(p);
 
 		}
 
@@ -306,6 +311,7 @@ public class App {
 			double prix = saisieDouble("Prix de la marchandise");
 			Marchandise m = new Marchandise(prix, nom);
 			marchandise.add(m);
+			daoM.save(m);
 		}
 
 		else {System.out.println("La saisie est incorrecte");}
@@ -599,8 +605,6 @@ public class App {
 				if (p.getNom()==pstringsupp){plat.remove(p);}
 				else {System.out.println("Le nom du plat est incorrect");}
 			}
-
-
 		}
 		else {System.out.println("La saisie est incorrecte");}
 	}
