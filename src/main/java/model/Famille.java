@@ -33,6 +33,16 @@ public class Famille {
 		this.handicap = handicap;
 		this.depenses = depenses;
 	}
+	
+	public Famille(int nombre, int tailleMin, int tailleMax, int dureeSejour, boolean handicap,
+			double depenses) {
+		this.nombre = nombre;
+		this.tailleMin = tailleMin;
+		this.tailleMax = tailleMax;
+		this.dureeSejour = dureeSejour;
+		this.handicap = handicap;
+		this.depenses = depenses;
+	}
 
 	public int getNombre() {
 		return nombre;
