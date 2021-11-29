@@ -63,36 +63,36 @@ public class Context {
 		this.daoCompte = daoCompte;
 	}
 
-	public IDAOAttraction getDaoPlanete() {
-		return daoPlanete;
+	public IDAOAttraction getDaoAttraction() {
+		return daoAttraction;
 	}
 
-	public void setDaoPlanete(IDAOAttraction daoPlanete) {
-		this.daoPlanete = daoPlanete;
+	public void setDaoAttraction(IDAOAttraction daoAttraction) {
+		this.daoAttraction = daoAttraction;
 	}
 
-	public IDAOBoisson getDaoTrajet() {
-		return daoTrajet;
+	public IDAOBoisson getDaoBoisson() {
+		return daoBoisson;
 	}
 
-	public void setDaoTrajet(IDAOBoisson daoTrajet) {
-		this.daoTrajet = daoTrajet;
+	public void setDaoBoisson(IDAOBoisson daoBoisson) {
+		this.daoBoisson = daoBoisson;
 	}
 
-	public IDAOFamille getDaoVaisseau() {
-		return daoVaisseau;
+	public IDAOFamille getDaoFamille() {
+		return daoFamille;
 	}
 
-	public void setDaoVaisseau(IDAOFamille daoVaisseau) {
-		this.daoVaisseau = daoVaisseau;
+	public void setDaoFamille(IDAOFamille daoFamille) {
+		this.daoFamille = daoFamille;
 	}
 
-	public IDAOMarchandise getDaoPassager() {
-		return daoPassager;
+	public IDAOMarchandise getDaoMarchandise() {
+		return daoMarchandise;
 	}
 
-	public void setDaoPassager(IDAOMarchandise daoPassager) {
-		this.daoPassager = daoPassager;
+	public void setDaoMarchandise(IDAOMarchandise daoMarchandise) {
+		this.daoMarchandise = daoMarchandise;
 	}
 
 	public IDAOPlat getDaoPlat() {
