@@ -27,7 +27,7 @@ public class Restauration {
 			inverseJoinColumns = @JoinColumn(name="id_boisson") //rename l'autre clé, celle de l'attribut donc Equipement ici
 			)
 	private List<Boisson> boisson = new ArrayList();
-	@ManyToMany
+	@ManyToMany     
 	@JoinTable(
 			name="liste_plat", //Rename la table
 			joinColumns = @JoinColumn(name="id_du_restaurant"), //rename la clé principale (Personnage car on est dans la classe Personnage)
