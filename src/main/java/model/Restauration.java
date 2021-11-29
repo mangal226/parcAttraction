@@ -11,6 +11,15 @@ import javax.persistence.Id;
 public class Restauration {
 	private int Id;
 	private List<Boisson> boisson = new ArrayList();
+<<<<<<< Updated upstream
+=======
+	@ManyToMany     
+	@JoinTable(
+			name="liste_plat", //Rename la table
+			joinColumns = @JoinColumn(name="id_du_restaurant"), //rename la clé principale (Personnage car on est dans la classe Personnage)
+			inverseJoinColumns = @JoinColumn(name="id_plat") //rename l'autre clé, celle de l'attribut donc Equipement ici
+			)
+>>>>>>> Stashed changes
 	private List<Plat> plat = new ArrayList();
 	
 	
