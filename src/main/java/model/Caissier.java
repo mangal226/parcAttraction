@@ -20,8 +20,16 @@ public class Caissier extends Compte {
 	public Caissier(int id, String login, String password) {
 		super(id, login, password);
 	}
-	public Caissier() {
+
+	@Override
+	public String toString() {
+		return "Caissier [id=" + id + ", login=" + login + ", password=" + password + ", salaire=" + salaire
+				+ ", getId()=" + getId() + ", getLogin()=" + getLogin() + ", getPassword()=" + getPassword()
+				+ ", getSalaire()=" + getSalaire() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
 	}
+	
+	
     
 	
 
