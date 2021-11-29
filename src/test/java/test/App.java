@@ -1,6 +1,7 @@
 package test;
 
 import model.*;
+import util.Context;
 import dao.*;
 
 import java.io.File;
@@ -24,13 +25,13 @@ import javax.persistence.Persistence;
 public class App {
 
 
-	static DAOFamille daoF = new DAOFamille();
+	static IDAOFamille daoF = Context.getInstance().getDaoFamille();
 	static List<Famille> famille = new ArrayList();
 	static List<Boisson> boisson = new ArrayList();
 	static List <Plat> plat = new ArrayList();
 	static List <Attraction> attraction = new ArrayList();
 	static Compte connected;
-	static DAOCompte daoC = new DAOCompte();
+	static IDAOCompte daoC = Context.getInstance().getDaoCompte();
 	static LinkedList<Famille> fileAttente = new LinkedList();
 	static LinkedList<Famille> fileAttenteFP = new LinkedList();
 	static List <Marchandise> marchandise = new ArrayList();
@@ -186,7 +187,8 @@ public class App {
 			int dureeSejour= saisieInt("ðŸŽ¢Indiquer la durÃ©e du sÃ©jourðŸŽ¢");
 			Boolean handicap = saisieBoolean("ðŸ‘©â€�ðŸ¦¼ Etes-vous handicapÃ© ðŸ‘©â€�ðŸ¦¼?");
 			f = new Famille(nombre,tailleMin,tailleMax, dureeSejour, handicap,30);
-			daoF.insert(f);
+			daoF.save(f);
+			//daoF.insert(f);
 		}
 
 		//si la famille est dans la base
