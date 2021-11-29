@@ -78,21 +78,7 @@ public class App {
 		boolean valeur= sc.nextBoolean();
 		return valeur;
 	}
-	
-	public static void init() 
-	{
 
-		Boisson coca = new Boisson("Coca",2);
-		Boisson fanta = new Boisson("Fanta",3);
-		daoB.save(coca);
-		daoB.save(fanta);
-		
-		Attraction grand8 = new Attraction("Grand 8", 25, 10, 150, 200, false );
-		Attraction asterix = new Attraction("Asterix", 40, 15, 160, 220, false );
-		daoA.save(grand8);
-		daoA.save(asterix);
-		
-	}
 
 	public static void main(String[] args) {
 		System.out.println("Bienvenue a  FISTILAND!!!!!!!!");
