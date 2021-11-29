@@ -34,6 +34,14 @@ public class Attraction {
 		this.restHandi = restHandi;
 	}
 
+	public Attraction(String nom, int duree, int capacite, int tailleMin, int tailleMax, boolean restHandi) {
+		this.nom=nom;
+		this.duree = duree;
+		this.capacite = capacite;
+		this.tailleMin = tailleMin;
+		this.tailleMax = tailleMax;
+		this.restHandi = restHandi;
+	}
 	
 	public int getId() {
 		return id;
