@@ -1,13 +1,30 @@
 package model;
+import javax.persistence.Entity;
+import java.util.ArrayList;
+import java.util.*;
+import javax.persistence.OneToMany;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Famille {
 	
+	@id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id, nombre, tailleMin, tailleMax, dureeSejour;
 	private boolean handicap;
 	private double depenses=0;
 	
-	public Famille(int nombre, int tailleMin, int tailleMax, int dureeSejour, boolean handicap,
+	
+	public Famille() {
+	
+	}
+	
+	
+	public Famille(int id,int nombre, int tailleMin, int tailleMax, int dureeSejour, boolean handicap,
 			double depenses) {
+		this.id=id;
 		this.nombre = nombre;
 		this.tailleMin = tailleMin;
 		this.tailleMax = tailleMax;
@@ -70,5 +87,13 @@ public class Famille {
 	public void setId_Famille(int id) {
 		this.id = id;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Famille [id=" + id + ", nombre=" + nombre + ", tailleMin=" + tailleMin + ", tailleMax=" + tailleMax
+				+ ", dureeSejour=" + dureeSejour + ", handicap=" + handicap + ", depenses=" + depenses + "]";
+	}
+	
 	
 }
