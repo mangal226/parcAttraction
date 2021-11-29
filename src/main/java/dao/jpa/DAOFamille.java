@@ -11,9 +11,9 @@ import util.Context;
 
 public class DAOFamille implements IDAOFamille{
 
-	static EntityManagerFactory emf = Context.getInstance().getEmf();
 	@Override
 	public Famille findById(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Famille objet = em.find(Famille.class, id);
 		em.close();
@@ -23,7 +23,7 @@ public class DAOFamille implements IDAOFamille{
 	@Override
 	public List<Famille> findAll() {
 
-
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 	
 		List<Famille> objets = em.createQuery("from Famille").getResultList();
@@ -34,6 +34,7 @@ public class DAOFamille implements IDAOFamille{
 
 	@Override
 	public Famille save(Famille objet) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
@@ -48,6 +49,7 @@ public class DAOFamille implements IDAOFamille{
 
 	@Override
 	public void delete(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Famille objet = em.find(Famille.class, id);
 

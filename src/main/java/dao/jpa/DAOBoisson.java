@@ -11,10 +11,10 @@ import model.Boisson;
 import util.Context;
 
 public class DAOBoisson implements IDAOBoisson{
-	static EntityManagerFactory emf = Context.getInstance().getEmf();
 
 	@Override
 	public Boisson findById(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Boisson objet = em.find(Boisson.class, id);
 		em.close();
@@ -23,6 +23,7 @@ public class DAOBoisson implements IDAOBoisson{
 
 	@Override
 	public List<Boisson> findAll() {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 
 
 		EntityManager em = emf.createEntityManager();
@@ -35,6 +36,7 @@ public class DAOBoisson implements IDAOBoisson{
 
 	@Override
 	public Boisson save(Boisson objet) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
@@ -49,6 +51,7 @@ public class DAOBoisson implements IDAOBoisson{
 
 	@Override
 	public void delete(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Boisson objet = em.find(Boisson.class, id);
 

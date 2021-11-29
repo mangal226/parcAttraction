@@ -11,9 +11,9 @@ import util.Context;
 
 public class DAOMarchandise implements IDAOMarchandise{
 
-	static EntityManagerFactory emf = Context.getInstance().getEmf();
 	@Override
 	public Marchandise findById(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Marchandise objet = em.find(Marchandise.class, id);
 		em.close();
@@ -23,7 +23,7 @@ public class DAOMarchandise implements IDAOMarchandise{
 	@Override
 	public List<Marchandise> findAll() {
 
-
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 	
 		List<Marchandise> objets = em.createQuery("from Marchandise").getResultList();
@@ -34,6 +34,7 @@ public class DAOMarchandise implements IDAOMarchandise{
 
 	@Override
 	public Marchandise save(Marchandise objet) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 
 		em.getTransaction().begin();
@@ -48,6 +49,7 @@ public class DAOMarchandise implements IDAOMarchandise{
 
 	@Override
 	public void delete(Integer id) {
+		EntityManagerFactory emf = Context.getInstance().getEmf();
 		EntityManager em = emf.createEntityManager();
 		Marchandise objet = em.find(Marchandise.class, id);
 

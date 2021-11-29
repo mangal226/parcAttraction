@@ -223,7 +223,7 @@ public class App {
 		for (Attraction a : attraction)
 		{
 			if(a.getId()==alea){
-				List<Famille> newQueue =a.getQueue();
+				LinkedList<Famille> newQueue =a.getQueue();
 				newQueue.add(f);
 				a.setQueue(newQueue);
 			}

@@ -10,8 +10,7 @@ import dao.IDAOAttraction;
 import model.Attraction;
 import util.Context;
 
-public class DAOAttraction implements IDAOAttraction{ 
-	static EntityManagerFactory emf = Context.getInstance().getEmf();
+public class DAOAttraction implements IDAOAttraction{ *
 	@Override
 	public Attraction findById(Integer id) {
 		EntityManagerFactory emf = Context.getInstance().getEmf();
