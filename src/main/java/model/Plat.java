@@ -1,7 +1,8 @@
 package model;
 import javax.persistence.*;
 
-@Entity 
+@Entity
+@DiscriminatorValue("plat")
 public class Plat {
 	@Id//Obligatoire
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
