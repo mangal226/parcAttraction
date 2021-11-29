@@ -1,5 +1,10 @@
 package dao;
 
-public interface IDAOMarchandise {
+import java.util.List;
+
+import model.Marchandise;
+
+public interface IDAOMarchandise extends IDAO<Marchandise, Integer>{
 
 }
+
