@@ -37,7 +37,7 @@ public class App {
 	static Compte connected;
 	static IDAOCompte daoC = Context.getInstance().getDaoCompte();
 	static LinkedList<Famille> fileAttente = new LinkedList();
-	static LinkedList<Famille> fileAttenteFP = new LinkedList();
+	/*static LinkedList<Famille> fileAttenteFP = new LinkedList();*/
 	static List <Marchandise> marchandise = new ArrayList();
 	static boolean fermeture = true;
 	
@@ -79,13 +79,37 @@ public class App {
 		return valeur;
 	}
 
+	
+	public static void init() 
+	{
+		
+		Compte gerant= new Gerant(1,"ger","ger");
+		Compte caissier= new Caissier(2,"cai","cai");
+		Compte ope= new Operateur(3,"ope","ope");
+		
+		daoC.save(ope);
+		daoC.save(gerant);
+		daoC.save(caissier);
+		
+		
+		
+		Boisson coca = new Boisson("Coca",2);
+		Boisson fanta = new Boisson("Fanta",3);
+		daoB.save(coca);
+		daoB.save(fanta);
+		
+		Attraction grand8 = new Attraction("Grand 8", 25, 10, 150, 200, false );
+		Attraction asterix = new Attraction("Asterix", 40, 15, 160, 220, false );
+		daoA.save(grand8);
+		daoA.save(asterix);
+	}
+
 
 	public static void main(String[] args) {
 		System.out.println("Bienvenue a  FISTILAND!!!!!!!!");
-		/*
-		init();
+		//init();
 		menuPrincipal();
-		*/
+
 
 	}
 	public static void menuPrincipal(){
@@ -124,6 +148,7 @@ public class App {
 	}
 	public static void menuGerant(){
 		System.out.println("----- Menu Gerant -----");
+		System.out.println("0 - Simulation");
 		System.out.println("1 - Acces au menu Gestion Attractions");
 		System.out.println("2 - Acces au menu Gestion Boutiques");
 		System.out.println("3 - Acces au menu Gestion Restauration");
@@ -134,6 +159,7 @@ public class App {
 		int choix = saisieInt("Choisir un menu : ");
 		switch(choix) 
 		{
+		case 0 : simulation();break;
 		case 1 : menuGestionAttractions();break;
 		case 2 : menuGestionBoutiques();break;
 		case 3 : menuRestauration();break;
@@ -142,6 +168,125 @@ public class App {
 		case 6 : connected=null;menuPrincipal();break;
 		}
 	}
+
+	public static void simulation(){
+
+		int choixJouer = saisieInt("Choisir le nombre de jours à simuler");
+		int choixFamille = saisieInt("Choisir le nombre de famille");
+		
+		List<Boisson> listeBoisson= daoB.findAll();
+		List<Plat> listeMarchandise= daoP.findAll();
+		List<Marchandise> listePlat= daoM.findAll();
+		
+
+		ajoutFamilleParc();
+		choixAssignation(null); // Boutique ou attraction ?
+		avancementJournee();
+		bilanSimulation();
+
+
+
+	}
+
+	public static List<Famille> ajoutFamilleParc()// Recupere famille dans BDD
+	{
+		List<Famille> familles=daoF.findAll();
+	
+		Random r  = new Random();
+		int aleaF = r.nextInt(familles.size())+1;
+		
+		List <Famille> famillesAss=new ArrayList();
+		famillesAss.add(familles.get(aleaF));
+		
+		
+		return null;
+		
+	}  
+	public static void choixAssignation(List<Famille> listeFamille){
+		
+		Random r  = new Random();
+		int alea = r.nextInt(9)+1;
+
+
+		/*if (alea <=8 && sejour >=0){//80% de chance de rentrer dans une attraction
+		
+		{
+			 assignementAttraction(Famille f);
+		}
+		else if (r>8 && sejour >=0) {
+			 achatBoutiqueRestauration(Famille f);
+		}
+		else {system.out( "Au revoir, a bientot");}
+		
+		}
+
+*/
+			
+		}
+
+		public static void assignementAttraction(Famille f) //choisir l'attraction de la famille
+		{
+			Random r  = new Random();
+			int alea = r.nextInt(attraction.size())+1;
+			for (Attraction a : attraction)
+			{
+				if(a.getId()==alea){
+					LinkedList<Famille> newQueue =a.getQueue();		
+					
+					newQueue.add(f);
+					a.setQueue(newQueue);
+					//daoF.setDureeSejour(daoF.getDureeSejour()-daoA.getDuree());
+				}
+			}
+		}
+
+			
+	public static void achatBoutiqueRestauration(Famille f)
+	{
+		/*si r>8 et séjour >0
+        if (r <=8 && sejour >=0)
+
+
+		afficher la carte
+		Voulez vos commander quelque chose ?
+		Si oui, retirer le produit de la carte*/
+		
+
+		/*sejour-=1;
+		if (sejour >=0) :{
+			assignementAttraction();
+		}*/
+	}
+	
+	public static void avancementJournee() // Continue tant que les familles ne sont pas parties
+	//permet de faire diminuer le temps qu il reste aux familles
+	
+	{ 
+//		
+//		int cpt =0;
+//		//for Attraction p in liste attraction{
+//			if p.getQueue() is notempty
+//				cpt++
+//			
+//		}
+//			
+//		
+//		while (cpt!=0){
+//		
+//		int id_attraction=1;
+//		
+//		
+//		
+//		avancementJournee
+//		
+		
+	}
+		
+	
+
+	
+	public static void bilanSimulation() {};
+
 
 	public static void afficherBilanFinancier(){}
 	public static void afficherListeVisiteurs(){
@@ -202,19 +347,7 @@ public class App {
 	}
 	
 	//il reste une methode ici 
-	public static void assignementAttraction(Famille f)
-	{
-		Random r  = new Random();
-		int alea = r.nextInt(attraction.size())+1;
-		for (Attraction a : attraction)
-		{
-			if(a.getId()==alea){
-				LinkedList<Famille> newQueue =a.getQueue();
-				newQueue.add(f);
-				a.setQueue(newQueue);
-			}
-		}
-	}
+	
 
 
 	public static void afficherFile(){
@@ -348,6 +481,15 @@ public class App {
 	}
 
 	public static void menuGestionAttractions(){
+		
+		List<Attraction> listeAttraction = daoA.findAll();
+		
+		System.out.println("Voici les attractions existantes :");
+		for (Attraction a : listeAttraction)
+		{
+			System.out.println(a);
+		}
+		
 
 		System.out.println("----- Menu Gestion attraction -----");
 		System.out.println("1 - Modifier un parametre");

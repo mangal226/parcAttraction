@@ -1,6 +1,4 @@
 package model;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,13 +11,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+@Entity
 public class Restauration {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
 	
-	
+	@ManyToMany
 	private List<Boisson> boisson = new ArrayList();
 	
-	private List<Plat> plat = new ArrayList();
+	@ManyToMany
+	private  List<Plat> plat = new ArrayList();
 	
 	
 	public Restauration () {

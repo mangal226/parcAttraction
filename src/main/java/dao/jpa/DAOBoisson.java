@@ -31,7 +31,6 @@ public class DAOBoisson implements IDAOBoisson{
 		List<Boisson> objets = em.createQuery("from Boisson").getResultList();
 		em.close();
 		return objets;
-
 	}
 
 	@Override
