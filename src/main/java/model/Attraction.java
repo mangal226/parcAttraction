@@ -24,14 +24,15 @@ public class Attraction {
 		
 	}
 	
-	/*public Attraction(String nom, int duree, int capacite, int tailleMin, int tailleMax, boolean restHandi) {
+	public Attraction(int id, String nom, int duree, int capacite, int tailleMin, int tailleMax, boolean restHandi) {
+		this.id=id;
 		this.nom=nom;
 		this.duree = duree;
 		this.capacite = capacite;
 		this.tailleMin = tailleMin;
 		this.tailleMax = tailleMax;
 		this.restHandi = restHandi;
-	}*/
+	}
 
 	
 	public int getId() {
