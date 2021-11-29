@@ -15,6 +15,7 @@ import dao.jpa.DAOBoisson;
 import dao.jpa.DAOCompte;
 import dao.jpa.DAOMarchandise;
 import dao.jpa.DAOPlat;
+import dao.jpa.DAOFamille;
 import model.Compte;
 
 public class Context {
