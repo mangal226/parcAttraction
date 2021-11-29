@@ -1,5 +1,7 @@
 package dao;
 
-public interface IDAOPlat {
+import model.Plat;
+
+public interface IDAOPlat extends IDAO<Plat,Integer> {
 
 }

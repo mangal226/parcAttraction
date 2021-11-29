@@ -1,5 +1,7 @@
 package dao;
 
-public interface IDAOFamille {
+import model.Famille;
+
+public interface IDAOFamille extends IDAO<Famille,Integer> {
 
 }
