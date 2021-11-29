@@ -23,15 +23,15 @@ public class Restauration {
 	@ManyToMany
 	@JoinTable(
 			name="liste_boisson", //Rename la table
-			joinColumns = @JoinColumn(name="id_du_restaurant"), //rename la clé principale (Personnage car on est dans la classe Personnage)
-			inverseJoinColumns = @JoinColumn(name="id_boisson") //rename l'autre clé, celle de l'attribut donc Equipement ici
+			joinColumns = @JoinColumn(name="id_du_restaurant"), //rename la clï¿½ principale (Personnage car on est dans la classe Personnage)
+			inverseJoinColumns = @JoinColumn(name="id_boisson") //rename l'autre clï¿½, celle de l'attribut donc Equipement ici
 			)
 	private List<Boisson> boisson = new ArrayList();
 	@ManyToMany     
 	@JoinTable(
 			name="liste_plat", //Rename la table
-			joinColumns = @JoinColumn(name="id_du_restaurant"), //rename la clé principale (Personnage car on est dans la classe Personnage)
-			inverseJoinColumns = @JoinColumn(name="id_plat") //rename l'autre clé, celle de l'attribut donc Equipement ici
+			joinColumns = @JoinColumn(name="id_du_restaurant"), //rename la clï¿½ principale (Personnage car on est dans la classe Personnage)
+			inverseJoinColumns = @JoinColumn(name="id_plat") //rename l'autre clï¿½, celle de l'attribut donc Equipement ici
 			)
 	private List<Plat> plat = new ArrayList();
 	
