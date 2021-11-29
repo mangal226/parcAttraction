@@ -1,5 +1,7 @@
 package dao;
 
-public interface IDAOAttraction {
+import model.Attraction;
+
+public interface IDAOAttraction extends IDAO<Attraction,Integer>{
 
 }
