@@ -26,6 +26,7 @@ public class App {
 
 
 	static IDAOFamille daoF = Context.getInstance().getDaoFamille();
+	static IDAOAttraction daoA = Context.getInstance().getDaoAttraction();
 	static List<Famille> famille = new ArrayList();
 	static List<Boisson> boisson = new ArrayList();
 	static List <Plat> plat = new ArrayList();
