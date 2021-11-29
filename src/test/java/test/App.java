@@ -84,13 +84,13 @@ public class App {
 
 		Boisson coca = new Boisson("Coca",2);
 		Boisson fanta = new Boisson("Fanta",3);
-		boisson.add(coca);
-		boisson.add(fanta);
+		daoB.save(coca);
+		daoB.save(fanta);
 		
 		Attraction grand8 = new Attraction("Grand 8", 25, 10, 150, 200, false );
 		Attraction asterix = new Attraction("Asterix", 40, 15, 160, 220, false );
-		attraction.add(grand8);
-		attraction.add(asterix);
+		daoA.save(grand8);
+		daoA.save(asterix);
 		
 	}
 
@@ -184,7 +184,7 @@ public class App {
 		Famille f = daoF.findById(id);
 		if (f==null){
 			System.out.println("La famille est nouvelle dans le parc");
-			System.out.println("+++++ Ajout d'une nouvelle famille Ã  la file d'attente +++++");
+			System.out.println("+++++ Ajout d'une nouvelle famille dans la file d'attente +++++");
 			int nombre = saisieInt("Saisir le nombre des membres de la famille");
 			int tailleMin = saisieInt("Saisir la taille minimale ");
 			int tailleMax = saisieInt("Saisir la taille maximale");
@@ -270,8 +270,8 @@ public class App {
 	public static void afficherCarteBoutique(){
 
         System.out.println("Voici la liste des marchandises :");
-		for (Marchandise m : marchandise){System.out.println(m+" ("+m.getPrix()+"euros)");}
-		
+		for (Marchandise m : daoM.findAll()){System.out.println(m+" ("+m.getPrix()+"euros)");}
+		//remplacer marchandise par daoM.findAll
 
 		String reponse=saisieString("Retourner au  menu restauration?(y/n)");
 		if(reponse.equals("y"))
@@ -289,7 +289,7 @@ public class App {
 			String nom = saisieString("Nom de la boisson :");
 			double prix= saisieDouble("Prix de la boisson :");
 			Boisson b = new Boisson(nom,prix);
-			boisson.add(b);
+			//boisson.add(b);
 			daoB.save(b);
 
 		}
@@ -299,7 +299,7 @@ public class App {
 			String nom = saisieString("Nom du plat :");
 			double prix= saisieDouble("Prix du plat :");
 			Plat p = new Plat(nom,prix);
-			plat.add(p);
+			//plat.add(p);
 			daoP.save(p);
 
 		}
@@ -310,7 +310,7 @@ public class App {
 			String nom = saisieString("Nom de la marchandise");
 			double prix = saisieDouble("Prix de la marchandise");
 			Marchandise m = new Marchandise(prix, nom);
-			marchandise.add(m);
+			//marchandise.add(m);
 			daoM.save(m);
 		}
 
@@ -325,9 +325,10 @@ public class App {
 			System.out.println("Suppression d'une boisson : ");
 
 			String bstringsupp = saisieString("Saisir la boisson : ");
-			for (Boisson b : boisson)
+			for (Boisson b : daoB.findAll())
 			{
-				if (b.getNom()==bstringsupp){boisson.remove(b);}
+				if (b.getNom()==bstringsupp){daoB.delete(b.getId());}
+				//if (b.getNom()==bstringsupp){daoB.delete(b)boisson.remove(b);}
 				else {System.out.println("Le nom de la boisson est incorrecte");}
 			}
 
@@ -338,9 +339,10 @@ public class App {
 			System.out.println("Suppression d un plat : ");
 
 			String pstringsupp = saisieString("Saisir le plat : ");
-			for (Plat p : plat)
+			for (Plat p : daoP.findAll())
 			{
-				if (p.getNom()==pstringsupp){plat.remove(p);}
+				if (p.getNom()==pstringsupp){daoP.delete(p.getId());}
+				//if (p.getNom()==pstringsupp){plat.remove(p);}
 				else {System.out.println("Le nom du plat est incorrect");}
 			}
 		}
@@ -349,9 +351,9 @@ public class App {
 			System.out.println("Suppression d'une marchandise' : ");
 
 			String pstringsupp = saisieString("Saisir la marchandise : ");
-			for (Marchandise m : marchandise)
+			for (Marchandise m : daoM.findAll())
 			{
-				if (m.getNom()==pstringsupp){marchandise.remove(m);}
+				if (m.getNom()==pstringsupp){daoM.delete(m.getId());}
 				else {System.out.println("Le nom de la marchandise est incorrect");}
 			}
 		}
@@ -509,9 +511,9 @@ public class App {
 	public static void afficheCarte()
 	{
 		System.out.println("Voici la liste des boissons :");
-		for (Boisson b : boisson){System.out.println(b+" ("+b.getPrix()+"euros)");}
+		for (Boisson b : daoB.findAll()){System.out.println(b+" ("+b.getPrix()+"euros)");}
 		System.out.println("Voici la liste des plats :");
-		for (Plat p : plat){System.out.println(p+" ("+p.getPrix()+"euros)");}
+		for (Plat p : daoP.findAll()){System.out.println(p+" ("+p.getPrix()+"euros)");}
 
 		String reponse=saisieString("Retourner au  menu restauration?(y/n)");
 		if(reponse.equals("y"))
