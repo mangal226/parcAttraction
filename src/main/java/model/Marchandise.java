@@ -22,6 +22,12 @@ public class Marchandise {
 	public Marchandise() {
 	}
 	
+	public int getId() {
+		return Id;
+	}
+	public void setId(int id) {
+		Id = id;
+	}
 	public double getPrix() {
 		return prix;
 	}

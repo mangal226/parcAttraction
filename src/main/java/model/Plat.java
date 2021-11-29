@@ -20,6 +20,13 @@ public class Plat {
 	public Plat(){
 	}
 	
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		this.Id = id;
+	}
 	
 	public String getNom() {
 		return nom;
