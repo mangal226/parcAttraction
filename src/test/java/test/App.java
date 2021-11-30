@@ -34,11 +34,14 @@ public class App {
 	static List<Boisson> boisson = new ArrayList();
 	static List <Plat> plat = new ArrayList();
 	static List <Attraction> attraction = new ArrayList();
+	static List <Boutique> boutique = new ArrayList();
+	static List <Restauration> restauration = new ArrayList();
 	static Compte connected;
 	static IDAOCompte daoC = Context.getInstance().getDaoCompte();
 	static LinkedList<Famille> fileAttente = new LinkedList();
 	/*static LinkedList<Famille> fileAttenteFP = new LinkedList();*/
-	static List <Marchandise> marchandise = new ArrayList();
+	
+		static List <Marchandise> marchandise = new ArrayList();
 	static boolean fermeture = true;
 	
 	
@@ -70,6 +73,7 @@ public class App {
 		double valeur= sc.nextDouble();
 		return valeur;
 	}
+
 
 	public static boolean saisieBoolean(String msg)
 	{
@@ -174,13 +178,11 @@ public class App {
 		int choixJouer = saisieInt("Choisir le nombre de jours à simuler");
 		int choixFamille = saisieInt("Choisir le nombre de famille");
 		
-		List<Boisson> listeBoisson= daoB.findAll();
-		List<Plat> listeMarchandise= daoP.findAll();
-		List<Marchandise> listePlat= daoM.findAll();
+		
 		
 
-		ajoutFamilleParc();
-		choixAssignation(null); // Boutique ou attraction ?
+		List<Famille>listeFamille=ajoutFamilleParc(choixFamille);
+		choixAssignation(listeFamille); // Boutique ou attraction ?
 		avancementJournee();
 		bilanSimulation();
 
@@ -188,101 +190,253 @@ public class App {
 
 	}
 
-	public static List<Famille> ajoutFamilleParc()// Recupere famille dans BDD
+	public static List<Famille> ajoutFamilleParc(int choixFamille)// Recupere famille dans BDD
 	{
 		List<Famille> familles=daoF.findAll();
-	
-		Random r  = new Random();
-		int aleaF = r.nextInt(familles.size())+1;
-		
 		List <Famille> famillesAss=new ArrayList();
-		famillesAss.add(familles.get(aleaF));
-		
-		
-		return null;
-		
-	}  
-	public static void choixAssignation(List<Famille> listeFamille){
-		
+		int tableAlea []=new int[choixFamille], exist=0, i=0;
 		Random r  = new Random();
-		int alea = r.nextInt(9)+1;
 
+		while (i<=choixFamille){
+			int aleaF = r.nextInt(familles.size())+1;
+			for(int j=0; j<=i; j++){
+				if (aleaF==tableAlea[j]){
+					exist=1;}
+				else {
+					tableAlea[i]=aleaF;
+					i++;}
+			}
 
-		/*if (alea <=8 && sejour >=0){//80% de chance de rentrer dans une attraction
-		
-		{
-			 assignementAttraction(Famille f);
-		}
-		else if (r>8 && sejour >=0) {
-			 achatBoutiqueRestauration(Famille f);
-		}
-		else {system.out( "Au revoir, a bientot");}
-		
-		}
+			for (int k=0; k<choixFamille; k++){
+				famillesAss.add(familles.get(tableAlea[k]));
+			}
 
-*/
+		} 
+		return famillesAss;
+
+	}
+
+		public static void choixAssignation(List<Famille> listeFamille){
 			
-		}
+			
+			Random r  = new Random();
+			for (Famille f : listeFamille){
 
+				int alea = r.nextInt(9)+1;
+				if (alea <=8){//80% de chance de rentrer dans une attraction
+
+					assignementAttraction(f);
+				}
+				else {
+					achatBoutiqueRestauration(f);
+				}
+
+			}
+		}
+		
 		public static void assignementAttraction(Famille f) //choisir l'attraction de la famille
 		{
 			Random r  = new Random();
-			int alea = r.nextInt(attraction.size())+1;
-			for (Attraction a : attraction)
+			List<Attraction> listeAttraction=daoA.findAll();
+			int alea = r.nextInt(listeAttraction.size())+1;
+			for (Attraction a : listeAttraction)
 			{
 				if(a.getId()==alea){
 					LinkedList<Famille> newQueue =a.getQueue();		
 					
 					newQueue.add(f);
 					a.setQueue(newQueue);
-					//daoF.setDureeSejour(daoF.getDureeSejour()-daoA.getDuree());
 				}
 			}
 		}
-
-			
-	public static void achatBoutiqueRestauration(Famille f)
-	{
-		/*si r>8 et séjour >0
-        if (r <=8 && sejour >=0)
-
-
-		afficher la carte
-		Voulez vos commander quelque chose ?
-		Si oui, retirer le produit de la carte*/
 		
-
-		/*sejour-=1;
-		if (sejour >=0) :{
-			assignementAttraction();
-		}*/
-	}
+		
+		public static void achatBoutiqueRestauration(Famille f)
+		{
+			
+	        Random r = new Random();
+	        
+			List<Boisson> listeBoisson= daoB.findAll();  
+			List<Plat> listePlat= daoP.findAll();  
+			List<Marchandise> listeMarchandise= daoM.findAll();  
+			
+			for (Boisson b : listeBoisson){
+				 int alea = r.nextInt(10)+1;
+				 if (alea==1 || alea ==2) {
+				 	double depensesActuelles=f.getDepenses();
+				 	f.setDepenses(depensesActuelles+b.getPrix());
+				 	//bilanfinancier+=b.getPrix();
+				 }
+			}
+			for (Plat p : listePlat){
+				 int alea = r.nextInt(10)+1;
+				 if (alea==1 || alea ==2) {
+				 	double depensesActuelles=f.getDepenses();
+				 	f.setDepenses(depensesActuelles+p.getPrix());
+				 	//bilanfinacier+=b.getPrix();
+				 }
+			}
+			for (Marchandise m : listeMarchandise){
+				 int alea = r.nextInt(10)+1;
+				 if (alea==1 || alea ==2) {
+				 	double depensesActuelles=f.getDepenses();
+				 	f.setDepenses(depensesActuelles+m.getPrix());
+				 	//bilanfinacier+=b.getPrix();
+				 }
+			}
+			int dureSejour = f.getDureeSejour();
+			dureSejour-=1;
+			f.setDureeSejour(dureSejour);
+			if (f.getDureeSejour() >0) {
+				assignementAttraction(f);
+			}
+			else {
+				//bilan Financier à gérer
+			}
+			
+			
+			
+		}
 	
+		
 	public static void avancementJournee() // Continue tant que les familles ne sont pas parties
 	//permet de faire diminuer le temps qu il reste aux familles
 	
 	{ 
-//		
-//		int cpt =0;
-//		//for Attraction p in liste attraction{
-//			if p.getQueue() is notempty
-//				cpt++
-//			
-//		}
-//			
-//		
-//		while (cpt!=0){
-//		
-//		int id_attraction=1;
-//		
-//		
-//		
-//		avancementJournee
-//		
 		
+		for (Attraction a : daoA.findAll()){
+			List<Famille> embarque= new ArrayList();
+			int capaciteActuelle=a.getCapacite();
+			while (a.getQueue().isEmpty()==false)
+			{
+				Famille famille=(a.getQueue()).poll();
+				if(famille.getNombre()<=capaciteActuelle)//ajout de la famille
+				{
+					
+					capaciteActuelle-=famille.getNombre();
+					
+					embarque.add(famille);
+					
+					int dureeSejour=famille.getDureeSejour();
+					dureeSejour-=a.getDuree();
+					
+					famille.setDureeSejour(dureeSejour);
+					
+					if(famille.getDureeSejour()>0)
+					{
+						List<Famille> listeFamille = new ArrayList();
+						listeFamille.add(famille);
+						choixAssignation(listeFamille);
+					}
+					else
+					{	
+						
+						
+						daoF.save(famille);
+					}
+				}
+			
+				else 
+				{
+					for (Famille f : a.getQueue()) {
+
+						int dureeSejour=f.getDureeSejour();
+						dureeSejour-=a.getDuree();
+						f.setDureeSejour(dureeSejour);
+
+					}
+
+
+					if(famille.getDureeSejour()<0)
+					{
+						daoF.save(famille);
+						a.getQueue().remove(famille);
+					}
+					embarque.removeAll();
+				}
+				
+				if(a.getQueue().isEmpty()==true && embarque.isEmpty()==false)
+				{
+					int duree=famille.getDureeSejour()-a.getDuree();
+					famille.setDureeSejour(duree);
+					if(famille.getDureeSejour()<0)
+					{
+						daoF.save(famille);
+						
+
+					}
+				}
+			/*
+			
+			Tant que attraction.queue notempty
+				if famille.nombre=<attraction.capacite   
+													 -> add famille in attraction.tour(liste de famille qui font l'attraction)
+													 -> diminuer capacite actuelle attraction apres ajout famille
+													 -> famille.dureesejour -=attraction.duree
+													 -> si famille.dureesejour >0
+													 	-> choixAssignation(famille f)
+													 -> else ajouter famille.depenses dans bdd
+													 	->
+													 
+				Else (la premiere famille qui attend ne peut pas rentrer dans l attraction, capacite insuffisante)
+													 -> famille.dureesejour -=attraction.duree
+													 -> si famille.dureesejour <0 
+													 	-> ajouter famille.depenses dans bdd
+													 	-> queue.remove(famille)
+													 -> vider la file attraction.tour
+			 	}				 
+				if (attraction.queue is empty && attraction.tour is not empty){
+													 -> famille.dureesejour -=attraction.duree
+													 -> si famille.dureesejour <0 
+													 	-> ajouter famille.depenses dans bdd
+													 	-> queue.remove(famille)
+													 -> vider la file attraction.tour
+				}
+			Fin tant que
+			
+			
+			//A quoi sert la liste fileAttente, quand est ce qu on l utilise?	
+			
+			if(daoF.getNombre<=dao)
+			
+			
+			
+								
+			*/
+			
+			
+			
+				
+				/*
+				
+				daoF.setDureeSejour(daoF.getDureeSejour-a.getDuree);
+				Famille suivante = a.getQueue.poll();
+				if (daoF.getDureeSejour>0){choixAssignation();}
+				else 
+					{ daoF.getDepenses.add(listeBilanJournee);
+						daoF.setDepenses(0);
+					}
+				//augmenter de 1 l'utilisation de l'attraction
+
+				 */
+
+
+			}
+
+
+		}
+
+//
+//		if (cpt!=listeAttraction.size()){avancementJournee();}
+//
+//		avancementJournee();
+
 	}
-		
-	
+
+
+
+
+
 
 	
 	public static void bilanSimulation() {};
@@ -389,7 +543,7 @@ public class App {
 	}
 	
 	public static void afficherCarteBoutique(){
-
+// =showJoinFetchNoDoublons();
         System.out.println("Voici la liste des marchandises :");
 		for (Marchandise m : daoM.findAll()){System.out.println(m+" ("+m.getPrix()+"euros)");}
 		//remplacer marchandise par daoM.findAll
@@ -492,27 +646,48 @@ public class App {
 		
 
 		System.out.println("----- Menu Gestion attraction -----");
-		System.out.println("1 - Modifier un parametre");
-		System.out.println("2 - Ouvrir une attraction");
-		System.out.println("3 - Fermer une attraction");
-		System.out.println("4 - se drconnecter");
+		System.out.println("1 - Ajouter une attraction");
+		System.out.println("2 - Modifier un parametre");
+		System.out.println("3 - Ouvrir une attraction");
+		System.out.println("4 - Fermer une attraction");
+		System.out.println("5 - se déconnecter");
 
 		int choix = saisieInt("Choisir un menu : ");
 		switch(choix) 
 		{
-		case 1 : modifierParametreAtt();break;
-		case 2 : utiliserFastPass();break;
+		case 1 : ajoutAttraction();
+		case 2 : modifierParametreAtt();break;
 		case 3 : ouvrirAttraction();break;
 		case 4 : fermerAttraction(); break;
 		case 5 : menuGerant(); break;
 		}
 
 	}
-
+	public static void ajoutAttraction() {
+		
+		System.out.println("Voici les attractions existantes :");
+		for (Attraction a : daoA.findAll())
+		{
+			System.out.println(a);
+		}
+		String nom = saisieString("Saisir le nom");
+		int duree = saisieInt("Saisir la duree de l'attraction");
+		int capacite = saisieInt("Saisir la capacite maximale");
+		int tailleMin = saisieInt("Saisir la taille minimale");
+		int tailleMax = saisieInt("Saisir la taille maximale");
+		boolean restHandi = saisieBoolean("Y a t'il des restrictions pour handicapes? oui = true, non = false ");
+	
+		
+		Attraction attraction = new Attraction(nom,duree,capacite,tailleMin,tailleMax,restHandi);
+		
+		daoA.save(attraction);
+		
+		
+	}
 	public static void modifierParametreAtt() 
 	{
 		System.out.println("Voici les attractions existantes :");
-		for (Attraction a : attraction)
+		for (Attraction a : daoA.findAll())
 		{
 			System.out.println(a);
 		}
@@ -773,5 +948,9 @@ public class App {
 		}
 		else {System.out.println("La saisie est incorrecte");}
 	}
+	
 
+	Context.getInstance().getEmf().close();
+
+} 
 }
