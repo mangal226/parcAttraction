@@ -26,27 +26,29 @@ public class TestLazy {
 		return boisson;
 	}*/
 	
-	//-------------Comment recup une boutique avec ses marchandises ? ------------------/////
-	public static List<Boutique> inventaireBoissonBoutique() 
+	//-------------Comment recup une boutique avec ses marchandises (afficher carte)? ------------------/////
+	/*public static List<Boutique> inventaireBoissonBoutique() 
 	{
 		EntityManager em = Context.getInstance().getEmf().createEntityManager();
 		Query q = em.createQuery("Select distinct p from Boutique p left join fetch p.marchandise");
 		List<Boutique> boutique =  q.getResultList();
 		em.close();
 		return boutique;
-	}
+	}*/
 
 
-	//-------------Comment recup un resto avec ses boissons + ses plats ? ------------------/////
+	/*//-------------Comment recup un resto avec ses boissons + ses plats (afficher carte) ? ------------------/////
 		public static List<Restauration> inventaireGeneral() 
 		{
 			EntityManager em = Context.getInstance().getEmf().createEntityManager();
-			Query q = em.createQuery("Select distinct p from Restauration b left join fetch p.boisson join fetch p.plat");
+			Query q = em.createQuery("Select distinct p from Restauration p left join fetch p.boisson");
 			List<Restauration> restauration =  q.getResultList();
+			q = em.createQuery("Select distinct p from Restauration p left join fetch p.plat");
+			restauration =  q.getResultList();
+		
 			em.close();
-			List<Boisson> boisson;
-			return boisson;
-		}
+			return restauration;
+		}*/
 }
 
 	/*public static List<Personnage> fullJoinWorking() 

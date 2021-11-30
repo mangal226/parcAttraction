@@ -61,4 +61,16 @@ public class DAOBoutique implements IDAOBoutique{
 		em.close();
 
 	}
+	
+	//-------------Comment recup une boutique avec ses marchandises (afficher carte)? ------------------/////
+		public List<Boutique> inventaireBoissonBoutique() 
+		{
+			EntityManager em = Context.getInstance().getEmf().createEntityManager();
+			Query q = em.createQuery("Select distinct p from Boutique p left join fetch p.marchandise");
+			List<Boutique> boutique =  q.getResultList();
+			em.close();
+			return boutique;
+		}
+
+
 }

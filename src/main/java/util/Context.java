@@ -4,18 +4,21 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import dao.IDAOAttraction;
-import dao.IDAOCompte;
 import dao.IDAOBoisson;
+import dao.IDAOBoutique;
+import dao.IDAOCompte;
 import dao.IDAOFamille;
-import dao.IDAOPlat;
 import dao.IDAOMarchandise;
-import dao.jdbc.*;
+import dao.IDAOPlat;
+import dao.IDAORestauration;
 import dao.jpa.DAOAttraction;
 import dao.jpa.DAOBoisson;
+import dao.jpa.DAOBoutique;
 import dao.jpa.DAOCompte;
+import dao.jpa.DAOFamille;
 import dao.jpa.DAOMarchandise;
 import dao.jpa.DAOPlat;
-import dao.jpa.DAOFamille;
+import dao.jpa.DAORestauration;
 import model.Compte;
 
 public class Context {
@@ -30,6 +33,8 @@ public class Context {
 	private IDAOBoisson daoBoisson = new DAOBoisson();
 	private IDAOFamille daoFamille = new DAOFamille();
 	private IDAOMarchandise daoMarchandise = new DAOMarchandise(); 
+	private IDAORestauration daoRestauration = new DAORestauration();
+	private IDAOBoutique daoBoutique = new DAOBoutique();
 	private IDAOPlat daoPlat = new DAOPlat(); 
 	/////
 	
@@ -103,6 +108,22 @@ public class Context {
 
 	public void setDaoPlat(IDAOPlat daoPlat) {
 		this.daoPlat = daoPlat;
+	}
+
+	public IDAORestauration getDaoRestauration() {
+		return daoRestauration;
+	}
+
+	public void setDaoRestauration(IDAORestauration daoRestauration) {
+		this.daoRestauration = daoRestauration;
+	}
+
+	public IDAOBoutique getDaoBoutique() {
+		return daoBoutique;
+	}
+
+	public void setDaoBoutique(IDAOBoutique daoBoutique) {
+		this.daoBoutique = daoBoutique;
 	}
 
 	public EntityManagerFactory getEmf() {

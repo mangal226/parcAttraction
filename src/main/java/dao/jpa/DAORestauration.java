@@ -61,4 +61,18 @@ public class DAORestauration implements IDAORestauration{
 		em.close();
 
 	}
+	
+	
+	//-------------Comment recup un resto avec ses boissons + ses plats (afficher carte) ? ------------------/////
+			public List<Restauration> inventaireGeneral() 
+			{
+				EntityManager em = Context.getInstance().getEmf().createEntityManager();
+				Query q = em.createQuery("Select distinct p from Restauration p left join fetch p.boisson");
+				List<Restauration> restauration =  q.getResultList();
+				q = em.createQuery("Select distinct p from Restauration p left join fetch p.plat");
+				restauration =  q.getResultList();
+			
+				em.close();
+				return restauration;
+			}
 }

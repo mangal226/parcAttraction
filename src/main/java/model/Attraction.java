@@ -1,16 +1,13 @@
 package model;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import java.util.ArrayList;
-import java.util.*;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 
@@ -22,8 +19,8 @@ public class Attraction {
 	private int duree, capacite, tailleMin, tailleMax;
 	private boolean restHandi;
 	
-	
-	private transient LinkedList<Famille> queue=new LinkedList();
+	@ManyToMany(fetch = FetchType.EAGER)
+	private List<Famille> queue=new ArrayList();
 	
 	public Attraction() {
 		
@@ -106,11 +103,11 @@ public class Attraction {
 		this.nom = nom;
 	}
 
-	public LinkedList<Famille> getQueue() {
+	public List<Famille> getQueue() {
 		return queue;
 	}
 
-	public void setQueue(LinkedList<Famille> queue) {
+	public void setQueue(List<Famille> queue) {
 		this.queue = queue;
 	}
 
