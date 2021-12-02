@@ -373,7 +373,7 @@ public class App {
 					}
 				}
 
-				else 
+				else if (famille.getNombre()>capaciteActuelle)
 				{
 					for (Famille f : a.getQueue()) {
 						
@@ -394,7 +394,7 @@ public class App {
 					embarque.clear();
 				}
 
-				if(a.getQueue().isEmpty()==true && embarque.isEmpty()==false)
+				else if(a.getQueue().isEmpty()==true && embarque.isEmpty()==false)
 				{
 					int duree=famille.getDureeSejour()-a.getDuree();
 					famille.setDureeSejour(duree);
@@ -410,7 +410,13 @@ public class App {
 					}
 					embarque.clear();
 				}
+				
 			}
+		}
+		for (Attraction b : daoA.findAll())
+		{
+			if (b.getQueue().isEmpty()==false){avancementJournee();}
+			
 		}
 	}
 				
