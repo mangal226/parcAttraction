@@ -210,7 +210,8 @@ public class App {
 				if (aleaF==tableAlea[j]){
 					exist=1;}
 				else */
-					tableAlea[i]=aleaF;
+					//tableAlea[i]=aleaF;
+					tableAlea[i]=i;
 					i++;}
 			
 			for (int k=0; k<choixFamille; k++){
@@ -225,7 +226,7 @@ public class App {
 
 	public static void choixAssignation(List<Famille> listeFamille){
 
-
+		System.out.println("voici la liste des familles dans le parc"+listeFamille);
 		Random r  = new Random();
 		for (Famille f : listeFamille){
 
@@ -248,6 +249,7 @@ public class App {
 		for (int i = 0; i<listeAttraction.size();i++)
 		{
 			Attraction a = listeAttraction.get(i);
+			System.out.println(i+"------"+alea);
 			if(i==alea){
 				System.out.println(alea+ "-???");
 				List<Famille> newQueue =a.getQueue();		
@@ -260,7 +262,6 @@ public class App {
 		System.out.println("-----------------");
 		//System.out.println(listeAttraction);
 		System.out.println("-----------------");
-		avancementJournee();
 	}
 
 
@@ -300,8 +301,8 @@ public class App {
 		}
 		int dureSejour = f.getDureeSejour();
 		dureSejour-=1;
-		System.out.println(f);
 		f.setDureeSejour(dureSejour);
+		System.out.println(f);
 		if (f.getDureeSejour() >0) {
 			System.out.println("je sors de la boutique et je vais dans l'attraction'");
 			assignementAttraction(f);
@@ -347,7 +348,7 @@ public class App {
 					{
 						List<Famille> listeFamille = new ArrayList();
 						listeFamille.add(famille);
-						System.out.println("boutique'");
+						System.out.println("il me reste du temps, je vais à la boutique 1");
 						choixAssignation(listeFamille);
 					}
 					else
@@ -361,10 +362,12 @@ public class App {
 				else 
 				{
 					for (Famille f : a.getQueue()) {
-
+						
+						System.out.println("J'attends dans la queue");
 						int dureeSejour=f.getDureeSejour();
 						dureeSejour-=a.getDuree();
 						f.setDureeSejour(dureeSejour);
+						capaciteActuelle=a.getCapacite();
 
 					}
 
@@ -384,6 +387,12 @@ public class App {
 					if(famille.getDureeSejour()<0)
 					{
 						daoF.save(famille);
+					}
+					else {
+						List<Famille> listeFamille = new ArrayList();
+						listeFamille.add(famille);
+						System.out.println("il me reste du temps, je vais à la boutique 2");
+						choixAssignation(listeFamille);
 					}
 					embarque.clear();
 				}
