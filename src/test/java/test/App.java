@@ -387,11 +387,11 @@ public class App {
 
 					}
 
-
+					daoF.save(famille);
 					if(famille.getDureeSejour()<0)
 					{
-						daoF.save(famille);
 						a.getQueue().remove(famille);
+						daoA.save(a);
 					}
 					embarque.clear();
 				}
