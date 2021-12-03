@@ -344,11 +344,11 @@ public class App {
 				a=daoA.findById(a.getId());
 				System.out.println("je rentre dans l'attraction : "+a);
 				Famille famille=(a.getQueue()).get(0);
-				a.getQueue().remove(0);
-				daoA.save(a);
+				
 				if(famille.getNombre()<=capaciteActuelle)//ajout de la famille
 				{
-
+					a.getQueue().remove(0);
+					daoA.save(a);
 					capaciteActuelle-=famille.getNombre();
 
 					embarque.add(famille);
