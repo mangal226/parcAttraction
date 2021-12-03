@@ -337,9 +337,11 @@ public class App {
 		{
 			//System.out.println(a);
 			List<Famille> embarque= new ArrayList();
+			a=daoA.findById(a.getId());
 			int capaciteActuelle=a.getCapacite();
 			while (a.getQueue().isEmpty()==false)
 			{
+				a=daoA.findById(a.getId());
 				System.out.println("je rentre dans l'attraction : "+a);
 				Famille famille=(a.getQueue()).get(0);
 				a.getQueue().remove(0);
