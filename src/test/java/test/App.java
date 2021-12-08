@@ -118,7 +118,9 @@ public class App {
 		//init();
 		//System.out.println(Context.getInstance().getDaoBoutique().inventaireBoissonBoutique());
 		//menuPrincipal();
-		simulation();
+		creationFamille(50);
+		System.out.println("Les familles ont été créés");
+		//simulation();
 		
 	}
 	public static void menuPrincipal(){
@@ -196,6 +198,25 @@ public class App {
 
 
 
+	}
+	
+	public static List <Famille> creationFamille(int nombreFamilles){
+		List <Famille> familles=new ArrayList();
+		Random r=new Random();
+		for (int i=0; i<nombreFamilles; i++) {
+			double depenses=0;
+			int tailleMin, tailleMax, nombre, dureeSejour=40;
+			Boolean  handicap;
+			nombre=r.nextInt(10);
+			tailleMin=r.nextInt(140-120+1)+120;
+			tailleMax=r.nextInt(190-165+1)+165;
+			handicap=r.nextBoolean();
+			
+			Famille f=new Famille(nombre,tailleMin,tailleMax,dureeSejour,handicap,depenses);
+			daoF.save(f);
+	
+		}
+		return familles;
 	}
 
 	public static List<Famille> ajoutFamilleParc(int choixFamille)// Recupere famille dans BDD
