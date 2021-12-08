@@ -35,12 +35,10 @@ height : 150px;
 
 .nav
 {
- background-color:grey;
- display:flex;
  width:75%;
  position:absolute;
- top:10px;
- left:25%;
+ top:0px;
+ left:15%;
 }
 #listeBanniere
 {
@@ -48,13 +46,17 @@ height : 150px;
   justify-content: space-evenly;
   list-style-type:none;
 }
+#jordan
+{
+  display:flex;
+  position: relative;
+  top: 150px;
+}
 li
 {
-  padding:24px;
-  /*
+  padding:18px;
   padding-left:100px;
   padding-right:100px;
-  */
 }
 li:hover {
   background-color: #C0C0C0;
@@ -93,13 +95,13 @@ Login :
 <td><input name="login" required placeholder="saisir votre login" type="text"></td>
 </tr>
 <tr>
-<td>
-Password :
-</td>
+<td>Password :</td>
 <td><input required name="password" type="password" placeholder="Saisir votre mot de passe" minlength="5" maxlength="10"></td>
 </tr>
-
+<tr>
+<td><a href="">Créer un nouveau Compte</a></td>
+</tr>
 </table>
 </fieldset>
-<img src="Jordan.png" alt="">
+<img id=jordan src="img/Jordan.png" alt="">
 </center>
