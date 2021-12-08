@@ -12,15 +12,6 @@ fieldset{
   border:5px solid black ;
   border-radius:20px
 }
-#banniere
-{
-  display:flex;
-  justify-content: space-around;
-
-  background-color:white;
-  width:100%;
-  height:70px;
-}
 #divLogo
 {
 position:absolute;
@@ -34,21 +25,58 @@ height : 150px;
   width : 267px;
   height : 150px;
 }
+#banniere
+{
+  font-size: 20px;
+  background-color:white;
+  width:100%;
+  height:70px;
+}
+
+.nav
+{
+ width:75%;
+ position:absolute;
+ top:0px;
+ left:15%;
+}
+#listeBanniere
+{
+  display:flex;
+  justify-content: space-evenly;
+  list-style-type:none;
+}
+#jordan
+{
+  display:flex;
+  position: relative;
+  top: 150px;
+}
+li
+{
+  padding:18px;
+  padding-left:100px;
+  padding-right:100px;
+}
+li:hover {
+  background-color: #C0C0C0;
+}
 </style>
 
 <div id=banniere>
 
-
-<p>Accueil</p>
-<p>Attraction</p>
-<p>Restauration</p>
-<p>Boutique</p>
-
+</div>
+<div class="nav">
+  <ul id=listeBanniere>
+    <li>Accueil</li>
+    <li>Attraction</li>
+    <li>Restauration</li>
+    <li>Boutique</li>
+  </ul>
 </div>
 
-
 <div id=divLogo>
-  <img id=logo src="Logo.png" alt="">
+  <img id=logo src="img/Logo.png" alt="">
 </div>
 
 
@@ -67,14 +95,13 @@ Login :
 <td><input name="login" required placeholder="saisir votre login" type="text"></td>
 </tr>
 <tr>
-<td>
-Password :
-</td>
+<td>Password :</td>
 <td><input required name="password" type="password" placeholder="Saisir votre mot de passe" minlength="5" maxlength="10"></td>
 </tr>
-
+<tr>
+<td><a href="">Créer un nouveau Compte</a></td>
+</tr>
 </table>
 </fieldset>
-<br><br><br><br>
-<img src="Jordan.png" alt="">
+<img id=jordan src="img/Jordan.png" alt="">
 </center>
