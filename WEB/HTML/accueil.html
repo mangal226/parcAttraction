@@ -12,15 +12,6 @@ fieldset{
   border:5px solid black ;
   border-radius:20px
 }
-#banniere
-{
-  display:flex;
-  justify-content: space-around;
-
-  background-color:white;
-  width:100%;
-  height:70px;
-}
 #divLogo
 {
 position:absolute;
@@ -34,18 +25,53 @@ height : 150px;
   width : 267px;
   height : 150px;
 }
+#banniere
+{
+  font-size: 20px;
+  background-color:white;
+  width:100%;
+  height:70px;
+}
+
+.nav
+{
+ background-color:grey;
+ display:flex;
+ width:75%;
+ position:absolute;
+ top:10px;
+ left:25%;
+}
+#listeBanniere
+{
+  display:flex;
+  justify-content: space-evenly;
+  list-style-type:none;
+}
+li
+{
+  padding:24px;
+  /*
+  padding-left:100px;
+  padding-right:100px;
+  */
+}
+li:hover {
+  background-color: #C0C0C0;
+}
 </style>
 
 <div id=banniere>
 
-
-<p>Accueil</p>
-<p>Attraction</p>
-<p>Restauration</p>
-<p>Boutique</p>
-
 </div>
-
+<div class="nav">
+  <ul id=listeBanniere>
+    <li>Accueil</li>
+    <li>Attraction</li>
+    <li>Restauration</li>
+    <li>Boutique</li>
+  </ul>
+</div>
 
 <div id=divLogo>
   <img id=logo src="img/Logo.png" alt="">
@@ -75,6 +101,5 @@ Password :
 
 </table>
 </fieldset>
-<br><br><br><br>
-<img src="img/Jordan.png" alt="">
+<img src="Jordan.png" alt="">
 </center>
