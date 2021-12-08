@@ -206,7 +206,7 @@ public class App {
 		Random r  = new Random();
 
 		while (i<choixFamille){
-			int aleaF = r.nextInt(choixFamille);
+			int aleaF = r.nextInt(familles.size());
 			for(int j=0; j<i; j++) {
 				if (aleaF==tableAlea[j]){
 					exist=1;}}
@@ -233,8 +233,8 @@ public class App {
 		Random r  = new Random();
 		for (Famille f : listeFamille){
 
-			int alea = r.nextInt(9)+1;
-			if (alea <=0){//80% de chance de rentrer dans une attraction
+			int alea = r.nextInt(10);
+			if (alea <=6){//70% de chance de rentrer dans une attraction
 
 				assignementAttraction(f);
 			}
@@ -262,6 +262,7 @@ public class App {
 
 				newQueue.add(f);
 				a.setQueue(newQueue);
+				
 				daoF.save(f);
 				daoA.save(a);
 				System.out.println("l'attraction dans laquelle j'ai été enregistré : "+a);
@@ -283,14 +284,16 @@ public class App {
 
 		System.out.println("je rentre dans la boutique");
 		Random r = new Random();
+		int i=1;
 
 		List<Boisson> listeBoisson= daoB.findAll();  
 		List<Plat> listePlat= daoP.findAll();  
 		List<Marchandise> listeMarchandise= daoM.findAll();  
-
+		//Revoir la fonction pour les achats peut être affiner 
+		while(i<=famille.size()){
 		for (Boisson b : listeBoisson){
 			int alea = r.nextInt(10)+1;
-			if ((alea==1 || alea ==2) || 1==1) {
+			if (alea<=2) {
 				double depensesActuelles=f.getDepenses();
 				f.setDepenses(depensesActuelles+b.getPrix());
 				bilanFinancier+=b.getPrix();
@@ -298,7 +301,7 @@ public class App {
 		}
 		for (Plat p : listePlat){
 			int alea = r.nextInt(10)+1;
-			if ((alea==1 || alea ==2) || 1==1) {
+			if (alea<=2) {
 				double depensesActuelles=f.getDepenses();
 				f.setDepenses(depensesActuelles+p.getPrix());
 				bilanFinancier+=p.getPrix();
@@ -306,11 +309,13 @@ public class App {
 		}
 		for (Marchandise m : listeMarchandise){
 			int alea = r.nextInt(10)+1;
-			if ((alea==1 || alea ==2) || 1==1) {
+			if (alea<=2) {
 				double depensesActuelles=f.getDepenses();
 				f.setDepenses(depensesActuelles+m.getPrix());
 				bilanFinancier+=m.getPrix();
 			}
+		}
+		i++;
 		}
 		int dureSejour = f.getDureeSejour();
 		dureSejour-=1;
