@@ -206,14 +206,16 @@ public class App {
 		Random r  = new Random();
 
 		while (i<choixFamille){
-			int aleaF = r.nextInt(familles.size());
-			/*for(int j=0; j<=i; j++)
+			int aleaF = r.nextInt(choixFamille);
+			for(int j=0; j<i; j++) {
 				if (aleaF==tableAlea[j]){
-					exist=1;}
-				else */
-			//tableAlea[i]=aleaF;
-			tableAlea[i]=i;
+					exist=1;}}
+			if(exist==0) {
+			tableAlea[i]=aleaF;
+			//tableAlea[i]=i;
 			i++;}
+			exist=0;
+			}
 
 		for (int k=0; k<choixFamille; k++){
 
