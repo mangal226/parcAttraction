@@ -1,0 +1,6 @@
+ECLIPSE:
+
+-prix d'entree en fonction du nombre de personne dans la famille.
+
+-achatBoutiqueRestauration:
+	->alea d'acheter une boisson/plat/marchandise -> puis choix alea d'une boisson/plat/marchandise
