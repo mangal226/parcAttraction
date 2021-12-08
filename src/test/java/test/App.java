@@ -117,7 +117,8 @@ public class App {
 		System.out.println("Bienvenue a  FISTILAND!!!!!!!!");
 		//init();
 		//System.out.println(Context.getInstance().getDaoBoutique().inventaireBoissonBoutique());
-		menuPrincipal();
+		//menuPrincipal();
+		simulation();
 		
 	}
 	public static void menuPrincipal(){
@@ -210,19 +211,19 @@ public class App {
 				if (aleaF==tableAlea[j]){
 					exist=1;}
 				else */
-					//tableAlea[i]=aleaF;
-					tableAlea[i]=i;
-					i++;}
-			
-			for (int k=0; k<choixFamille; k++){
-				
-				double depenses =familles.get(tableAlea[k]).getDepenses();
-				depenses+=30;
-				familles.get(tableAlea[k]).setDepenses(depenses);
-				famillesAss.add(familles.get(tableAlea[k]));}
-			
+			//tableAlea[i]=aleaF;
+			tableAlea[i]=i;
+			i++;}
+
+		for (int k=0; k<choixFamille; k++){
+
+			double depenses =familles.get(tableAlea[k]).getDepenses();
+			depenses+=30;
+			familles.get(tableAlea[k]).setDepenses(depenses);
+			famillesAss.add(familles.get(tableAlea[k]));}
+
 		return famillesAss;
-		}
+	}
 
 	public static void choixAssignation(List<Famille> listeFamille){
 
@@ -245,18 +246,28 @@ public class App {
 	{
 		Random r  = new Random();
 		List<Attraction> listeAttraction=daoA.findAll();
-		int alea = r.nextInt(listeAttraction.size())+1;
+		int alea = r.nextInt(listeAttraction.size());
 		for (int i = 0; i<listeAttraction.size();i++)
 		{
 			Attraction a = listeAttraction.get(i);
 			System.out.println(i+"------"+alea);
 			if(i==alea){
+				
 				System.out.println(alea+ "-???");
+				
+				System.out.println("l'attraction dans laquelle je vais être enregistré : "+a);
 				List<Famille> newQueue =a.getQueue();		
 
 				newQueue.add(f);
 				a.setQueue(newQueue);
-				Context.getInstance().getDaoAttraction().save(a);
+				daoF.save(f);
+				daoA.save(a);
+				System.out.println("l'attraction dans laquelle j'ai été enregistré : "+a);
+				System.out.println(daoA.findById(a.getId()));
+				for (Attraction b : daoA.findAll())
+				{
+					System.out.println(b);
+				}
 			}
 		}
 		System.out.println("-----------------");
@@ -304,7 +315,7 @@ public class App {
 		f.setDureeSejour(dureSejour);
 		System.out.println(f);
 		if (f.getDureeSejour() >0) {
-			System.out.println("je sors de la boutique et je vais dans l'attraction'");
+			System.out.println("je sors de la boutique et je vais dans l'attraction");
 			assignementAttraction(f);
 		}
 		else {
@@ -326,20 +337,25 @@ public class App {
 		{
 			//System.out.println(a);
 			List<Famille> embarque= new ArrayList();
+			a=daoA.findById(a.getId());
 			int capaciteActuelle=a.getCapacite();
 			while (a.getQueue().isEmpty()==false)
 			{
-				System.out.println("je rentre dans l'attraction");
+				a=daoA.findById(a.getId());
+				System.out.println("je rentre dans l'attraction : "+a);
 				Famille famille=(a.getQueue()).get(0);
-				a.getQueue().remove(0);
+				
 				if(famille.getNombre()<=capaciteActuelle)//ajout de la famille
 				{
-
+					a.getQueue().remove(0);
+					daoA.save(a);
 					capaciteActuelle-=famille.getNombre();
 
 					embarque.add(famille);
 
 					int dureeSejour=famille.getDureeSejour();
+					System.out.println(famille);
+					System.out.println("la durée de l'attraction est de "+a.getDuree());
 					dureeSejour-=a.getDuree();
 
 					famille.setDureeSejour(dureeSejour);
@@ -359,7 +375,7 @@ public class App {
 					}
 				}
 
-				else 
+				else if (famille.getNombre()>capaciteActuelle)
 				{
 					for (Famille f : a.getQueue()) {
 						
@@ -371,16 +387,16 @@ public class App {
 
 					}
 
-
+					daoF.save(famille);
 					if(famille.getDureeSejour()<0)
 					{
-						daoF.save(famille);
 						a.getQueue().remove(famille);
+						daoA.save(a);
 					}
 					embarque.clear();
 				}
 
-				if(a.getQueue().isEmpty()==true && embarque.isEmpty()==false)
+				else if(a.getQueue().isEmpty()==true && embarque.isEmpty()==false)
 				{
 					int duree=famille.getDureeSejour()-a.getDuree();
 					famille.setDureeSejour(duree);
@@ -396,7 +412,13 @@ public class App {
 					}
 					embarque.clear();
 				}
+				
 			}
+		}
+		for (Attraction b : daoA.findAll())
+		{
+			if (b.getQueue().isEmpty()==false){avancementJournee();}
+			
 		}
 	}
 				
