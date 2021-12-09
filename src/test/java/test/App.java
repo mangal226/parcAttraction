@@ -118,9 +118,9 @@ public class App {
 		//init();
 		//System.out.println(Context.getInstance().getDaoBoutique().inventaireBoissonBoutique());
 		//menuPrincipal();
-		creationFamille(50);
-		System.out.println("Les familles ont été créés");
-		//simulation();
+		//creationFamille(50);
+		//System.out.println("Les familles ont été créés");
+		simulation();
 		
 	}
 	public static void menuPrincipal(){
@@ -186,16 +186,17 @@ public class App {
 		int choixFamille = saisieInt("Choisir le nombre de famille");
 
 
-
-
+		int i=1;
+		while(i<=choixJouer) {
 		List<Famille>listeFamille=ajoutFamilleParc(choixFamille);
 		choixAssignation(listeFamille); // Boutique ou attraction ?
 		System.out.println("je sors de choix Assignation");
 		avancementJournee();
 		System.out.println("je sors d'avancement journée'");
 		bilanSimulation();
-		System.out.println("bilan financer :" + bilanFinancier);
-
+		System.out.println("bilan de la journée "+i+":" + bilanFinancier);
+		i++;
+		}
 
 
 	}
@@ -241,7 +242,7 @@ public class App {
 		for (int k=0; k<choixFamille; k++){
 
 			double depenses =familles.get(tableAlea[k]).getDepenses();
-			depenses+=30;
+			depenses+=30*familles.get(tableAlea[k]).getNombre();
 			familles.get(tableAlea[k]).setDepenses(depenses);
 			famillesAss.add(familles.get(tableAlea[k]));}
 
