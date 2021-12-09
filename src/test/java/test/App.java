@@ -311,7 +311,7 @@ public class App {
 		List<Plat> listePlat= daoP.findAll();  
 		List<Marchandise> listeMarchandise= daoM.findAll();  
 		//Revoir la fonction pour les achats peut être affiner 
-		while(i<=famille.size()){
+		while(i<=f.getNombre()){
 		for (Boisson b : listeBoisson){
 			int alea = r.nextInt(10)+1;
 			if (alea<=2) {
