@@ -1,6 +1,6 @@
 ﻿ECLIPSE:
 
-
+-ajouter une liste avec le nombre de visiteurs de la journee (le nombre n'est pas le meme d'une journee à l'autre)
 
 -gérer le fait que DureeSejour s'arrete à -2,-3 (Rajouter les limites durée sejour)
 
