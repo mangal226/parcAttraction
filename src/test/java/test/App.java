@@ -186,7 +186,7 @@ public class App {
 		int choixFamille = saisieInt("Choisir le nombre de famille");
 
 		LinkedList <Double> total = new LinkedList();
-
+		
 		int i=1;
 		while(i<=choixJouer) {
 		List<Famille>listeFamille=ajoutFamilleParc(choixFamille);
@@ -204,16 +204,15 @@ public class App {
 		//Réinitialisation du temps de sejour des familles pour la journee suivante
 		for(Famille f : listeFamille)
 		{
-			System.out.println(f.getDepenses());
 			f.setDepenses(0);
 			f.setDureeSejour(40);
 			daoF.save(f);
 		}
-				
 		i++;
 		}
-
-
+		for(double t : total) {
+			System.out.println(t);
+		}
 	}
 	
 	public static List <Famille> creationFamille(int nombreFamilles){
@@ -469,36 +468,6 @@ public class App {
 		}
 	}
 				
-				/*
-
-			Tant que attraction.queue notempty
-				if famille.nombre=<attraction.capacite   
-													 -> add famille in attraction.tour(liste de famille qui font l'attraction)
-													 -> diminuer capacite actuelle attraction apres ajout famille
-													 -> famille.dureesejour -=attraction.duree
-													 -> si famille.dureesejour >0
-													 	-> choixAssignation(famille f)
-													 -> else ajouter famille.depenses dans bdd
-													 	->
-
-				Else (la premiere famille qui attend ne peut pas rentrer dans l attraction, capacite insuffisante)
-													 -> famille.dureesejour -=attraction.duree
-													 -> si famille.dureesejour <0 
-													 	-> ajouter famille.depenses dans bdd
-													 	-> queue.remove(famille)
-													 -> vider la file attraction.tour
-			 	}				 
-				if (attraction.queue is empty && attraction.tour is not empty){
-													 -> famille.dureesejour -=attraction.duree
-													 -> si famille.dureesejour <0 
-													 	-> ajouter famille.depenses dans bdd
-													 	-> queue.remove(famille)
-													 -> vider la file attraction.tour
-				}
-			Fin tant que
-	carte
-				 */
-
 	public static void bilanSimulation() {};
 
 
