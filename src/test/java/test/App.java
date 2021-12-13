@@ -226,7 +226,7 @@ public class App {
 			nombre=r.nextInt(10)+1;
 			tailleMin=r.nextInt(140-120+1)+120;
 			tailleMax=r.nextInt(190-165+1)+165;
-			handicap=false;//r.nextBoolean();
+			handicap=r.nextBoolean();
 			
 			Famille f=new Famille(nombre,tailleMin,tailleMax,dureeSejour,handicap,depenses);
 			daoF.save(f);

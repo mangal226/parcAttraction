@@ -8,5 +8,5 @@
 	->alea d'acheter une boisson/plat/marchandise -> puis choix alea d'une boisson/plat/marchandise
 
 
--Gerer l’attractivité d’une attraction
-
+HTML:
+Options du gérant en plus : liste des employés
