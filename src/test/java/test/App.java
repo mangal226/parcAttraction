@@ -118,7 +118,7 @@ public class App {
 		//init();
 		//System.out.println(Context.getInstance().getDaoBoutique().inventaireBoissonBoutique());
 		//menuPrincipal();
-		creationFamille(2);
+		creationFamille(5);
 		System.out.println("Les familles ont été créés");
 		simulation();
 		
@@ -202,10 +202,11 @@ public class App {
 		bilanFinancier=0;  
 		
 		//Réinitialisation du temps de sejour des familles pour la journee suivante
+		listeFamille=daoF.findAll();
 		for(Famille f : listeFamille)
 		{
-			f.setDepenses(0);
-			f.setDureeSejour(40);
+			//f.setDepenses(0);
+			//f.setDureeSejour(40);
 			daoF.save(f);
 		}
 		i++;
