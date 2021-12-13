@@ -1,19 +1,107 @@
 
-<style>
-  body{background-color:#F4EFE7;}
+<style media="screen">
 
+body{
+  background-color:orange;
+  margin:0;
+}
+fieldset{
+  position: relative;
+  top: 150px;
+  background-color:white;
+  color:blue;
+  border:5px solid black ;
+  border-radius:20px
+}
+#divLogo
+{
+position:absolute;
+top:10px;
+left:70px;
+width : 150px;
+height : 150px;
+}
+#Logo
+{
+  width : 267px;
+  height : 150px;
+}
+#banniere
+{
+  font-size: 20px;
+  background-color:white;
+  width:100%;
+  height:70px;
+}
 
-
+.nav
+{
+ padding: 0;
+ margin: 0;
+ height:70px;
+ width:75%;
+ //background-color:grey;
+ position:absolute;
+ top:0px;
+ left:15%;
+}
+#listeBanniere
+{
+  display:flex;
+  margin:0;
+  justify-content: space-evenly;
+  list-style-type:none;
+  font-size:25px;
+}
+#jordan
+{
+  display:flex;
+  position: relative;
+  top: 150px;
+}
+li
+{
+  padding:21px;
+  padding-left:100px;
+  padding-right:100px;
+}
+li:hover {
+  background-color: #C0C0C0;
+}
+#contenu
+{
+  position:absolute;
+  border:2px solid black;
+  background-color:white;
+  top:300px;
+  left:650px;
+  padding-left:20px;
+  padding-right:20px;
+  display:flex;
+  justify-content:center;
+  box-shadow: 0 0 20px 0 rgb(0 0 0 / 20%), 0 5px 5px 0 rgb(0 0 0 / 24%);
+}
 </style>
+<div id=banniere>
 
+</div>
+<div class="nav">
+  <ul id=listeBanniere>
+    <li>Accueil</li>
+    <li>Attraction</li>
+    <li>Restauration</li>
+    <li>Boutique</li>
+  </ul>
+</div>
 
-<h1>Menu Gérant</h1>
+<div id=divLogo>
+  <img id=logo src="img/Logo.png" alt="">
+</div>
+<div id=contenu>
+  <h1>Bienvenu compte Gérant</h1>
+</div>
+
 
 
 
 <input id="btnSimulation" type="button" value="Simulation"><br><br>
-<a href="gestionAttraction.html"><input id="btnAttraction" type="button" value="Gestion Attractions"></a><br><br>
-<a href="gestionBoutique.html"><input id="btnBoutique" type="button" value="Gestion Boutiques"></a><br><br>
-<a href="gestionRestauration.html"><input id="btnRestauration" type="button" value="Gestion Restauration"></a><br><br>
-<input id="btnBilan" type="button" value="Bilan financier"><br><br>
-<a href="accueil.html"><input id="btnDeco" type="button" value="Se déconnecter"></a>
