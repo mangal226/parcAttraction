@@ -1,15 +1,12 @@
 ﻿ECLIPSE:
 
--Donner une même duree de sejour pour toute les familles
-
--prix d'entree en fonction du nombre de personne dans la famille.
+-ajouter une liste avec le nombre de visiteurs de la journee (le nombre n'est pas le meme d'une journee à l'autre)
 
 -gérer le fait que DureeSejour s'arrete à -2,-3 (Rajouter les limites durée sejour)
 
 -achatBoutiqueRestauration:
 	->alea d'acheter une boisson/plat/marchandise -> puis choix alea d'une boisson/plat/marchandise
 
--Generer des familles aleatoirement
 
 -Gerer l’attractivité d’une attraction
 
