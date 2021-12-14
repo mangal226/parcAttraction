@@ -1,0 +1,181 @@
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+<style media="screen">
+
+body{
+  background-color:orange;
+  margin:0;
+}
+fieldset{
+  position: relative;
+  top: 150px;
+  background-color:white;
+  color:blue;
+  border:5px solid black ;
+  border-radius:20px
+}
+#divLogo
+{
+position:absolute;
+top:10px;
+left:70px;
+width : 150px;
+height : 150px;
+}
+#Logo
+{
+  width : 267px;
+  height : 150px;
+}
+#banniere
+{
+  font-size: 20px;
+  background-color:white;
+  width:100%;
+  height:70px;
+}
+
+.nav
+{
+ padding: 0;
+ margin: 0;
+ height:70px;
+ width:75%;
+ //background-color:grey;
+ position:absolute;
+ top:0px;
+ left:15%;
+}
+#listeBanniere
+{
+  display:flex;
+  margin:0;
+  justify-content: space-evenly;
+  list-style-type:none;
+  font-size:25px;
+}
+#jordan
+{
+  display:flex;
+  position: relative;
+  top: 150px;
+}
+li
+{
+  padding:21px;
+  padding-left:100px;
+  padding-right:100px;
+}
+li:hover {
+  background-color: #C0C0C0;
+}
+#contenu
+{
+  position:absolute;
+  border:2px solid black;
+  background-color:white;
+  top:300px;
+  left:650px;
+  padding-left:20px;
+  padding-right:20px;
+  display:flex;
+  justify-content:center;
+  box-shadow: 0 0 20px 0 rgb(0 0 0 / 20%), 0 5px 5px 0 rgb(0 0 0 / 24%);
+}
+
+#content
+{
+  width:100%;
+  display : flex;
+}
+#entree
+{
+	width:40%;
+}
+#sortie
+{
+	width:60%;
+}
+#myChart
+{
+  height:50%;
+}
+</style>
+<body>
+
+
+  <div id=banniere>
+
+  </div>
+  <div class="nav">
+  <ul id=listeBanniere>
+    <li>Accueil</li>
+    <li>Attraction</li>
+    <li>Restauration</li>
+    <li>Boutique</li>
+  </ul>
+  </div>
+
+<div id=divLogo>
+  <img id=logo src="img/Logo.png" alt="">
+</div>
+
+
+<div id="content">
+  <div id="entree">
+
+  </div>
+  <div id="sortie" style="position: relative; width:60%">
+    <canvas id="myChart" ></canvas>
+  </div>
+
+  <script >
+    let myChart = document.getElementById('myChart').getContext('2d');
+
+    let barChart = new Chart(myChart, {
+      type: 'line', //type de graphique
+      data :{
+        labels:['jour 1','jour 2','jour 3','jour 4','jour 5'],
+        datasets:[{
+          label :'bilan journalier',
+          data :[ 1200,1500,2000,900,1750],
+          backgroundColor:'black',
+          borderColor:'black',
+          hoverBorderColor:'white'
+
+        }]
+      },
+      options: {
+        plugins: {
+        title: {
+                  display: true,
+                  text: 'Revenu en fonction de la journée',
+                  font:{
+                    size: 25,
+                  }
+        },
+        legend:{
+          position:'right',
+        },
+          scales: {
+          x:{
+            display : true,
+            title:{
+              display: true, text:"jour"}
+            },
+            y:{
+              display : true,
+              title:{
+                display: true, text:"argent"}
+              }
+        },
+      }
+  }
+    });
+
+
+  </script>
+</div>
+
+</body>
