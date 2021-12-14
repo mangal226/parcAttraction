@@ -301,7 +301,7 @@ public class App {
 				newQueue.add(f);
 				a.setQueue(newQueue);
 				
-				daoF.save(f);
+				daoF.save(f); // ? pourquoi save la famille? Est ce qu'on ajoute pas la même famille encore dans la bdd?
 				daoA.save(a);
 				//System.out.println("l'attraction dans laquelle j'ai été enregistré : "+a);
 				//System.out.println(daoA.findById(a.getId()));
@@ -366,7 +366,7 @@ public class App {
 		}
 		else {
 			
-			daoF.save(f);
+			daoF.save(f);	//Pourquoi save la famille?
 		}
 
 
@@ -383,7 +383,7 @@ public class App {
 		{
 			//System.out.println(a);
 			List<Famille> embarque= new ArrayList();
-			a=daoA.findById(a.getId());
+			a=daoA.findById(a.getId());// ? utilité??
 			int capaciteActuelle=a.getCapacite();
 			while (a.getQueue().isEmpty()==false)
 			{
@@ -408,7 +408,7 @@ public class App {
 
 					if(famille.getDureeSejour()>0)
 					{
-						List<Famille> listeFamille = new ArrayList();
+						List<Famille> listeFamille = new ArrayList();  //Pourquoi creer une liste?
 						listeFamille.add(famille);
 						//System.out.println("il me reste du temps, je vais à la boutique 1");
 						choixAssignation(listeFamille);
@@ -425,7 +425,7 @@ public class App {
 				{
 					for (Famille f : a.getQueue()) {
 						
-						//System.out.println("J'attends dans la queue");
+						//System.out.println("J'attends dans la queue");	// Ajouter un timer pour diminuer le temps de la famille
 						int dureeSejour=f.getDureeSejour();
 						dureeSejour-=a.getDuree();
 						f.setDureeSejour(dureeSejour);
