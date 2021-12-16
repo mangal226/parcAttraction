@@ -91,7 +91,16 @@ li:hover {
 }
 #entree
 {
+  position : relative;
+  top : 80px;
+  left : 10px;
 	width:40%;
+  font-family : cursive;
+}
+#btnValider
+{
+  position : relative;
+  left : 170px;
 }
 #sortie
 {
@@ -124,7 +133,10 @@ li:hover {
 
 <div id="content">
   <div id="entree">
-
+    <h3>Données pour la simulation :</h3><br>
+    <input type="text" name="nbJour" value="" placeholder="nombre de jours"><br><br>
+    <input type="text" name="nbFamille" value="" placeholder="nombre de familles"><br><br>
+    <input id="btnValider" value="Valider" type="submit">
   </div>
   <div id="sortie" style="position: relative; width:60%">
     <canvas id="myChart" ></canvas>
@@ -140,6 +152,14 @@ li:hover {
         datasets:[{
           label :'bilan journalier',
           data :[ 1200,1500,2000,900,1750],
+          backgroundColor:'black',
+          borderColor:'black',
+          hoverBorderColor:'white'
+
+        },
+        {
+          label :'bilan/visiteur',
+          data :[51,49,50,48,53],
           backgroundColor:'black',
           borderColor:'black',
           hoverBorderColor:'white'
