@@ -93,14 +93,28 @@ li:hover {
 {
   position : relative;
   top : 80px;
-  left : 10px;
 	width:40%;
   font-family : cursive;
 }
+
+.formulaire-formation {
+    margin: 40px auto;
+    width: 90%;
+    height: 200px;
+    background-color: #cdb76b;
+    text-align: center;
+}
+.formulaire-formation strong{
+display: inline-block;
+width: 100%;
+background-color: #1c5cab;
+}
 #btnValider
 {
+  background-color: #1c5cab;
   position : relative;
-  left : 170px;
+  left : 160px;
+  color: black;
 }
 #sortie
 {
@@ -110,6 +124,19 @@ li:hover {
 {
   height:50%;
 }
+#modal{
+  height :300px;
+  width: 30%;
+  background-color : #ffffff;
+  border-radius : 10px 10px;
+  text-align: center;
+  padding-top : 10px;
+  position : absolute;
+  top: -100000px;
+  left : 35%;
+  transition: 0.75s;
+}
+
 </style>
 <body>
 
@@ -131,16 +158,31 @@ li:hover {
 </div>
 
 
+
 <div id="content">
   <div id="entree">
-    <h3>Données pour la simulation :</h3><br>
-    <input type="text" name="nbJour" value="" placeholder="nombre de jours"><br><br>
-    <input type="text" name="nbFamille" value="" placeholder="nombre de familles"><br><br>
-    <input id="btnValider" value="Valider" type="submit">
+    <div class="formulaire-formation">
+  			<strong >Données pour la simulation</strong><br><br>
+
+  			<input type="text" name="nbJour" value="" placeholder="nombre de jours"><br><br>
+        <input type="text" name="nbFamille" value="" placeholder="nombre de familles"><br><br>
+          <button id="btnValider"  class="btn btn-link" type="submit" onclick="openModal()">Valider</button>
+  		</div>
+
   </div>
+
+
   <div id="sortie" style="position: relative; width:60%">
     <canvas id="myChart" ></canvas>
   </div>
+
+  <div id="modal">
+    <h3>La simulation est en cours, veuillez patienter...</h3>
+    <img src="img/unknown.png" height="200" width="200" alt="">
+  </div>
+
+
+
 
   <script >
     let myChart = document.getElementById('myChart').getContext('2d');
@@ -194,6 +236,9 @@ li:hover {
   }
     });
 
+function openModal(){
+  document.getElementById("modal").style.top="100px"
+}
 
   </script>
 </div>
