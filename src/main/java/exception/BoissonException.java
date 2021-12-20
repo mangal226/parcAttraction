@@ -1,5 +1,5 @@
 package exception;
 
-public class BoissonException {
+public class BoissonException extends RuntimeException {
 
 }
