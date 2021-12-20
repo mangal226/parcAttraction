@@ -11,7 +11,7 @@ public Operateur() {
 	
 }
 
-	public Operateur(int id, String login, String password) {
+	public Operateur(Long id, String login, String password) {
 		
 	}
 	

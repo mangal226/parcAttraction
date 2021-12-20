@@ -13,7 +13,7 @@ public class Boutique {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	@ManyToMany
 	private List <Marchandise> enVente = new ArrayList();

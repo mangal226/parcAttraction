@@ -75,7 +75,7 @@ public class Famille {
 	public void setDureeSejour(int dureeSejour) {
 		this.dureeSejour = dureeSejour;
 	}
-
+	
 	public boolean isHandicap() {
 		return handicap;
 	}

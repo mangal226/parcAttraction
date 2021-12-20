@@ -30,7 +30,7 @@ public class FamilleService {
 			throw new FamilleException();
 		}
 	}
-
+	
 	public Famille getById(Long id) {
 		if (id != null) {
 			return familleRepo.findById(id).orElseThrow(FamilleException::new);

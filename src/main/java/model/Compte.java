@@ -15,7 +15,7 @@ public class Compte {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected int id;
+	protected Long id;
 	protected String login;
 	protected String password;
 	protected double salaire;
@@ -24,7 +24,7 @@ public class Compte {
 	public Compte() {
 	}
 	
-	public Compte(int id, String login, String password, double salaire) {
+	public Compte(Long id, String login, String password, double salaire) {
 		this.id = id;
 		this.login = login;
 		this.password = password;
@@ -34,7 +34,7 @@ public class Compte {
 
 
 
-	public Compte(int id, String login, String password) {
+	public Compte(Long id, String login, String password) {
 		this.id = id;
 		this.login = login;
 		this.password = password;
@@ -43,10 +43,10 @@ public class Compte {
 
 
 
-	public int getId() {
+	public Long getId() {
 	return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 	this.id = id;
 	}
 	public String getLogin() {
