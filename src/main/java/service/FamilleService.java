@@ -1,4 +1,4 @@
-package services;
+package service;
 import exception.FamilleException;
 
 import java.util.List;
