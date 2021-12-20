@@ -2,6 +2,8 @@ package repository;
 
 import java.util.Optional;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import model.Famille;
 import java.util.List;
 
@@ -9,7 +11,5 @@ import java.util.List;
 
 public interface FamilleRepository extends JpaRepository <Famille, Long>{
 	
-	Optional <Famille> findById(Long Id);
-	List <Famille> findByAll(Long Id);
 
 }

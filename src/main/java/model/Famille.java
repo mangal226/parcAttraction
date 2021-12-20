@@ -12,7 +12,7 @@ public class Famille {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	private int nombre, tailleMin, tailleMax, dureeSejour;
 	private boolean handicap;
 	private double depenses=0;
@@ -23,7 +23,7 @@ public class Famille {
 	}
 	
 	
-	public Famille(int id,int nombre, int tailleMin, int tailleMax, int dureeSejour, boolean handicap,
+	public Famille(Long id,int nombre, int tailleMin, int tailleMax, int dureeSejour, boolean handicap,
 			double depenses) {
 		this.id=id;
 		this.nombre = nombre;
@@ -91,11 +91,11 @@ public class Famille {
 		this.depenses = depenses;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId_Famille(int id) {
+	public void setId_Famille(Long id) {
 		this.id = id;
 	}
 
