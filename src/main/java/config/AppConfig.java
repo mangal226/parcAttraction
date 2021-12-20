@@ -19,7 +19,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages = { "dao" })
+@ComponentScan(basePackages = { "dao","service" })
 @EnableTransactionManagement
 @PropertySource("classpath:infos.properties")
 @EnableJpaRepositories(basePackages = {"repository"})
@@ -32,7 +32,7 @@ public class AppConfig {
 	@Bean
 	public BasicDataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
-		 dataSource.setDriverClassName("com.mysql.jdbc.Driver"); driver MySql
+		 dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		 dataSource.setUrl("jdbc:mysql://localhost:3306/parc?serverTimezone=Europe/Paris");
 		 dataSource.setUsername("root");
 		 dataSource.setPassword("");
