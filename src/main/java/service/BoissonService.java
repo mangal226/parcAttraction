@@ -1,11 +1,13 @@
 package service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import exception.BoissonException;
 import model.Boisson;
 import repository.BoissonRepository;
 
+@Service
 public class BoissonService {
 	
 	@Autowired

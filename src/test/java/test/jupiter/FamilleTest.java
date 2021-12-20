@@ -13,24 +13,24 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import config.AppConfig;
-import model.Attraction;
-import repository.AttractionRepository;
+import model.Famille;
+import repository.FamilleRepository;
 
 @Transactional
 @Rollback(true)
 @ExtendWith(SpringExtension.class) // remplace @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { AppConfig.class })
-class AttractionTest {
+class FamilleTest {
 
 	@Autowired
-	AttractionRepository attractionRepo;
+	FamilleRepository familleRepo;
 	
 	@Test
 	public void testInsert() {
-		Attraction attraction = new Attraction("Roue",20,40,150,200,false);
-		attractionRepo.save(attraction);
-		assertNotNull(attraction.getId());
-		assertTrue(attractionRepo.findById(attraction.getId()).isPresent());
+		Famille famille = new Famille(4,150,200,40,false,0);
+		familleRepo.save(famille);
+		assertNotNull(famille.getId());
+		assertTrue(familleRepo.findById(famille.getId()).isPresent());
 	}
 
 }

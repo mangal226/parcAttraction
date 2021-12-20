@@ -1,11 +1,13 @@
 package service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import exception.AttractionException;
 import model.Attraction;
 import repository.AttractionRepository;
 
+@Service
 public class AttractionService {
 	
 	@Autowired
