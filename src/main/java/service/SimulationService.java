@@ -98,6 +98,7 @@ public class SimulationService {
 			tailleMin = r.nextInt(140 - 120 + 1) + 120;
 			tailleMax = r.nextInt(190 - 165 + 1) + 165;
 			handicap = r.nextBoolean();
+			depenses = 30*nombre;
 
 			Famille f = new Famille(nombre, tailleMin, tailleMax, dureeSejour, handicap, depenses);
 			familleRepo.save(f);
