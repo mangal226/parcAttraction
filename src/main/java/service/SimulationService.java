@@ -183,7 +183,8 @@ public class SimulationService {
 		// System.out.println(f);
 		familleRepo.save(f);
 		if (f.getDureeSejour() > 0) {
-			// System.out.println("je sors de la boutique et je vais dans l'attraction");
+			System.out.println("je sors de la boutique et je vais dans l'attraction");
+			System.out.println("je suis la famille "+f.getId()+" et j'ai "+f.getDepenses()+" dépenses");
 			assignementAttraction(f);
 		} else {
 
@@ -199,10 +200,10 @@ public class SimulationService {
 		System.out.println("je suis dans avancement journée");
 		for (Attraction a : attractionRepo.findAll()) {
 			List<Famille> embarque = new ArrayList();
-			//a = attractionRepo.findById(a.getId());
+			a = attractionRepo.getById(a.getId());
 			int capaciteActuelle = a.getCapacite();
 			while (a.getQueue().isEmpty() == false) {
-				//a = attractionRepo.findById(a.getId());
+				a = attractionRepo.getById(a.getId());
 				System.out.println("je rentre dans l'attraction : "+a);
 				Famille famille = (a.getQueue()).get(0);
 
@@ -221,20 +222,9 @@ public class SimulationService {
 
 					famille.setDureeSejour(dureeSejour);
 					familleRepo.save(famille);
-
-					if (famille.getDureeSejour() > 0) {
-						List<Famille> listeFamille = new ArrayList();
-						listeFamille.add(famille);
-						System.out.println("il me reste du temps, je vais à la boutique 1");
-						choixAssignation(listeFamille);
-						System.out.println("Etat de Embarque"+embarque);
-						System.out.println("Etat de la queue apprès choix assignation"+a.getQueue());
-					} 
-					else {
-						familleRepo.save(famille);
-					}
+					
 				}
-
+				
 				else if (famille.getNombre() > capaciteActuelle) {
 					for (Famille f : a.getQueue()) {
 						System.out.println("---------------------------------------------------");
@@ -254,23 +244,38 @@ public class SimulationService {
 						a.getQueue().remove(famille);
 						attractionRepo.save(a);
 					}
-					embarque.clear();
-				}
-
-				else if (a.getQueue().isEmpty() == true && embarque.isEmpty() == false) {
-					int duree = famille.getDureeSejour() - a.getDuree();
-					famille.setDureeSejour(duree);
-					if (famille.getDureeSejour() < 0) {
-						familleRepo.save(famille);
-					} else {
-						List<Famille> listeFamille = new ArrayList();
-						listeFamille.add(famille);
-						System.out.println("il me reste du temps, je vais à la boutique 2");
-						choixAssignation(listeFamille);
+					
+					for (Famille familleEmbarque : embarque )
+					{
+						if (familleEmbarque.getDureeSejour() > 0) {
+							List<Famille> listeFamille = new ArrayList();
+							listeFamille.add(familleEmbarque);
+							System.out.println("il me reste du temps, je vais à la boutique 1");
+							choixAssignation(listeFamille);
+						} 
+						else {
+							familleRepo.save(familleEmbarque);
+						}
 					}
 					embarque.clear();
 				}
 				
+				if (a.getQueue().isEmpty() == true && embarque.isEmpty() == false) {
+					for (Famille familleEmbarque : embarque )
+					{
+						if (familleEmbarque.getDureeSejour() > 0) {
+							List<Famille> listeFamille = new ArrayList();
+							listeFamille.add(familleEmbarque);
+							System.out.println("il me reste du temps, je vais à la boutique 2");
+							choixAssignation(listeFamille);
+						} 
+						else {
+							familleRepo.save(familleEmbarque);
+						}
+					}
+					capaciteActuelle = a.getCapacite();
+					embarque.clear();
+				}
 			}
 		}
 		for (Attraction b : attractionRepo.findAll()) {

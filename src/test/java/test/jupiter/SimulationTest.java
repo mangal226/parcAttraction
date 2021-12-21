@@ -87,11 +87,35 @@ class SimulationTest {
 		simulationService.assignementAttraction(f1);
 		assertNotNull(attractionRepo.getById(1L).getQueue());
 	}
+	
+	@Test
+	@Disabled
+	void testAchatBoutiqueRestauration() {
+		Boisson a = new Boisson("cafe",15);
+		Boisson b = new Boisson("the",15);
+		Boisson c = new Boisson("coca",15);
+		Boisson d = new Boisson("z",15);
+		Boisson e = new Boisson("s",15);
+		Boisson f = new Boisson("a",15);
+		boissonRepo.save(a);
+		boissonRepo.save(b);
+		boissonRepo.save(c);
+		boissonRepo.save(d);
+		boissonRepo.save(e);
+		boissonRepo.save(f);
+		Famille f1=new Famille(5,120,200,40,false,0);
+		familleRepo.save(f1);
+		simulationService.achatBoutiqueRestauration(f1);
+		assertEquals(0, familleRepo.getById(1L).getDepenses());
+		
+	}
 
 	@Test
-	void testAchatBoutiqueRestauration() {
-		Attraction attraction = new Attraction("Roue",7,40,150,200,false);
-		attractionRepo.save(attraction);
+	void testAvancementJournee() {
+		Attraction a1 = new Attraction("Roue",7,40,150,200,false);
+		attractionRepo.save(a1);
+		Attraction a2 = new Attraction("GrandHuit",11,40,150,200,false);
+		attractionRepo.save(a2);
 		Boisson a = new Boisson("cafe",15);
 		Boisson b = new Boisson("the",15);
 		Boisson c = new Boisson("coca",15);
@@ -113,13 +137,6 @@ class SimulationTest {
 		simulationService.choixAssignation(familleRepo.findAll());
 		simulationService.avancementJournee();
 		assertEquals(70, familleRepo.getById(1L).getDureeSejour());
-		
-	}
-
-	@Test
-	@Disabled
-	void testAvancementJournee() {
-		
 	}
 
 }
