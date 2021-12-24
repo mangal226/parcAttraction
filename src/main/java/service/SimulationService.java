@@ -223,7 +223,6 @@ public class SimulationService {
 
 					famille.setDureeSejour(dureeSejour);
 					familleRepo.save(famille);
-					
 				}
 				
 				else if (famille.getNombre() > capaciteActuelle) {
