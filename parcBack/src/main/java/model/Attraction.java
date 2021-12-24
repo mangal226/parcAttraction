@@ -9,14 +9,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Attraction {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(JsonViews.Common.class)
     private Long id;
+	@JsonView(JsonViews.Common.class)
 	private String nom;
+	@JsonView(JsonViews.Common.class)
 	private int duree, capacite, tailleMin, tailleMax;
+	@JsonView(JsonViews.Common.class)
 	private boolean restHandi;
 	
 	@ManyToMany(fetch = FetchType.EAGER)

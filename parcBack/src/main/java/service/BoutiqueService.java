@@ -34,11 +34,15 @@ public class BoutiqueService {
 		boutiqueRepo.delete(boutiqueEnBase);
 	}
 	
+	public void suppression(Long id) {
+		suppression(getById(id));
+	}
+	
 	public Boutique getById(Long id) {
 		if (id != null) {
 			return boutiqueRepo.findById(id).orElseThrow(BoutiqueException::new);
 		}
-		throw new FamilleException();
+		throw new BoutiqueException();
 	}
 
 	public List<Boutique> getAll() {

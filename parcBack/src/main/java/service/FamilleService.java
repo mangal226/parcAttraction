@@ -20,6 +20,10 @@ public class FamilleService {
 		}
 		familleRepo.save(famille);
 	}
+	
+	public void suppression(Long Id) {
+		suppression(getById(Id));
+	}
 
 	public void suppression(Famille famille) {
 		Famille familleEnBase = null;

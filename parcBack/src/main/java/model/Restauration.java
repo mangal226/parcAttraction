@@ -15,7 +15,7 @@ import javax.persistence.ManyToMany;
 public class Restauration {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private Long Id;
 	
 	@ManyToMany
 	private List<Boisson> boisson = new ArrayList();
@@ -45,10 +45,10 @@ public class Restauration {
 		this.plat = plat;
 	}
 	
-	public int getId() {
+	public Long getId() {
 		return Id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		Id = id;
 	}
 	@Override

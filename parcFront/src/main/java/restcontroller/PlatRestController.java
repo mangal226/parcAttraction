@@ -1,4 +1,5 @@
 package restcontroller;
+
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -14,71 +15,65 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
-
-
-import exception.CompteException;
+import exception.PlatException;
 import model.JsonViews;
-import model.Compte;
-import service.CompteService;
-
+import model.Plat;
+import service.PlatService;
 
 @RestController
-@RequestMapping("/api/compte")
-public class CompteRestController {
-
+@RequestMapping("api/plat")
+public class PlatRestController {
+	
 	@Autowired
-	private CompteService compteService;
-
+	private PlatService platService;
+	
 	@GetMapping("")
 	@JsonView(JsonViews.Common.class)
-	public List<Compte> getAll() {
-		return compteService.getAll();
+	public List<Plat> getAll(){
+		return platService.getAll();
 	}
-
-	@GetMapping("/{id}")
+	
 	@JsonView(JsonViews.Common.class)
-	private Compte getById(@PathVariable Long id) {
-		return compteService.getById(id);
+	@GetMapping("/{id}")
+	public Plat getById(@PathVariable("id") Long id) {
+		return platService.getById(id);
 	}
-
 	
-
-	
-	//////////////////////////////////////////////////////////////////////////////////////
-
-	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@JsonView(JsonViews.Common.class)
-	public Compte creation(@Valid @RequestBody Compte compte, BindingResult br) {
+	@PostMapping("")
+	public Plat create (@Valid @RequestBody Plat plat, BindingResult br) {
 		if (br.hasErrors()) {
-			throw new CompteException();
+			throw new PlatException();
 		}
-		compteService.creation(compte);
-		return compte;
-
+		platService.creationOuModification(plat);
+		return plat;
 	}
-
 	
 	@JsonView(JsonViews.Common.class)
-	@PutMapping("/{id}")
-	public Compte replace(@Valid @RequestBody Compte compte, BindingResult br, @PathVariable("id") Long id) {
-		compteService.creation(compte);
-		return compteService.getById(id);
+	@PatchMapping("/{id}")
+	public Plat update(@RequestBody Map<String, Object> fields, @PathVariable("id") Long id) {
+		Plat plat = platService.getById(id);
+		fields.forEach((k, v) -> {
+			Field field = ReflectionUtils.findField(Plat.class, k);
+			ReflectionUtils.makeAccessible(field);
+			ReflectionUtils.setField(field, plat, v);
+		});
+		platService.creationOuModification(plat);
+		return plat;
 	}
 	
-
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
-	public void suppression(@PathVariable("id") Long id) {
-		compteService.suppression(id);
+	public void delete(@PathVariable("id") Long id) {
+		platService.suppression(id);
 	}
+
 }
-
-

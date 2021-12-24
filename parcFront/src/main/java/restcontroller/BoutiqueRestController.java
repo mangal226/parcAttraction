@@ -29,14 +29,16 @@ import model.JsonViews;
 import model.Marchandise;
 import model.Boutique;
 import service.BoutiqueService;
-
+import service.MarchandiseService;
 
 @RestController
-@RequestMapping("/api/personnage")
+@RequestMapping("/api/boutique")
 public class BoutiqueRestController {
 
 	@Autowired
 	private BoutiqueService boutiqueService;
+	@Autowired
+	private MarchandiseService marchandiseService;
 
 	@GetMapping("")
 	@JsonView(JsonViews.Common.class)
@@ -46,8 +48,8 @@ public class BoutiqueRestController {
 
 	@GetMapping("/{id}")
 	@JsonView(JsonViews.BoutiqueMarchandise.class)
-	private Boutique getEnVente(@PathVariable Long id) {
-		return boutiqueService.getById(id);
+	private List <Marchandise> getEnVente(@PathVariable Long id) {
+		return boutiqueService.getById(id).getEnVente();
 	}
 
 	
@@ -59,7 +61,7 @@ public class BoutiqueRestController {
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@JsonView(JsonViews.Common.class)
-	public Boutique create(@Valid @RequestBody Boutique boutique, BindingResult br) {
+	public Boutique creation(@Valid @RequestBody Boutique boutique, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new BoutiqueException();
 		}
@@ -69,40 +71,19 @@ public class BoutiqueRestController {
 	}
 
 	
+	@JsonView(JsonViews.Common.class)
 	@PutMapping("/{id}")
-	@JsonView(JsonViews.Common.class)
-	public Boutique put(@Valid @RequestBody Boutique boutique, BindingResult br, @PathVariable Long id) {
-		if (br.hasErrors()) {
-			throw new BoutiqueException();
-		}
-		if (boutique.getId() == null) {
-			boutique.setId(id);
-		}
-		boutiqueService.update(boutique);
-		return boutique;
+	public Boutique replace(@Valid @RequestBody Boutique boutique, BindingResult br, @PathVariable("id") Long id) {
+		boutiqueService.creation(boutique);
+		return boutiqueService.getById(id);
 	}
+	
 
-	@PatchMapping("/{id}")
-	@JsonView(JsonViews.Common.class)
-	public Boutique patch(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
-		Boutique boutique = boutiqueService.getById(id);
-		fields.forEach((k, v) -> {
-			Field field = ReflectionUtils.findField(Boutique.class, k);
-			ReflectionUtils.makeAccessible(field);
-			if (k.equals("race")) {
-				boutique.setRace(Race.valueOf(v.toString()));
-			} else {
-				ReflectionUtils.setField(field, boutique, v);
-			}
-		});
-		boutiqueService.update(boutique);
-		return boutique;
-	}
-
-	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Long id) {
+	@DeleteMapping("/{id}")
+	public void suppression(@PathVariable("id") Long id) {
 		boutiqueService.suppression(id);
 	}
-
 }
+
+

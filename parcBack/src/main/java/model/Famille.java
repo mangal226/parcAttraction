@@ -3,6 +3,9 @@ import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.*;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,9 +15,13 @@ public class Famille {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(JsonViews.Common.class)
 	private Long id;
+	@JsonView(JsonViews.Common.class)
 	private int nombre, tailleMin, tailleMax, dureeSejour;
+	@JsonView(JsonViews.Common.class)
 	private boolean handicap;
+	@JsonView(JsonViews.Common.class)
 	private double depenses=0;
 	
 	

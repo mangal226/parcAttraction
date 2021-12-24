@@ -15,5 +15,8 @@ import model.Compte;
 
 
 public interface CompteRepository extends JpaRepository<Compte, Long> {
+
+	
+		
 	
 }
