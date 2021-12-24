@@ -1,13 +1,20 @@
 package model;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @DiscriminatorValue("plat")
 public class Plat {
 	@Id//Obligatoire
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(JsonViews.Common.class)
 	private Long Id;
+	
+	@JsonView(JsonViews.Common.class)
 	private String nom;
+	
+	@JsonView(JsonViews.Common.class)
 	private double prix;
 	
 	
