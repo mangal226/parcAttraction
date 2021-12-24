@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Plat {
 	@Id//Obligatoire
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private Long Id;
 	private String nom;
 	private double prix;
 	
@@ -20,11 +20,11 @@ public class Plat {
 	public Plat(){
 	}
 	
-	public int getId() {
+	public Long getId() {
 		return Id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.Id = id;
 	}
 	

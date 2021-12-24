@@ -7,6 +7,7 @@
 -achatBoutiqueRestauration:
 	->alea d'acheter une boisson/plat/marchandise -> puis choix alea d'une boisson/plat/marchandise
 
+-Gérer la durée de séjour de manière identique partout (>0 ou <0)
 
 HTML:
 Options du gérant en plus : liste des employés

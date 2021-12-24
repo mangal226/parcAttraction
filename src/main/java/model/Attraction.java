@@ -10,11 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-
 public class Attraction {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 	private String nom;
 	private int duree, capacite, tailleMin, tailleMax;
 	private boolean restHandi;
@@ -23,10 +23,10 @@ public class Attraction {
 	private List<Famille> queue=new ArrayList();
 	
 	public Attraction() {
-		
+	
 	}
 	
-	public Attraction(int id, String nom, int duree, int capacite, int tailleMin, int tailleMax, boolean restHandi) {
+	public Attraction(Long id, String nom, int duree, int capacite, int tailleMin, int tailleMax, boolean restHandi) {
 		this.id=id;
 		this.nom=nom;
 		this.duree = duree;
@@ -45,10 +45,11 @@ public class Attraction {
 		this.restHandi = restHandi;
 	}
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	
+	public void setId(Long id) {
 		this.id = id;
 	}
 

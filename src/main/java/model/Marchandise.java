@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +11,7 @@ import javax.persistence.Id;
 public class Marchandise {
 	@Id//Obligatoire
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private Long Id;
 	private double prix;
 	private String nom;
 	
@@ -22,10 +24,10 @@ public class Marchandise {
 	public Marchandise() {
 	}
 	
-	public int getId() {
+	public Long getId() {
 		return Id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		Id = id;
 	}
 	public double getPrix() {
@@ -39,6 +41,21 @@ public class Marchandise {
 	}
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(Id);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Marchandise other = (Marchandise) obj;
+		return Objects.equals(Id, other.Id);
 	}
 	
 	

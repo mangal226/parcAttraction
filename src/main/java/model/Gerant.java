@@ -11,7 +11,7 @@ import java.util.List;
 public class Gerant extends Compte{
 
 	
-	public Gerant(int id, String login, String password) {
+	public Gerant(Long id, String login, String password) {
 		super(id, login, password);
 	}
 	
