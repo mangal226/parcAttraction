@@ -24,60 +24,61 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.google.protobuf.Field;
 
-import exception.FamilleException;
-import model.Famille;
+import exception.MarchandiseException;
 import model.JsonViews;
-import service.FamilleService;
+import model.Marchandise;
+import service.MarchandiseService;
+
 
 
 @RestController
-@RequestMapping("/api/famille")
-public class FamilleRestController {
+@RequestMapping("/api/marchandise")
+public class MarchandiseRestController {
 
 	@Autowired
-	private FamilleService familleService;
+	private MarchandiseService marchandiseService;
 
 	@GetMapping("")
 	@JsonView(JsonViews.Common.class)
-	public List<Famille> getAll() {
-		return familleService.getAll();
+	public List<Marchandise> getAll() {
+		return marchandiseService.getAll();
 	}
 
 	@ResponseStatus(code = HttpStatus.CREATED)
-	@JsonView(JsonViews.Famille.class)
+	@JsonView(JsonViews.Marchandise.class)
 	@PostMapping("")
-	public Famille create(@Valid @RequestBody Famille famille, BindingResult br) {
+	public Marchandise create(@Valid @RequestBody Marchandise marchandise, BindingResult br) {
 		if (br.hasErrors()) {
-			throw new FamilleException();
+			throw new MarchandiseException();
 		}
-		familleService.creation(famille);
-		return famille;
+		marchandiseService.creation(marchandise);
+		return marchandise;
 	}
 
 	@JsonView(JsonViews.Common.class)
 	@PutMapping("/{id}")
-	public Famille replace(@Valid @RequestBody Famille famille, BindingResult br, @PathVariable("id") Long id) {
-		familleService.creation(famille);
-		return familleService.getById(id);
+	public Marchandise replace(@Valid @RequestBody Marchandise marchandise, BindingResult br, @PathVariable("id") Long id) {
+		marchandiseService.creation(marchandise);
+		return marchandiseService.getById(id);
 	}
-
-//	@JsonView(JsonViews.Famille.class)
+	
+//	@JsonView(JsonViews.Marchandise.class)
 //	@PatchMapping("/{id}")
-//	public Famille update(@RequestBody Map<String, Object> fields, @PathVariable("id") Long id) {
-//		Famille famille = familleService.getById(id);
+//	public Marchandise update(@RequestBody Map<String, Object> fields, @PathVariable("id") Long id) {
+//		Marchandise marchandise = marchandiseService.getById(id);
 //		fields.forEach((k, v) -> {
-//			Field field = ReflectionUtils.findField(Famille.class, k);
+//			Field field = ReflectionUtils.findField(Marchandise.class, k);
 //			ReflectionUtils.makeAccessible(field);
-//			ReflectionUtils.setField(field, famille, v);
+//			ReflectionUtils.setField(field, marchandise, v);
 //		});
-//		familleService.creation(famille);
-//		return famille;
+//		marchandiseService.creation(marchandise);
+//		return marchandise;
 //	}
 
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
-		familleService.suppression(id);
+		marchandiseService.suppression(id);
 	}
 }
 

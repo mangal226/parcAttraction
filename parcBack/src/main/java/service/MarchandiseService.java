@@ -21,6 +21,10 @@ public class MarchandiseService {
 		}
 		marchandiseRepo.save(marchandise);
 	}
+	
+	public void suppression(Long Id) {
+		suppression(getById(Id));
+	}
 
 	public void suppression(Marchandise marchandise) {
 		Marchandise MarchandiseEnBase = null;
