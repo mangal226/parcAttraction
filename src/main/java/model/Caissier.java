@@ -17,7 +17,7 @@ public class Caissier extends Compte {
 	public Caissier() {
 	}
 	
-	public Caissier(int id, String login, String password) {
+	public Caissier(Long id, String login, String password) {
 		super(id, login, password);
 	}
 
