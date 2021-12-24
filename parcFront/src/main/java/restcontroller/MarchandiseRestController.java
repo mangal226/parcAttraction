@@ -45,7 +45,7 @@ public class MarchandiseRestController {
 	}
 
 	@ResponseStatus(code = HttpStatus.CREATED)
-	@JsonView(JsonViews.Marchandise.class)
+	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
 	public Marchandise create(@Valid @RequestBody Marchandise marchandise, BindingResult br) {
 		if (br.hasErrors()) {

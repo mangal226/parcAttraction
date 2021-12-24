@@ -44,7 +44,7 @@ public class FamilleRestController {
 	}
 
 	@ResponseStatus(code = HttpStatus.CREATED)
-	@JsonView(JsonViews.Famille.class)
+	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
 	public Famille create(@Valid @RequestBody Famille famille, BindingResult br) {
 		if (br.hasErrors()) {
@@ -61,7 +61,7 @@ public class FamilleRestController {
 		return familleService.getById(id);
 	}
 
-//	@JsonView(JsonViews.Famille.class)
+//	@JsonView(JsonViews.Common.class)
 //	@PatchMapping("/{id}")
 //	public Famille update(@RequestBody Map<String, Object> fields, @PathVariable("id") Long id) {
 //		Famille famille = familleService.getById(id);

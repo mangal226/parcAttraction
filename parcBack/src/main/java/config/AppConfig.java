@@ -33,7 +33,7 @@ public class AppConfig {
 	public BasicDataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		 dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		 dataSource.setUrl("jdbc:mysql://localhost:3306/parcLong?serverTimezone=Europe/Paris");
+		 dataSource.setUrl("jdbc:mysql://localhost:3306/parc?serverTimezone=Europe/Paris");
 		 dataSource.setUsername("root");
 		 dataSource.setPassword("");
 

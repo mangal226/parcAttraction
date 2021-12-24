@@ -7,12 +7,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Marchandise {
 	@Id//Obligatoire
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(JsonViews.Common.class)
 	private Long Id;
+	@JsonView(JsonViews.Common.class)
 	private double prix;
+	@JsonView(JsonViews.Common.class)
 	private String nom;
 	
 	
