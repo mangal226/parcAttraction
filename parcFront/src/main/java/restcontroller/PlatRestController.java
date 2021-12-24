@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import exception.PlatException;
+import model.JsonViews;
 import model.Plat;
 import service.PlatService;
 

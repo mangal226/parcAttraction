@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import exception.RestaurationException;
+import model.JsonViews;
 import model.Restauration;
 import service.RestaurationService;
 
