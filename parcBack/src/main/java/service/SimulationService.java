@@ -28,9 +28,9 @@ import repository.RestaurationRepository;
 @Service
 public class SimulationService {
 
-	static double bilanFinancier=0;
-	
-	static int nbrVisiteurTotal=0;
+	static double bilanFinancier = 0;
+
+	static int nbrVisiteurTotal = 0;
 
 	@Autowired
 	private FamilleRepository familleRepo;
@@ -64,6 +64,7 @@ public class SimulationService {
 
 	public void simulation(int nbJour, int nbFamille) {
 
+		
 		LinkedList<Double> total = new LinkedList();
 
 		int i = 1;
@@ -72,14 +73,33 @@ public class SimulationService {
 			List<Famille> listeFamille = familleRepo.findAll();
 			choixAssignation(listeFamille); // Boutique ou attraction ?
 			avancementJournee();
-			System.out.println("Je suis là");
 			// ajout du bilanFinancier dans une liste et réinitialisation du bilanFinancier
 			// pour la journee suivante
 			total.add(bilanFinancier);
 			bilanFinancier = 0;
-			
+
 			i++;
 		}
+		System.out.println("-----------------------------------------");
+		System.out.println("Nombre total de visiteurs : " + nbrVisiteurTotal);
+		System.out.println("-----------------------------------------");
+		System.out.println("Bilan financier total : "+total);
+		System.out.println("-----------------------------------------");
+		System.out.println("Voici l'état des stocks :");
+		System.out.println("Boissons :");
+		for (Boisson b : boissonRepo.findAll()) {
+			System.out.println("Nombre de "+b.getNom()+" vendus : "+b.getVente()+", pour "+b.getPrix()*b.getVente()+"€ en tout. Il en reste : " + b.getStock() + " en stock.");
+		}
+		System.out.println("Plats :");
+		for (Plat b : platRepo.findAll()) {
+			System.out.println("Nombre de "+b.getNom()+" vendus : "+b.getVente()+", pour "+b.getPrix()*b.getVente()+"€ en tout. Il en reste : " + b.getStock() + " en stock.");
+		}
+		System.out.println("Marchandises :");
+		for (Marchandise b : marchandiseRepo.findAll()) {
+			System.out.println("Nombre de "+b.getNom()+" vendus : "+b.getVente()+", pour "+b.getPrix()*b.getVente()+"€ en tout. Il en reste : " + b.getStock() + " en stock.");
+		}
+		System.out.println("-----------------------------------------");
+		
 	}
 
 	public void creationFamille(int nbFamille) {
@@ -97,8 +117,8 @@ public class SimulationService {
 
 			Famille f = new Famille(nombre, tailleMin, tailleMax, dureeSejour, handicap, depenses);
 			familleRepo.save(f);
-			
-			nbrVisiteurTotal+=nombre;
+
+			nbrVisiteurTotal += nombre;
 		}
 	}
 
@@ -117,7 +137,7 @@ public class SimulationService {
 			}
 		}
 	}
-	
+
 	public void assignementAttraction(Famille f) // choisir l'attraction de la famille
 	{
 		Random r = new Random();
@@ -127,14 +147,13 @@ public class SimulationService {
 		// System.out.println(i+"------"+alea);
 		List<Famille> newQueue = a.getQueue();
 
-		if (f.getTailleMin()>a.getTailleMin() && f.getTailleMax()<a.getTailleMax()) {
+		if (f.getTailleMin() > a.getTailleMin() && f.getTailleMax() < a.getTailleMax()) {
 			newQueue.add(f);
 			a.setQueue(newQueue);
 
 			familleRepo.save(f);
 			attractionRepo.save(a);
-		}
-		else {
+		} else {
 			assignementAttraction(f);
 		}
 	}
@@ -156,6 +175,9 @@ public class SimulationService {
 					double depensesActuelles = f.getDepenses();
 					f.setDepenses(depensesActuelles + b.getPrix());
 					bilanFinancier += b.getPrix();
+					b.setStock(b.getStock() - 1);
+					b.setVente(b.getVente()+1);
+					boissonRepo.save(b);
 				}
 			}
 			for (Plat p : listePlat) {
@@ -164,6 +186,9 @@ public class SimulationService {
 					double depensesActuelles = f.getDepenses();
 					f.setDepenses(depensesActuelles + p.getPrix());
 					bilanFinancier += p.getPrix();
+					p.setStock(p.getStock() - 1);
+					p.setVente(p.getVente()+1);
+					platRepo.save(p);
 				}
 			}
 			for (Marchandise m : listeMarchandise) {
@@ -172,6 +197,9 @@ public class SimulationService {
 					double depensesActuelles = f.getDepenses();
 					f.setDepenses(depensesActuelles + m.getPrix());
 					bilanFinancier += m.getPrix();
+					m.setStock(m.getStock() - 1);
+					m.setVente(m.getVente()+1);
+					marchandiseRepo.save(m);
 				}
 			}
 			i++;
@@ -209,11 +237,10 @@ public class SimulationService {
 				if (famille.getNombre() <= capaciteActuelle)// ajout de la famille
 				{
 					a.getQueue().remove(0);
-					a.setNbrVisiteur(a.getNbrVisiteur()+famille.getNombre());
+					a.setNbrVisiteur(a.getNbrVisiteur() + famille.getNombre());
 					attractionRepo.save(a);
 					capaciteActuelle -= famille.getNombre();
 
-					
 					embarque.add(famille);
 
 					int dureeSejour = famille.getDureeSejour();
@@ -279,8 +306,7 @@ public class SimulationService {
 				avancementJournee();
 			}
 		}
-		System.out.println("1");
-		System.out.println("Voici le nombre total de visiteur : "+nbrVisiteurTotal);
+
 	}
-	
+
 }

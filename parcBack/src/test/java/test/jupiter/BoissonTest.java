@@ -28,7 +28,7 @@ class BoissonTest {
 
 	@Test
 	public void testInsert() {
-		Boisson boisson = new Boisson("cafe",15);
+		Boisson boisson = new Boisson("cafe",15,300);
 		boissonRepo.save(boisson);
 		assertNotNull(boisson.getId());
 		assertTrue(boissonRepo.findById(boisson.getId()).isPresent());
