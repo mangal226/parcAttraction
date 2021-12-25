@@ -28,7 +28,9 @@ import repository.RestaurationRepository;
 @Service
 public class SimulationService {
 
-	static double bilanFinancier;
+	static double bilanFinancier=0;
+	
+	static int nbrVisiteurTotal=0;
 
 	@Autowired
 	private FamilleRepository familleRepo;
@@ -70,17 +72,12 @@ public class SimulationService {
 			List<Famille> listeFamille = familleRepo.findAll();
 			choixAssignation(listeFamille); // Boutique ou attraction ?
 			avancementJournee();
-
+			System.out.println("Je suis là");
 			// ajout du bilanFinancier dans une liste et réinitialisation du bilanFinancier
 			// pour la journee suivante
 			total.add(bilanFinancier);
 			bilanFinancier = 0;
-
-			// Réinitialisation du temps de sejour des familles pour la journee suivante
-			listeFamille = familleRepo.findAll();
-			for (Famille f : listeFamille) {
-				familleRepo.save(f);
-			}
+			
 			i++;
 		}
 	}
@@ -100,6 +97,8 @@ public class SimulationService {
 
 			Famille f = new Famille(nombre, tailleMin, tailleMax, dureeSejour, handicap, depenses);
 			familleRepo.save(f);
+			
+			nbrVisiteurTotal+=nombre;
 		}
 	}
 
@@ -118,26 +117,7 @@ public class SimulationService {
 			}
 		}
 	}
-
-//	public void assignementAttraction(Famille f) // choisir l'attraction de la famille
-//	{
-//		Random r = new Random();
-//		List<Attraction> listeAttraction = attractionRepo.findAll();
-//		int alea = r.nextInt(listeAttraction.size());
-//		for (int i = 0; i < listeAttraction.size(); i++) {
-//			Attraction a = listeAttraction.get(i);
-//			// System.out.println(i+"------"+alea);
-//			if (i == alea) {
-//				List<Famille> newQueue = a.getQueue();
-//
-//				newQueue.add(f);
-//				a.setQueue(newQueue);
-//
-//				familleRepo.save(f);
-//				attractionRepo.save(a);
-//			}
-//		}
-//	}
+	
 	public void assignementAttraction(Famille f) // choisir l'attraction de la famille
 	{
 		Random r = new Random();
@@ -298,8 +278,9 @@ public class SimulationService {
 			if (b.getQueue().isEmpty() == false) {
 				avancementJournee();
 			}
-
 		}
+		System.out.println("1");
+		System.out.println("Voici le nombre total de visiteur : "+nbrVisiteurTotal);
 	}
-
+	
 }
