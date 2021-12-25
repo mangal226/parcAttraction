@@ -111,9 +111,9 @@ class SimulationTest {
 	}
 	@Test
 	void testAvancementJournee() {
-		Attraction a1 = new Attraction("Roue",7,40,150,200,false);
+		Attraction a1 = new Attraction("Roue",7,40,110,200,false);
 		attractionRepo.save(a1);
-		Attraction a2 = new Attraction("GrandHuit",11,40,150,200,false);
+		Attraction a2 = new Attraction("GrandHuit",11,40,110,200,false);
 		attractionRepo.save(a2);
 		Boisson a = new Boisson("cafe",15);
 		Boisson b = new Boisson("the",15);
@@ -127,16 +127,11 @@ class SimulationTest {
 		boissonRepo.save(d);
 		boissonRepo.save(e);
 		boissonRepo.save(f);
-//		Famille f1=new Famille(5,120,200,40,false,0);
-//		Famille f2=new Famille(6,120,200,40,false,0);
-//		Famille f3=new Famille(7,120,200,40,false,0);
-//		familleRepo.save(f1);
-//		familleRepo.save(f2);
-//		familleRepo.save(f3);
 		simulationService.creationFamille(3);
 		simulationService.choixAssignation(familleRepo.findAll());
 		simulationService.avancementJournee();
-		assertEquals(70, familleRepo.getById(1L).getDureeSejour());
+//		assertEquals(70, familleRepo.getById(1L).getDureeSejour());
+		assertEquals(0, attractionRepo.getById(1L).getNbrVisiteur());
 	}
 
 }

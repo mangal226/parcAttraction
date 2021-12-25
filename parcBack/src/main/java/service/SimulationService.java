@@ -25,11 +25,9 @@ import repository.MarchandiseRepository;
 import repository.PlatRepository;
 import repository.RestaurationRepository;
 
-
 @Service
 public class SimulationService {
 
-	
 	static double bilanFinancier;
 
 	@Autowired
@@ -48,7 +46,7 @@ public class SimulationService {
 	private RestaurationRepository restaurationRepo;
 	@Autowired
 	private BoissonRepository boissonRepo;
-	
+
 	static List<Famille> famille = new ArrayList();
 	static List<Boisson> boisson = new ArrayList();
 	static List<Plat> plat = new ArrayList();
@@ -98,13 +96,13 @@ public class SimulationService {
 			tailleMin = r.nextInt(140 - 120 + 1) + 120;
 			tailleMax = r.nextInt(190 - 165 + 1) + 165;
 			handicap = r.nextBoolean();
-			depenses = 30*nombre;
+			depenses = 30 * nombre;
 
 			Famille f = new Famille(nombre, tailleMin, tailleMax, dureeSejour, handicap, depenses);
 			familleRepo.save(f);
 		}
 	}
-	
+
 	public void choixAssignation(List<Famille> listeFamille) {
 
 		// System.out.println("voici la liste des familles dans le parc"+listeFamille);
@@ -121,23 +119,43 @@ public class SimulationService {
 		}
 	}
 
+//	public void assignementAttraction(Famille f) // choisir l'attraction de la famille
+//	{
+//		Random r = new Random();
+//		List<Attraction> listeAttraction = attractionRepo.findAll();
+//		int alea = r.nextInt(listeAttraction.size());
+//		for (int i = 0; i < listeAttraction.size(); i++) {
+//			Attraction a = listeAttraction.get(i);
+//			// System.out.println(i+"------"+alea);
+//			if (i == alea) {
+//				List<Famille> newQueue = a.getQueue();
+//
+//				newQueue.add(f);
+//				a.setQueue(newQueue);
+//
+//				familleRepo.save(f);
+//				attractionRepo.save(a);
+//			}
+//		}
+//	}
 	public void assignementAttraction(Famille f) // choisir l'attraction de la famille
 	{
 		Random r = new Random();
 		List<Attraction> listeAttraction = attractionRepo.findAll();
 		int alea = r.nextInt(listeAttraction.size());
-		for (int i = 0; i < listeAttraction.size(); i++) {
-			Attraction a = listeAttraction.get(i);
-			// System.out.println(i+"------"+alea);
-			if (i == alea) {
-				List<Famille> newQueue = a.getQueue();
+		Attraction a = listeAttraction.get(alea);
+		// System.out.println(i+"------"+alea);
+		List<Famille> newQueue = a.getQueue();
 
-				newQueue.add(f);
-				a.setQueue(newQueue);
+		if (f.getTailleMin()>a.getTailleMin() && f.getTailleMax()<a.getTailleMax()) {
+			newQueue.add(f);
+			a.setQueue(newQueue);
 
-				familleRepo.save(f);
-				attractionRepo.save(a);
-			}
+			familleRepo.save(f);
+			attractionRepo.save(a);
+		}
+		else {
+			assignementAttraction(f);
 		}
 	}
 
@@ -185,7 +203,7 @@ public class SimulationService {
 		familleRepo.save(f);
 		if (f.getDureeSejour() > 0) {
 			System.out.println("je sors de la boutique et je vais dans l'attraction");
-			System.out.println("je suis la famille "+f.getId()+" et j'ai "+f.getDepenses()+" dépenses");
+			System.out.println("je suis la famille " + f.getId() + " et j'ai " + f.getDepenses() + " dépenses");
 			assignementAttraction(f);
 		} else {
 
@@ -205,31 +223,33 @@ public class SimulationService {
 			int capaciteActuelle = a.getCapacite();
 			while (a.getQueue().isEmpty() == false) {
 				a = attractionRepo.getById(a.getId());
-				System.out.println("je rentre dans l'attraction : "+a);
+				System.out.println("je rentre dans l'attraction : " + a);
 				Famille famille = (a.getQueue()).get(0);
 
 				if (famille.getNombre() <= capaciteActuelle)// ajout de la famille
 				{
 					a.getQueue().remove(0);
+					a.setNbrVisiteur(a.getNbrVisiteur()+famille.getNombre());
 					attractionRepo.save(a);
 					capaciteActuelle -= famille.getNombre();
 
+					
 					embarque.add(famille);
 
 					int dureeSejour = famille.getDureeSejour();
 					System.out.println(famille);
-					System.out.println("la durée de l'attraction est de "+a.getDuree());
+					System.out.println("la durée de l'attraction est de " + a.getDuree());
 					dureeSejour -= a.getDuree();
 
 					famille.setDureeSejour(dureeSejour);
 					familleRepo.save(famille);
 				}
-				
+
 				else if (famille.getNombre() > capaciteActuelle) {
 					for (Famille f : a.getQueue()) {
 						System.out.println("---------------------------------------------------");
-						System.out.println("J'attends dans la queue, capacité actuelle ="+capaciteActuelle);
-						System.out.println("Voici la queue :"+a.getQueue());
+						System.out.println("J'attends dans la queue, capacité actuelle =" + capaciteActuelle);
+						System.out.println("Voici la queue :" + a.getQueue());
 						System.out.println("---------------------------------------------------");
 						int dureeSejour = f.getDureeSejour();
 						dureeSejour -= a.getDuree();
@@ -244,32 +264,28 @@ public class SimulationService {
 						a.getQueue().remove(famille);
 						attractionRepo.save(a);
 					}
-					
-					for (Famille familleEmbarque : embarque )
-					{
+
+					for (Famille familleEmbarque : embarque) {
 						if (familleEmbarque.getDureeSejour() > 0) {
 							List<Famille> listeFamille = new ArrayList();
 							listeFamille.add(familleEmbarque);
 							System.out.println("il me reste du temps, je vais à la boutique 1");
 							choixAssignation(listeFamille);
-						} 
-						else {
+						} else {
 							familleRepo.save(familleEmbarque);
 						}
 					}
 					embarque.clear();
 				}
-				
+
 				if (a.getQueue().isEmpty() == true && embarque.isEmpty() == false) {
-					for (Famille familleEmbarque : embarque )
-					{
+					for (Famille familleEmbarque : embarque) {
 						if (familleEmbarque.getDureeSejour() > 0) {
 							List<Famille> listeFamille = new ArrayList();
 							listeFamille.add(familleEmbarque);
 							System.out.println("il me reste du temps, je vais à la boutique 2");
 							choixAssignation(listeFamille);
-						} 
-						else {
+						} else {
 							familleRepo.save(familleEmbarque);
 						}
 					}

@@ -24,6 +24,8 @@ public class Attraction {
 	private int duree, capacite, tailleMin, tailleMax;
 	@JsonView(JsonViews.Common.class)
 	private boolean restHandi;
+	@JsonView(JsonViews.Common.class)
+	private int nbrVisiteur=0;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Famille> queue=new ArrayList();
@@ -120,11 +122,22 @@ public class Attraction {
 
 	
 
+	public int getNbrVisiteur() {
+		return nbrVisiteur;
+	}
+
+	public void setNbrVisiteur(int nbrVisiteur) {
+		this.nbrVisiteur = nbrVisiteur;
+	}
+
 	@Override
 	public String toString() {
-		return "Attraction [nom=" + nom + ", id=" + id + ", duree=" + duree + ", capacite=" + capacite + ", tailleMin="
-				+ tailleMin + ", tailleMax=" + tailleMax + ", restHandi=" + restHandi + ", queue=" + queue + "]";
+		return "Attraction [id=" + id + ", nom=" + nom + ", duree=" + duree + ", capacite=" + capacite + ", tailleMin="
+				+ tailleMin + ", tailleMax=" + tailleMax + ", restHandi=" + restHandi + ", nbrVisiteur=" + nbrVisiteur
+				+ ", queue=" + queue + "]";
 	}
+
+	
 	
 	
 	
