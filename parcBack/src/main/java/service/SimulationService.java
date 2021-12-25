@@ -87,6 +87,7 @@ public class SimulationService {
 		System.out.println("Bilan financier total : "+total);
 		System.out.println("-----------------------------------------");
 		System.out.println("Voici l'état des stocks :");
+		System.out.println("-----------------------------------------");
 		System.out.println("Boissons :");
 		for (Boisson b : boissonRepo.findAll()) {
 			System.out.println("Nombre de "+b.getNom()+" vendus : "+b.getVente()+", pour "+b.getPrix()*b.getVente()+"€ en tout. Il en reste : " + b.getStock() + " en stock.");
@@ -101,6 +102,7 @@ public class SimulationService {
 		}
 		System.out.println("-----------------------------------------");
 		System.out.println("Bilan visites Attractions :");
+		System.out.println("-----------------------------------------");
 		for (Attraction a : attractionRepo.findAll()) {
 			System.out.println(a.getNom()+" a eu "+a.getNbrVisiteur()+" visiteurs");
 		}

@@ -126,10 +126,10 @@ class SimulationTest {
 		attractionRepo.save(a2);
 		Boisson a = new Boisson("cafe",15,300);
 		Boisson b = new Boisson("the",15,300);
-		Plat c = new Plat("coca",15,300);
-		Plat d = new Plat("z",15,300);
-		Marchandise e = new Marchandise("s",15,300);
-		Marchandise f = new Marchandise("a",15,300);
+		Plat c = new Plat("pate",15,300);
+		Plat d = new Plat("pizza",15,300);
+		Marchandise e = new Marchandise("peluche",15,300);
+		Marchandise f = new Marchandise("poing",15,300);
 		boissonRepo.save(a);
 		boissonRepo.save(b);
 		platRepo.save(c);
