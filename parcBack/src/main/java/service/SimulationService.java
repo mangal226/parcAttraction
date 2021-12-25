@@ -77,6 +77,7 @@ public class SimulationService {
 			// pour la journee suivante
 			total.add(bilanFinancier);
 			bilanFinancier = 0;
+			
 
 			i++;
 		}
@@ -99,7 +100,10 @@ public class SimulationService {
 			System.out.println("Nombre de "+b.getNom()+" vendus : "+b.getVente()+", pour "+b.getPrix()*b.getVente()+"€ en tout. Il en reste : " + b.getStock() + " en stock.");
 		}
 		System.out.println("-----------------------------------------");
-		
+		System.out.println("Bilan visites Attractions :");
+		for (Attraction a : attractionRepo.findAll()) {
+			System.out.println(a.getNom()+" a eu "+a.getNbrVisiteur()+" visiteurs");
+		}
 	}
 
 	public void creationFamille(int nbFamille) {
