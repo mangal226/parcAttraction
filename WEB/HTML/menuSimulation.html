@@ -109,7 +109,7 @@ display: inline-block;
 width: 100%;
 background-color: #1c5cab;
 }
-#btnValider
+.button
 {
   background-color: #1c5cab;
   position : relative;
@@ -124,17 +124,61 @@ background-color: #1c5cab;
 {
   height:50%;
 }
-#modal{
-  height :300px;
-  width: 30%;
-  background-color : #ffffff;
-  border-radius : 10px 10px;
-  text-align: center;
-  padding-top : 10px;
-  position : absolute;
-  top: -100000px;
-  left : 35%;
-  transition: 0.75s;
+
+.modal {
+display: none; /* Masqué par défaut */
+position: fixed; /* Rester dans la place */
+z-index: 8888; /* S'asseoir en haut */
+left: 0;
+top: 0;
+width: 100%; /* Largeur complète */
+height: 100%; /* Hauteur complète */
+overflow: auto; /* Activer défilement si nécessaire */
+background-color: rgb(0,0,0); /* Couleur de plan */
+background-color: rgba(0,0,0,0.4); /*  w/ opacité noir*/
+}
+/* Contenu Modal/Boîte*/
+.modal-content {
+background-color: #fefefe;
+margin: 10vh auto; /* 15% d'en haut et centré */
+padding: 20px;
+border: 1px solid #888;
+width: 60%; /* Pouvait être plus ou moins, dépend de la taille de l'écran  */
+}
+@media (min-width: 1366px) {
+.modal-content {
+background-color: #fefefe;
+margin: 10vh auto; /* 15% d'en haut et centré */
+padding: 20px;
+border: 1px solid #888;
+width: 30%; /* Pouvait être plus ou moins, dépend de la taille de l'écran */
+}
+
+}
+
+form {
+padding: 25px;
+margin: 25px;
+box-shadow: 0 2px 5px #f5f5f5;
+background: #eee;
+}
+
+/* Le bouton Fermer */
+.close {
+color: red;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
+.close:hover,
+.close:focus {
+color: black;
+text-decoration: none;
+cursor: pointer;
+}
+
+.modif{
+  margin : 40px;
 }
 
 </style>
@@ -164,10 +208,28 @@ background-color: #1c5cab;
     <div class="formulaire-formation">
   			<strong >Données pour la simulation</strong><br><br>
 
-  			<input type="text" name="nbJour" value="" placeholder="nombre de jours"><br><br>
-        <input type="text" name="nbFamille" value="" placeholder="nombre de familles"><br><br>
-          <button id="btnValider"  class="btn btn-link" type="submit" onclick="openModal()">Valider</button>
-  		</div>
+  			Nombre de jour : <input type="text" name="nbJour" value="" placeholder="nombre de jours"><br><br>
+        Nombre de familles : <input type="text" name="nbFamille" value="" placeholder="nombre de familles"><br><br>
+          <p>
+            <button class="button" data-modal="modalOne" type="submit">Valider</button>
+          </p>
+          <div id="modalOne" class="modal">
+            <div class="modal-content">
+              <div class="contact-form">
+                <a class="close">&times;</a>
+                <form action="/">
+                  <h2>La simulation est en cours veuillez patienter</h2>
+                  <img src="img/unknown.png" height="200" width="200" alt="">
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="modif">
+        <button type="button" class="btn btn-success">Modifier les attractions</button><br><br>
+        <button type="button" class="btn btn-info">Modifier les restaurants</button><br><br>
+        <button type="button" class="btn btn-secondary">Modifier les boutiques</button><br><br>
+      </div>
 
   </div>
 
@@ -175,14 +237,6 @@ background-color: #1c5cab;
   <div id="sortie" style="position: relative; width:60%">
     <canvas id="myChart" ></canvas>
   </div>
-
-  <div id="modal">
-    <h3>La simulation est en cours, veuillez patienter...</h3>
-    <img src="img/unknown.png" height="200" width="200" alt="">
-  </div>
-
-
-
 
   <script >
     let myChart = document.getElementById('myChart').getContext('2d');
@@ -206,13 +260,21 @@ background-color: #1c5cab;
           borderColor:'black',
           hoverBorderColor:'white'
 
+        },
+        {
+          label :'nombre de visiteur',
+          data :[100,120,80,90,100],
+          backgroundColor:'black',
+          borderColor:'black',
+          hoverBorderColor:'white'
+
         }]
       },
       options: {
         plugins: {
         title: {
                   display: true,
-                  text: 'Revenu en fonction de la journée',
+                  text: 'Résultat de la simulation :',
                   font:{
                     size: 25,
                   }
@@ -236,10 +298,35 @@ background-color: #1c5cab;
   }
     });
 
-function openModal(){
-  document.getElementById("modal").style.top="100px"
-}
+var audio = new Audio ('img/elevator-music.mp3');
+var modalBtns = [...document.querySelectorAll(".button")];
+modalBtns.forEach(function(btn){
+  btn.onclick = function() {
+    var modal = btn.getAttribute('data-modal');
+    document.getElementById(modal).style.display = "block";
 
+    audio.volume = 0.5;
+    audio.muted = false;
+    var currentTime = audio.currentTime;
+    audio.currentTime = 3;
+    audio.play();
+  }
+});
+
+var closeBtns = [...document.querySelectorAll(".close")];
+closeBtns.forEach(function(btn){
+  btn.onclick = function() {
+    var modal = btn.closest('.modal');
+    modal.style.display = "none";
+    audio.muted = true;
+  }
+});
+
+window.onclick = function(event) {
+  if (event.target.className === "modal") {
+    event.target.style.display = "none";
+  }
+}
   </script>
 </div>
 
