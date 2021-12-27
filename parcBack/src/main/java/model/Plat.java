@@ -17,11 +17,17 @@ public class Plat {
 	@JsonView(JsonViews.Common.class)
 	private double prix;
 	
+	@JsonView(JsonViews.Common.class)
+	private int stock;
 	
-	public Plat(String nom, double prix)
+	@JsonView(JsonViews.Common.class)
+	private int vente;
+	
+	public Plat(String nom, double prix, int stock)
 	{
 		this.nom = nom;
 		this.prix = prix;
+		this.stock=stock;
 	}
 	
 	public Plat(){
@@ -49,5 +55,32 @@ public class Plat {
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
+
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public int getVente() {
+		return vente;
+	}
+
+	public void setVente(int vente) {
+		this.vente = vente;
+	}
+
+	@Override
+	public String toString() {
+		return "Plat [Id=" + Id + ", nom=" + nom + ", prix=" + prix + ", stock=" + stock + ", vente=" + vente + "]";
+	}
+
+	
 
 }
