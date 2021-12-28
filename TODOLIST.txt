@@ -1,13 +1,34 @@
-﻿ECLIPSE:
+﻿BACK:
 
--ajouter une liste avec le nombre de visiteurs de la journee (le nombre n'est pas le meme d'une journee à l'autre)
+//-Taille min et max à incorporer
+
+//-Rajouter un compteur de visiteurs pour chaques attractions
+
+//-Créer un stock pour les marchandises et le décrémanter à l'achat, avec affichage du stock restant à la fin
 
 -gérer le fait que DureeSejour s'arrete à -2,-3 (Rajouter les limites durée sejour)
 
--achatBoutiqueRestauration:
-	->alea d'acheter une boisson/plat/marchandise -> puis choix alea d'une boisson/plat/marchandise
+//-Gérer le nombre de personnes sur le parc (somme du nombre de membre de chaque famille) et l'ajouter au détail simulation
 
--Gérer la durée de séjour de manière identique partout (>0 ou <0)
+//-détailler le bilan journalier (nombre de billet acheté, nombre de plat/boisson/marchandise vendu - cout d'achat , compteur visiteur attraction)
+
+-achatBoutiqueRestauration:
+	->alea d'acheter une boisson/plat/marchandise -> puis choix alea d'une boisson/plat/marchandises)
+
+-Séparer boutique et restauration, créer différents types de boutiques
+
+-Plusieurs restaurant avec différentes cartes
+
+-Plusieurs boutiques avec différentes marchandises
+
+-Attribut cout d'exploitation des attractions
+
+-gérer les distances
 
 HTML:
-Options du gérant en plus : liste des employés
+
+-Options du gérant en plus : liste des employés
+
+-RER dans le parc
+
+-plan d'accès
