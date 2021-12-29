@@ -2,14 +2,14 @@
 {
   display:flex;
   justify-content:space-around;
-  position:absolute;
+  position:fixed;
   bottom:0px;
   background-color:#2b3e5b;
   width:100%;
   height:120;
   color:#cdb76b;
 }
-.APropos, .APropos:visited, .Apropos:active
+.a_propos, .APropos:visited, .Apropos:active
 {
   text-decoration: none;
   color:#cdb76b;
