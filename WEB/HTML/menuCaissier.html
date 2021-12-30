@@ -10,9 +10,17 @@ background-size: 650px;
 
 .tresorerie{
 
-color : white;
-font-size: 32px;
+color: white;
+font-size: 70px;
 font-family: "Brush Script MT", serif;
+display:flex;
+justify-content: flex-end;
+height:60%;
+/*justify-content: space-evenly;*/
+
+
+/*background-color:black;
+background-size: 100% 250px;*/
 }
 
 
@@ -26,6 +34,8 @@ font-family: "Brush Script MT", serif;
   font-size: 26px;
   border-radius: 25%;
   font-family: "Brush Script MT", serif;
+
+
 }
 
 .button2{
@@ -41,6 +51,30 @@ border-radius: 25%;
 font-family: "Brush Script MT", serif;
 }
 
+div{
+  width: 900px;
+  height: 250px;
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+table{
+display:flex;
+justify-content: flex-end;
+height:60%;
+background-color:white;
+background-size: 100% 250px;
+
+}
+
+fieldset{
+width:1045px;
+height:250px;
+
+
+}
+
 </style>
 
 <!DOCTYPE html>
@@ -52,12 +86,17 @@ font-family: "Brush Script MT", serif;
   </head>
 
 
-  <body>
-<div class="image">
-
+  <body class="image">
+<div>
 
 <fieldset>
-  <legend class="tresorerie"> Trésorerie  </legend>
+  <div class="legende">
+
+  <legend class="tresorerie"> $ Trésorerie $  </legend>
+
+</div>
+<div id="tableau">
+
 
 <table>
 <tr>
@@ -70,6 +109,7 @@ font-family: "Brush Script MT", serif;
 
 </table>
 
+</div>
 </fieldset>
 
 
