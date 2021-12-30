@@ -1,96 +1,108 @@
-<link rel="stylesheet" href="CSS/banniere.css">
-<link rel="stylesheet" href="CSS/footer.css">
-<style>
-body{
-    background-color:orange;
-    margin:0;
-}
-fieldset{
-  position: relative;
-  top: 150px;
-  background-color:white;
-  color:blue;
-  border:5px solid black ;
-  border-radius:20px
-}
-#creationCompte
-{
-  text-decoration: none;
-  color:blue;
-}
-#creationCompte:hover
-{
-  text-decoration: none;
-  color:lightblue;
-}
-</style>
-
-<!--Début de la partie à copier coller pour la bannière et le footer (ne pas oublier les 2 liens en haut de la page)-->
-<div id=banniere>
-</div>
-<div class="nav">
-  <ul id=listeBanniere>
-    <li class="ongletBanniere"><a href="accueil.html" class="linkBanniere">Accueil</a></li>
-    <li class="ongletBanniere"><a href="gestionAttraction.html" class="linkBanniere">Attraction</a></li>
-    <li class="ongletBanniere"><a href="gestionRestauration.html" class="linkBanniere">Restauration</a></li>
-    <li class="ongletBanniere"><a href="gestionBoutique.html" class="linkBanniere">Boutique</a></li>
-  </ul>
-</div>
-
-<div id=divLogo>
-  <a href="accueil.html"><img id=logo src="img/Logo.png" alt=""></a>
-</div>
-
-<div id=footer>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Accueil</title>
+  </head>
+  <body>
+    <header id="headerr">
+      <iframe src="header.html" width="100%" ></iframe>
+      </header>
+    <main>
+      <div class="">
+        <div class="container">
+        <!--<h1>Carrousel</h1>-->
+        <div id="demo" class="carousel slide" data-ride="carousel">
+          <!-- Indicateurs -->
 
 
-  <div id=p1footer>
-    <ul class="unlinkedListFooter">
-      <td><a href="APropos.html" class="APropos">A propos</a></td>
-    </ul>
-  </div>
+          <!-- Carrousel -->
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="https://www.pierre-giraud.com/bootstrap-carrousel-slide-1.jpg" alt="Carrousel slide 1" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block">
+                  <h4>Titre de la légende</h4>
+                  <p>Légende de la slide n°1.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://www.pierre-giraud.com/bootstrap-carrousel-slide-2.jpg" alt="Carrousel slide 2" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block text-dark">
+                  <h4>Titre de la légende</h4>
+                  <p>Légende de la slide n°2.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="https://www.pierre-giraud.com/bootstrap-carrousel-slide-3.jpg" alt="Carrousel slide 3" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block">
+                  <h4>Titre de la légende</h4>
+                  <p>Légende de la slide n°3.</p>
+                </div>
+              </div>
+            </div>
 
-  <div id=p2footer>
-    <ul class="unlinkedListFooter">
-      <li class="listeFooter"><td><p>Suivez-nous sur les réseaux sociaux</p></td></li>
-      <li class="listeFooter">
-        <td>
-          <img class="reseauxSociaux" src="img/logo-facebook.png" alt="">
-          <img class="reseauxSociaux" src="img/logo-instagram.png" alt="">
-          <img class="reseauxSociaux" src="img/linkedin-logo.png" alt="">
-          <img class="reseauxSociaux" src="img/logo-twitter.png" alt="">
-        </td>
-      </li>
-    </ul>
-  </div>
+          <!-- Contrôles -->
+            <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Précédent</span>
+            </a>
+            <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Suivant</span>
+            </a>
+          </div>
+          </div>
+      </div>
+      <br>
+      <hr>
+      <div id="second" center>
+        <h2>Presentation du parc</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-  <div id=p3footer>
-    <ul class="unlinkedListFooter">
-      <li class="listeFooter"><td>Fistiland</td></li>
-      <li class="listeFooter"><td>6 Rue Rougemont</td></li>
-      <li class="listeFooter"><td>75009 Paris</td></li>
-      <li class="listeFooter"><td>01 82 28 95 27</td></li>
-    </ul>
-  </div>
+        <p>Lorem ipsum <del>dolor</del> sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-</div>
-<!-- Fin de la partie à copier coller pour la bannière et le footer (ne pas oublier les 2 liens en haut de la page)-->
-<center>
-<fieldset>
-  <h1>Welcome to Fistiland !!</h1>
-  <table >
-    <tr>
-      <td>Login :</td>
-      <td><input name="login" required placeholder="saisir votre login" type="text"></td>
-    </tr>
-    <tr>
-      <td>Password :</td>
-      <td><input required name="password" type="password" placeholder="Saisir votre mot de passe" minlength="5" maxlength="10"></td>
-    </tr>
-    <tr>
-      <td><a href="" id="creationCompte">Créer un nouveau Compte</a></td>
-    </tr>
-  </table>
-</fieldset>
-</center>
+        <p>Lorem ipsum dolor <mark>sit amet, consectetur adipisicing elit,</mark> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </main>
+    <footer id="footerr"><iframe src="footer.html" width="100%"></iframe></footer>
+  </body>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script type="text/javascript"></script>
+
+  <style >
+
+    iframe{
+      border: none;
+    }
+
+    header{
+      display: flex;
+      //position: sticky;
+      height: 200px;
+      //top: 10px;
+    }
+
+    main{
+      display: block;
+      height: 1000px;
+    }
+
+    footer{
+      display: flex;
+      height: 130px;
+    }
+
+    #second{
+      display: block;
+      width: 70%;
+      margin-left: 100px;
+    }
+
+  </style>
+</html>
