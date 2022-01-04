@@ -3,12 +3,29 @@
   <head>
     <meta charset="utf-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript"></script>
     <title>Accueil</title>
   </head>
   <body>
     <header>
-      <iframe src="header.html" width="100%" ></iframe>
-      </header>
+      <div id=banniere>
+        <div id=divLogo>
+          <a href="accueil.html"><img id=logo src="img/Logo.png" alt=""></a>
+        </div>
+        <div id=listeBanniere>
+          <ul>
+            <li><a href="accueil.html">Accueil</a></li>
+            <li><a href="test.html">Attraction</a></li>
+            <li><a href="gestionRestauration.html">Restauration</a></li>
+            <li><a href="gestionBoutique.html">Boutique</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
     <main>
       <div class="">
         <div class="container">
@@ -67,42 +84,39 @@
         <p>Lorem ipsum dolor <mark>sit amet, consectetur adipisicing elit,</mark> sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
     </main>
-    <footer><iframe src="footer.html" width="100%"></iframe></footer>
+    <footer>
+      <div id=footer>
+        <div id=p1footer>
+          <ul class="unlinkedListFooter">
+            <td><a href="propos.html" class="APropos">A propos</a></td>
+          </ul>
+        </div>
+
+        <div id=p2footer>
+          <ul class="unlinkedListFooter">
+            <li class="listeFooter"><td><p>Suivez-nous sur les réseaux sociaux</p></td></li>
+            <li class="listeFooter">
+              <td>
+                <img class="reseauxSociaux" src="img/logo-facebook.png" alt="">
+                <img class="reseauxSociaux" src="img/logo-instagram.png" alt="">
+                <img class="reseauxSociaux" src="img/linkedin-logo.png" alt="">
+                <img class="reseauxSociaux" src="img/logo-twitter.png" alt="">
+              </td>
+            </li>
+          </ul>
+        </div>
+
+
+        <div id=p3footer>
+          <ul class="unlinkedListFooter">
+            <li class="listeFooter"><td>Fistiland</td></li>
+            <li class="listeFooter"><td>6 Rue Rougemont</td></li>
+            <li class="listeFooter"><td>75009 Paris</td></li>
+            <li class="listeFooter"><td>01 82 28 95 27</td></li>
+          </ul>
+        </div>
+
+      </div>
+    </footer>
   </body>
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script type="text/javascript"></script>
-
-  <style >
-
-    iframe{
-      border: none;
-    }
-
-    header{
-      display: flex;
-      //position: sticky;
-      height: 200px;
-      //top: 10px;
-    }
-
-    main{
-      display: block;
-      height: 1000px;
-    }
-
-    footer{
-      display: flex;
-      height: 130px;
-    }
-
-    #second{
-      display: block;
-      width: 70%;
-      margin-left: 100px;
-    }
-
-  </style>
 </html>
