@@ -1,0 +1,454 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+crossorigin="anonymous"></script>
+<style media="screen">
+
+body{
+  background-color:orange;
+  margin:0;
+}
+fieldset{
+  position: relative;
+  top: 150px;
+  background-color:white;
+  color:blue;
+  border:5px solid black ;
+  border-radius:20px
+}
+#divLogo
+{
+position:absolute;
+top:10px;
+left:70px;
+width : 150px;
+height : 150px;
+}
+#Logo
+{
+  width : 267px;
+  height : 150px;
+}
+#banniere
+{
+  font-size: 20px;
+  background-color:white;
+  width:100%;
+  height:70px;
+}
+
+.nav
+{
+ padding: 0;
+ margin: 0;
+ height:70px;
+ width:75%;
+ //background-color:grey;
+ position:absolute;
+ top:0px;
+ left:15%;
+}
+#listeBanniere
+{
+  display:flex;
+  margin:0;
+  justify-content: space-evenly;
+  list-style-type:none;
+  font-size:25px;
+}
+#jordan
+{
+  display:flex;
+  position: relative;
+  top: 150px;
+}
+li
+{
+  padding:21px;
+  padding-left:100px;
+  padding-right:100px;
+}
+li:hover {
+  background-color: #C0C0C0;
+}
+
+
+#content
+{
+  width:100%;
+  top : 80px;
+  display : flex;
+  position : relative;
+  justify-content : center;
+}
+
+.modal {
+display: none; /* Masqué par défaut */
+position: fixed; /* Rester dans la place */
+z-index: 8888; /* S'asseoir en haut */
+left: 0;
+top: 0;
+width: 100%; /* Largeur complète */
+height: 100%; /* Hauteur complète */
+overflow: auto; /* Activer défilement si nécessaire */
+background-color: rgb(0,0,0); /* Couleur de plan */
+background-color: rgba(0,0,0,0.4); /*  w/ opacité noir*/
+}
+/* Contenu Modal/Boîte*/
+
+@media (min-width: 1366px) {
+.modal-content {
+background-color: #fefefe;
+margin: 10vh auto; /* 15% d'en haut et centré */
+padding: 20px;
+border: 1px solid #888;
+width: 30%; /* Pouvait être plus ou moins, dépend de la taille de l'écran */
+}
+
+}
+/* Le bouton Fermer */
+.close {
+color: red;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
+.close:hover,
+.close:focus {
+color: black;
+text-decoration: none;
+cursor: pointer;
+}
+
+.button-17 {
+  align-items: center;
+  appearance: none;
+  background-color: #18A61A;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-family: "Google Sans",Roboto,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: .25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  padding: 2px 24px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform,opacity;
+  z-index: 0;
+  top : 20px;
+  left : 190px;
+}
+
+.button-17:hover {
+  background: #169818;
+  color: #FEFEFE;
+}
+
+.button-17:active {
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
+}
+
+.button-17:focus {
+  outline: none;
+  border: 2px solid #4285f4;
+}
+
+.button-17:not(:disabled) {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.button-17:not(:disabled):hover {
+  box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+}
+
+.button-17:not(:disabled):focus {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.button-17:not(:disabled):active {
+  box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+}
+
+.button-17:disabled {
+  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+}
+
+.button-22 {
+  align-items: center;
+  appearance: button;
+  background-color: #0276FF;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: "RM Neue",sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  padding: 10px 21px;
+  text-align: center;
+  text-transform: none;
+  transition: color .13s ease-in-out,background .13s ease-in-out,opacity .13s ease-in-out,box-shadow .13s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-22:active {
+  background-color: #006AE8;
+}
+
+.button-22:hover {
+  background-color: #1C84FF;
+}
+
+.haut{
+
+  position : relative;
+  top : 40px;
+}
+
+#title{
+  display : flex;
+  justify-content : center;
+}
+
+</style>
+<body>
+
+
+  <div id=banniere>
+
+  </div>
+  <div class="nav">
+  <ul id=listeBanniere>
+    <li>Accueil</li>
+    <li>Attraction</li>
+    <li>Restauration</li>
+    <li>Boutique</li>
+  </ul>
+  </div>
+
+<div id=divLogo>
+  <img id=logo src="img/Logo.png" alt="">
+</div>
+
+<div class="haut">
+  <h2 id="title">Les attractions : </h2>
+  <button type="button" data-modal="modalTwo" class="button-17">Ajouter une nouvelle attraction</button>
+</div>
+
+<div id="content">
+
+  <div class="album py-5 bg-light">
+          <div class="container">
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" height="280" width="280" style="display: block;" src="img/auto_tamponneuse.jpg" data-holder-rendered="true">
+                  <div class="card-body">
+                    <p class="card-text">Les auto-tamponneuses</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" data-modal="modalOne" class="button-22">Modifier l'attraction</button>
+                      </div>
+                      <small class="text-muted">9 mins</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" height="280" width="280" src="img/grand_huit.jpg" data-holder-rendered="true" style="display: block;">
+                  <div class="card-body">
+                    <p class="card-text">Le grand huit</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" data-modal="modalOne" class="button-22">Modifier l'attraction</button>
+                      </div>
+                      <small class="text-muted">9 mins</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" height="280" width="280" src="img/grande_roue.jpg" data-holder-rendered="true" style="display: block;">
+                  <div class="card-body">
+                    <p class="card-text">La grande roue</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" data-modal="modalOne" class="button-22">Modifier l'attraction</button>
+                      </div>
+                      <small class="text-muted">9 mins</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" height="280" width="280" src="img/pedalo.jpg" data-holder-rendered="true" style="display: block;">
+                  <div class="card-body">
+                    <p class="card-text">Le pédalo</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" data-modal="modalOne" class="button-22">Modifier l'attraction</button>
+                      </div>
+                      <small class="text-muted">9 mins</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" height="280" width="280" src="img/splash.jpg" data-holder-rendered="true" style="display: block;">
+                  <div class="card-body">
+                    <p class="card-text">Le tobogan aquatique</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" data-modal="modalOne" class="button-22">Modifier l'attraction</button>
+                      </div>
+                      <small class="text-muted">9 mins</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" height="280" width="280" src="img/bateau.jpg" data-holder-rendered="true" style="display: block;">
+                  <div class="card-body">
+                    <p class="card-text">Le bateau viking</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" data-modal="modalOne" class="button-22">Modifier l'attraction</button>
+                      </div>
+                      <small class="text-muted">9 mins</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+
+
+      </div>
+</div>
+<div id="modalOne" class="modal">
+  <div class="modal-content">
+    <div class="contact-form">
+      <a class="close">&times;</a>
+
+          <legend>&nbsp;Formulaire Update&nbsp;</legend>
+        Charactéristiques de l'attraction à modifier : <br><br>
+        Saisir l'ID de l'attraction à modifier : <input name="id" type="number" placeholder="saisir l'ID"><br><br>
+        Nouveau Nom : <input name="nom" required placeholder="saisir le nom" type="nom"><br><br>
+        Saisir la durée : <input name="duree" required placeholder="saisir la durée" type="number"><br><br>
+        Saisir la capacité : <input name="capacite" required placeholder="saisir la capacité" type="number"><br><br>
+        Saisir la taille minimale : <input name="tailleMin" required placeholder="saisir la taille min" type="number"><br><br>
+        Saisir la taille maximale : <input name="tailleMax" required placeholder="saisir la taille max" type="number"><br><br>
+        Y a t'il des restrictions pour les handicapés:
+        <input id="handiFalse" checked name="handicap" value="false" type="radio"><label for="civMr">Non</label>
+        <input id="handiTrue" value="true" name="handicap" type="radio"><label for="civMme">Oui</label>
+        </select><br><br>
+        <input class ="btn btn-warning" type="button" value="Update l'attraction" id="buttonFormulaire">
+
+
+    </div>
+  </div>
+</div>
+
+<div id="modalTwo" class="modal">
+  <div class="modal-content">
+    <div class="contact-form">
+      <a class="close">&times;</a>
+
+      <legend>&nbsp;Formulaire Ajout&nbsp;</legend>
+      Charactéristiques de la planète : <br><br>
+    <!--  ID : <input name="id" type="" value="1"><br><br> -->
+    Charactéristiques de l'attraction à ajouter : <br><br>
+    Nouveau Nom : <input name="nom" required placeholder="saisir le nom" type="nom"><br><br>
+    Saisir la durée : <input name="duree" required placeholder="saisir la durée" type="number"><br><br>
+    Saisir la capacité : <input name="capacite" required placeholder="saisir la capacité" type="number"><br><br>
+    Saisir la taille minimale : <input name="tailleMin" required placeholder="saisir la taille min" type="number"><br><br>
+    Saisir la taille maximale : <input name="tailleMax" required placeholder="saisir la taille max" type="number"><br><br>
+    Y a t'il des restrictions pour les handicapés:
+    <input id="handiFalse" checked name="handicap" value="false" type="radio"><label for="civMr">Non</label>
+    <input id="handiTrue" value="true" name="handicap" type="radio"><label for="civMme">Oui</label>
+    </select><br><br>
+    <input class ="btn btn-success" type="button" value="Ajouter l'attraction" id="buttonFormulaire">
+
+
+
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+  var modalBtns = [...document.querySelectorAll(".button-22")];
+  modalBtns.forEach(function(btn){
+    btn.onclick = function() {
+      var modal = btn.getAttribute('data-modal');
+      document.getElementById(modal).style.display = "block";
+
+    }
+  });
+  var modalBtns = [...document.querySelectorAll(".button-17")];
+  modalBtns.forEach(function(btn){
+    btn.onclick = function() {
+      var modal = btn.getAttribute('data-modal');
+      document.getElementById(modal).style.display = "block";
+
+    }
+  });
+
+  var closeBtns = [...document.querySelectorAll(".close")];
+  closeBtns.forEach(function(btn){
+    btn.onclick = function() {
+      var modal = btn.closest('.modal');
+      modal.style.display = "none";
+    }
+  });
+
+  window.onclick = function(event) {
+    if (event.target.className === "modal") {
+      event.target.style.display = "none";
+    }
+  }
+</script>
+
+</body>

@@ -1,0 +1,230 @@
+body{
+  display: block;
+}
+
+header{
+  display: block;
+  height: 17%;
+  background-color: grey;
+}
+#bottom{
+  display: block;
+  width: 100%;
+  background-color: silver;
+}
+
+#top{
+  display: flex;
+  width: 100%;
+}
+
+main{
+  margin-top: 0px;
+  margin-bottom: 50px;
+  display: block;
+  height: 65%;
+}
+
+
+  #second, #third{
+    display: block;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+footer{
+  display: flex;
+  background-color: grey;
+}
+
+
+
+#p1footer
+{
+  display:block;
+  width: 15%;
+}
+
+#p2footer
+{
+  display:block;
+  text-align: center;
+  width: 60%;
+
+}
+#p3footer
+{
+  display:block;
+}
+
+.reseauxSociaux
+{
+  width : 40px;
+  height : 40px;
+}
+
+
+#divLogo {
+  display: flex;
+  width: 20%;
+  height: 100px;
+}
+
+#logo {
+  /*display: flex;*/
+  width: 200px;
+  height: 100px;
+}
+
+#listeBanniere {
+  display: flex;
+  width: 60%;
+  margin-top: 15px;
+  text-align: center;
+  flex-direction: column;
+}
+
+#listeBanniereAdmin, #listeBanniereCaissier, #listeBanniereOperateur {
+  display: flex;
+  margin-top: 30px;
+  text-align: center;
+  flex-direction: column;
+
+}
+
+ul.menu, ul.menuGerant, ul.menuCaissier, ul.menuOperateur{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  text-decoration: none;
+  font-size: 20px;
+}
+ul.foot{
+  list-style-type: none;
+  margin-top: 10px;
+  text-align: center;
+}
+a:hover{
+  font-size: 1.5em;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+a.menuGerant0, a.menuCaissier0, a.menuOperateur0:hover{
+  font-size: 1em;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+a{
+  text-decoration: none;
+  color: orange;
+}
+
+.desc{
+color: purple;
+width: 70%;
+height: 80px;
+margin: 30px 35px;
+font-size: 30px;
+font-family: "Mistral", serif;
+box-sizing: content-box;
+padding: 5px;
+background-color:white;
+}
+
+
+.boutique1,.restau1
+{
+background-image: url("img/boutique1.jpg");
+width: 700px;
+height: 300px;
+border: 4.5px solid purple;
+padding: 00px;
+margin: 150px;
+}
+
+
+.boutique2, .restau2
+{
+background-image: url("img/boutique2.jpg");
+width: 700px;
+height: 300px;
+border: 4.5px solid purple;
+padding: 00px;
+margin: 150px;
+margin-left: 450px;
+}
+
+.boutique3, .restau3
+{
+background-image: url("img/boutique2.jpg");
+width: 700px;
+height: 300px;
+border: 4.5px solid purple;
+padding: 00px;
+margin-left: 60px;
+margin: 150px;
+}
+
+.restau1,.restau2, .restau3{
+  border: 4.5px solid #FFDF00;
+}
+
+.boutique4
+{
+background-image: url("img/boutique2.jpg");
+width: 700px;
+height: 300px;
+border: 4.5px solid purple;
+padding: 00px;
+margin-left: 300px;
+}
+
+
+input
+{
+display:flex;
+justify-content:center;
+position: absolute;
+width: 270px;
+height: 30px;
+padding: 00px 00px;
+display: inline-block;
+font-size: 14px;
+background-color: blue;
+color: white;
+}
+
+.nomBoutique1, .nomRestau1 {
+height: 30px;
+padding: 20px 30px;
+margin: 250px 200px;
+background-color: orange;
+color: black;
+}
+
+.nomBoutique2, .nomRestau2 {
+height: 30px;
+padding: 20px 30px;
+margin: 250px 200px;
+background-color: orange;
+color: black;
+}
+
+.nomBoutique3, .nomRestau3 {
+height: 30px;
+padding: 20px 30px;
+margin: 250px 200px;
+background-color: orange;
+color: black;
+}
+
+.nomBoutique4 {
+height: 30px;
+padding: 20px 30px;
+margin: 250px 200px;
+background-color: orange;
+color: black;
+}

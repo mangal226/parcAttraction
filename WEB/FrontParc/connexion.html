@@ -1,0 +1,96 @@
+<link rel="stylesheet" href="CSS/banniere.css">
+<link rel="stylesheet" href="CSS/footer.css">
+<style>
+body{
+    background-color:orange;
+    margin:0;
+}
+fieldset{
+  position: relative;
+  top: 150px;
+  background-color:white;
+  color:blue;
+  border:5px solid black ;
+  border-radius:20px
+}
+#creationCompte
+{
+  text-decoration: none;
+  color:blue;
+}
+#creationCompte:hover
+{
+  text-decoration: none;
+  color:lightblue;
+}
+</style>
+
+<!--Début de la partie à copier coller pour la bannière et le footer (ne pas oublier les 2 liens en haut de la page)-->
+<div id=banniere>
+</div>
+<div class="nav">
+  <ul id=listeBanniere>
+    <li class="ongletBanniere"><a href="accueil.html" class="linkBanniere">Accueil</a></li>
+    <li class="ongletBanniere"><a href="gestionAttraction.html" class="linkBanniere">Attraction</a></li>
+    <li class="ongletBanniere"><a href="gestionRestauration.html" class="linkBanniere">Restauration</a></li>
+    <li class="ongletBanniere"><a href="gestionBoutique.html" class="linkBanniere">Boutique</a></li>
+  </ul>
+</div>
+
+<div id=divLogo>
+  <a href="accueil.html"><img id=logo src="img/Logo.png" alt=""></a>
+</div>
+
+<div id=footer>
+
+
+  <div id=p1footer>
+    <ul class="unlinkedListFooter">
+      <td><a href="APropos.html" class="APropos">A propos</a></td>
+    </ul>
+  </div>
+
+  <div id=p2footer>
+    <ul class="unlinkedListFooter">
+      <li class="listeFooter"><td><p>Suivez-nous sur les réseaux sociaux</p></td></li>
+      <li class="listeFooter">
+        <td>
+          <img class="reseauxSociaux" src="img/logo-facebook.png" alt="">
+          <img class="reseauxSociaux" src="img/logo-instagram.png" alt="">
+          <img class="reseauxSociaux" src="img/linkedin-logo.png" alt="">
+          <img class="reseauxSociaux" src="img/logo-twitter.png" alt="">
+        </td>
+      </li>
+    </ul>
+  </div>
+
+
+  <div id=p3footer>
+    <ul class="unlinkedListFooter">
+      <li class="listeFooter"><td>Fistiland</td></li>
+      <li class="listeFooter"><td>6 Rue Rougemont</td></li>
+      <li class="listeFooter"><td>75009 Paris</td></li>
+      <li class="listeFooter"><td>01 82 28 95 27</td></li>
+    </ul>
+  </div>
+
+</div>
+<!-- Fin de la partie à copier coller pour la bannière et le footer (ne pas oublier les 2 liens en haut de la page)-->
+<center>
+<fieldset>
+  <h1>Welcome to Fistiland !!</h1>
+  <table >
+    <tr>
+      <td>Login :</td>
+      <td><input name="login" required placeholder="saisir votre login" type="text"></td>
+    </tr>
+    <tr>
+      <td>Password :</td>
+      <td><input required name="password" type="password" placeholder="Saisir votre mot de passe" minlength="5" maxlength="10"></td>
+    </tr>
+    <tr>
+      <td><a href="" id="creationCompte">Créer un nouveau Compte</a></td>
+    </tr>
+  </table>
+</fieldset>
+</center>
