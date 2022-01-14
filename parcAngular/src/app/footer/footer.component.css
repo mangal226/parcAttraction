@@ -1,0 +1,50 @@
+footer {
+  display: flex;
+  background-color: grey;
+  position: fixed;
+  bottom: 0px;
+  width: 98.75%;
+}
+
+#bas {
+  display: flex;
+  width: 100%;
+}
+
+#p1footer {
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+  width: 15%;
+}
+
+#p2footer {
+  display: block;
+  text-align: center;
+  width: 60%;
+}
+#p3footer {
+  display: block;
+  margin-top: 15px;
+}
+
+.reseauxSociaux {
+  width: 40px;
+  height: 40px;
+}
+
+ul.foot {
+  list-style-type: none;
+  margin-top: 10px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: orange;
+}
+a:hover {
+  font-size: 1.5em;
+  font-style: italic;
+  text-decoration: underline;
+}
