@@ -16,6 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import SopraAjc.ParcAttractionSpring.model.Attraction;
 import SopraAjc.ParcAttractionSpring.model.Boisson;
+import SopraAjc.ParcAttractionSpring.model.Coordonnees;
 import SopraAjc.ParcAttractionSpring.model.Famille;
 import SopraAjc.ParcAttractionSpring.model.Marchandise;
 import SopraAjc.ParcAttractionSpring.model.Plat;
@@ -73,7 +74,7 @@ class SimulationTest {
 	void testCreationFamille() {
 		int nbFamille=5;
 		simulationService.creationFamille(nbFamille);
-		assertEquals(0,familleRepo.getById(1L).getDepenses());
+		assertEquals(0,familleRepo.getById(48L).getDepenses());
 	}
 
 //	@Test
@@ -89,13 +90,14 @@ class SimulationTest {
 	@Test
 	@Disabled
 	void testAssignementAttraction() {
-		Attraction attraction = new Attraction("Roue",20,40,150,200,false);
+		Coordonnees coordonnes=new Coordonnees(10,0);
+		Attraction attraction = new Attraction("Roue",20,40,110,240,false,coordonnes);
 		attractionRepo.save(attraction);
-		Famille f1=new Famille(5,120,200,40,false,0);
+		Famille f1=new Famille(5,160,200,40,false,0);
 		simulationService.assignementAttraction(f1);
-		assertNotNull(attractionRepo.getById(1L).getQueue());
+		assertNotNull(attractionRepo.getById(23L).getQueue());
 	}
-	
+
 	@Test
 	@Disabled
 	void testAchatBoutiqueRestauration() {
@@ -119,9 +121,9 @@ class SimulationTest {
 	}
 	@Test
 	void testAvancementJournee() {
-		Attraction a1 = new Attraction("Roue",7,40,110,200,false);
+		Attraction a1 = new Attraction("Roue",7,40,110,200,false,new Coordonnees(0,0));
 		attractionRepo.save(a1);
-		Attraction a2 = new Attraction("GrandHuit",11,40,110,200,false);
+		Attraction a2 = new Attraction("GrandHuit",11,40,110,200,false,new Coordonnees(10,0));
 		attractionRepo.save(a2);
 		Boisson a = new Boisson("cafe",15,300);
 		Boisson b = new Boisson("the",15,300);
@@ -137,7 +139,7 @@ class SimulationTest {
 		marchandiseRepo.save(f);
 		simulationService.simulation(1, 3);
 //		assertEquals(70, familleRepo.getById(1L).getDureeSejour());
-		assertEquals(0, attractionRepo.getById(2L).getNbrVisiteur());
+		assertEquals(0, attractionRepo.getById(11L).getNbrVisiteur());
 //		assertEquals(300, boissonRepo.getById(1L).getStock());
 	}
 

@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import org.hibernate.query.criteria.internal.expression.function.SqrtFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import SopraAjc.ParcAttractionSpring.model.Attraction;
 import SopraAjc.ParcAttractionSpring.model.Boisson;
 import SopraAjc.ParcAttractionSpring.model.Boutique;
 import SopraAjc.ParcAttractionSpring.model.Compte;
+import SopraAjc.ParcAttractionSpring.model.Coordonnees;
 import SopraAjc.ParcAttractionSpring.model.Famille;
 import SopraAjc.ParcAttractionSpring.model.Marchandise;
 import SopraAjc.ParcAttractionSpring.model.Plat;
@@ -107,8 +109,9 @@ public class SimulationService {
 			System.out.println(a.getNom()+" a eu "+a.getNbrVisiteur()+" visiteurs");
 		}
 	}
-
+	
 	public void creationFamille(int nbFamille) {
+		System.out.println("je crée des familles");
 		List<Famille> familles = new ArrayList();
 		Random r = new Random();
 		for (int i = 0; i < nbFamille; i++) {
@@ -154,10 +157,14 @@ public class SimulationService {
 		// System.out.println(i+"------"+alea);
 		List<Famille> newQueue = a.getQueue();
 
-		if (f.getTailleMin() > a.getTailleMin() && f.getTailleMax() < a.getTailleMax()) {
+		if (f.getTailleMin() >= a.getTailleMin() && f.getTailleMax() <= a.getTailleMax()) {
+			System.out.println("Durée de trajet : "+ distance(f.getPosition(),a.getCoordonnees())+ ", Durée de séjour avant trajet :"+f.getDureeSejour());
+			f.setDureeSejour(f.getDureeSejour()-distance(f.getPosition(),a.getCoordonnees())/2);
+			System.out.println("Durée de trajet : "+ distance(f.getPosition(),a.getCoordonnees())+ ", Durée de séjour après trajet :"+f.getDureeSejour());
+			f.setPosition(a.getCoordonnees());
+			
 			newQueue.add(f);
 			a.setQueue(newQueue);
-
 			familleRepo.save(f);
 			attractionRepo.save(a);
 		} else {
@@ -314,6 +321,15 @@ public class SimulationService {
 			}
 		}
 
+	}
+	
+	public int distance(Coordonnees coordonnees1, Coordonnees coordonnees2) {
+		int x1= coordonnees1.getX();
+		int y1= coordonnees1.getY();
+		int x2= coordonnees2.getX();
+		int y2= coordonnees2.getY();
+		return (int)Math.round(Math.sqrt((y2 - y1)^2 + (x2 - x1)^2));
+		
 	}
 
 }

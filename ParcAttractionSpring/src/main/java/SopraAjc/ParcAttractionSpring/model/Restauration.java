@@ -2,7 +2,10 @@ package SopraAjc.ParcAttractionSpring.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -26,15 +30,24 @@ public class Restauration {
 	@ManyToMany
 	private  List<Plat> plat = new ArrayList();
 	
+
+	@Embedded
+	private Coordonnees coordonnees;
+	
 	
 	public Restauration () {
 		
 	}
 	
-	public Restauration(List<Boisson> boisson, List<Plat> plat) {
+
+	public Restauration(List<Boisson> boisson, List<Plat> plat, Coordonnees coordonnees) {
+		super();
 		this.boisson = boisson;
 		this.plat = plat;
+		this.coordonnees = coordonnees;
 	}
+
+
 	public List<Boisson> getBoisson() {
 		return boisson;
 	}
@@ -54,6 +67,17 @@ public class Restauration {
 	public void setId(Long id) {
 		Id = id;
 	}
+	
+	
+	public Coordonnees getCoordonnees() {
+		return coordonnees;
+	}
+
+	public void setCoordonnees(Coordonnees coordonnees) {
+		this.coordonnees = coordonnees;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Restauration [boisson=" + boisson + ", plat=" + plat + "]";

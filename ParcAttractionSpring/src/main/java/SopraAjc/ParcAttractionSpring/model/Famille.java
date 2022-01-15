@@ -1,15 +1,22 @@
 package SopraAjc.ParcAttractionSpring.model;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.*;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Famille {
@@ -18,22 +25,30 @@ public class Famille {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(JsonViews.Common.class)
 	private Long id;
+	
 	@JsonView(JsonViews.Common.class)
 	private int nombre;
+	
 	@JsonView(JsonViews.Common.class)
 	@Column(name="taille_min")
 	private int tailleMin;
+	
 	@JsonView(JsonViews.Common.class)
 	@Column(name="taille_max")
 	private int tailleMax;
+	
 	@Column(name="duree_sejour")
 	@JsonView(JsonViews.Common.class)
 	private int dureeSejour;
+	
 	@JsonView(JsonViews.Common.class)
 	private boolean handicap;
+	
 	@JsonView(JsonViews.Common.class)
 	private double depenses=0;
-	
+
+	@Embedded
+	private Coordonnees position= new Coordonnees(0,0);
 	
 	public Famille() {
 	
@@ -114,6 +129,15 @@ public class Famille {
 
 	public void setId_Famille(Long id) {
 		this.id = id;
+	}
+
+	public Coordonnees getPosition() {
+		return position;
+	}
+
+
+	public void setPosition(Coordonnees position) {
+		this.position = position;
 	}
 
 
