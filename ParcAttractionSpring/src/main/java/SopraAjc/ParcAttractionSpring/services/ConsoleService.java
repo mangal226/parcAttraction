@@ -22,12 +22,12 @@ public class ConsoleService implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//initPassword();
+		initPassword();
 	}
 
 	private void initPassword() {
 		userRepo.findAll().forEach(u->{
-			u.setPassword(passwordEncoder.encode(u.getLogin()));
+			u.setPassword(passwordEncoder.encode(u.getPassword()));
 			userRepo.save(u);
 		});
 
