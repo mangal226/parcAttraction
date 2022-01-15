@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { routes } from './routes';
 import { FooterComponent } from './footer/footer.component';
 import { ProposComponent } from './propos/propos.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ProposComponent } from './propos/propos.component';
     RestaurationComponent,
     BoutiqueComponent,
     FooterComponent,
-    ProposComponent
+    ProposComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

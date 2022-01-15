@@ -1,3 +1,4 @@
+import { ContactComponent } from './contact/contact.component';
 import { Routes } from '@angular/router';
 import { AccueilComponent } from './accueil/accueil.component';
 import { AttractionComponent } from './attraction/attraction.component';
@@ -11,4 +12,5 @@ export const routes: Routes = [
   { path: 'boutique', component: BoutiqueComponent },
   { path: 'restauration', component: RestaurationComponent },
   {path: 'propos', component: ProposComponent},
+  {path: 'contact', component: ContactComponent}
 ];
