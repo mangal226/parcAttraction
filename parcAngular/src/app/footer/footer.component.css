@@ -1,9 +1,6 @@
 footer {
   display: flex;
-  background-color: grey;
-  position: fixed;
-  bottom: 0px;
-  width: 98.75%;
+  background-color: rgb(38, 3, 58);
 }
 
 #bas {

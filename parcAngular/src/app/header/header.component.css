@@ -3,7 +3,7 @@ header {
   height: 17%;
   position: sticky;
   top: 0px;
-  background-color: grey;
+  background-color: rgb(38, 3, 58);
 }
 #top {
   display: flex;
