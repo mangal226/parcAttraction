@@ -23,6 +23,8 @@ public class Boutique {
 	@JsonView(JsonViews.Common.class)
 	private Long id;
 	
+	private String nom;
+	
 	@ManyToMany
 	@JsonView(JsonViews.BoutiqueMarchandise.class)
 	private List <Marchandise> enVente = new ArrayList();
@@ -34,8 +36,8 @@ public class Boutique {
 		
 	}
 
-	public Boutique(List<Marchandise> enVente, Coordonnees coordonnees) {
-		super();
+	public Boutique(String nom,List<Marchandise> enVente, Coordonnees coordonnees) {
+		this.nom=nom;
 		this.enVente = enVente;
 		this.coordonnees = coordonnees;
 	}
@@ -69,6 +71,14 @@ public class Boutique {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 	
 	

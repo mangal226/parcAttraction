@@ -24,6 +24,8 @@ public class Restauration {
 	@JsonView(JsonViews.Common.class)
 	private Long Id;
 	
+	private String nom;
+	
 	@ManyToMany
 	private List<Boisson> boisson = new ArrayList();
 	
@@ -40,8 +42,8 @@ public class Restauration {
 	}
 	
 
-	public Restauration(List<Boisson> boisson, List<Plat> plat, Coordonnees coordonnees) {
-		super();
+	public Restauration(String nom, List<Boisson> boisson, List<Plat> plat, Coordonnees coordonnees) {
+		this.nom=nom;
 		this.boisson = boisson;
 		this.plat = plat;
 		this.coordonnees = coordonnees;
@@ -75,6 +77,16 @@ public class Restauration {
 
 	public void setCoordonnees(Coordonnees coordonnees) {
 		this.coordonnees = coordonnees;
+	}
+
+
+	public String getNom() {
+		return nom;
+	}
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 
