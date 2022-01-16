@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Disabled;
@@ -16,23 +19,27 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import SopraAjc.ParcAttractionSpring.model.Attraction;
 import SopraAjc.ParcAttractionSpring.model.Boisson;
+import SopraAjc.ParcAttractionSpring.model.Boutique;
+import SopraAjc.ParcAttractionSpring.model.Coordonnees;
 import SopraAjc.ParcAttractionSpring.model.Famille;
 import SopraAjc.ParcAttractionSpring.model.Marchandise;
 import SopraAjc.ParcAttractionSpring.model.Plat;
+import SopraAjc.ParcAttractionSpring.model.Restauration;
 import SopraAjc.ParcAttractionSpring.repository.AttractionRepository;
 import SopraAjc.ParcAttractionSpring.repository.BoissonRepository;
+import SopraAjc.ParcAttractionSpring.repository.BoutiqueRepository;
 import SopraAjc.ParcAttractionSpring.repository.FamilleRepository;
 import SopraAjc.ParcAttractionSpring.repository.MarchandiseRepository;
 import SopraAjc.ParcAttractionSpring.repository.PlatRepository;
+import SopraAjc.ParcAttractionSpring.repository.RestaurationRepository;
 import SopraAjc.ParcAttractionSpring.services.SimulationService;
-
 
 @Transactional
 @Rollback(true)
 @ExtendWith(SpringExtension.class) // remplace @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 class SimulationTest {
-	
+
 //	Autowired
 //	AttractionRepository attractionRepo;
 //	
@@ -46,22 +53,27 @@ class SimulationTest {
 
 	@Autowired
 	private BoissonRepository boissonRepo;
-	
+
 	@Autowired
 	private PlatRepository platRepo;
-	
+
 	@Autowired
 	private MarchandiseRepository marchandiseRepo;
-	
+
 	@Autowired
 	private SimulationService simulationService;
-	
+
 	@Autowired
 	private FamilleRepository familleRepo;
-	
+
 	@Autowired
 	private AttractionRepository attractionRepo;
 	
+	@Autowired
+	private BoutiqueRepository boutiqueRepo;
+	@Autowired
+	private RestaurationRepository restaurationRepo;
+
 	@Test
 	@Disabled
 	void testSimulation() {
@@ -71,9 +83,9 @@ class SimulationTest {
 	@Test
 	@Disabled
 	void testCreationFamille() {
-		int nbFamille=5;
+		int nbFamille = 5;
 		simulationService.creationFamille(nbFamille);
-		assertEquals(0,familleRepo.getById(1L).getDepenses());
+		assertEquals(0, familleRepo.getById(48L).getDepenses());
 	}
 
 //	@Test
@@ -89,55 +101,65 @@ class SimulationTest {
 	@Test
 	@Disabled
 	void testAssignementAttraction() {
-		Attraction attraction = new Attraction("Roue",20,40,150,200,false);
+		Coordonnees coordonnes = new Coordonnees(10, 0);
+		Attraction attraction = new Attraction("Roue", 20, 40, 110, 240, false, coordonnes);
 		attractionRepo.save(attraction);
-		Famille f1=new Famille(5,120,200,40,false,0);
+		Famille f1 = new Famille(5, 160, 200, 40, false, 0);
 		simulationService.assignementAttraction(f1);
-		assertNotNull(attractionRepo.getById(1L).getQueue());
+		assertNotNull(attractionRepo.getById(23L).getQueue());
 	}
-	
-	@Test
-	@Disabled
-	void testAchatBoutiqueRestauration() {
-		Boisson a = new Boisson("cafe",15,300);
-		Boisson b = new Boisson("the",15,300);
-		Boisson c = new Boisson("coca",15,300);
-		Boisson d = new Boisson("z",15,300);
-		Boisson e = new Boisson("s",15,300);
-		Boisson f = new Boisson("a",15,300);
-		boissonRepo.save(a);
-		boissonRepo.save(b);
-		boissonRepo.save(c);
-		boissonRepo.save(d);
-		boissonRepo.save(e);
-		boissonRepo.save(f);
-		Famille f1=new Famille(5,120,200,40,false,0);
-		familleRepo.save(f1);
-		simulationService.achatBoutiqueRestauration(f1);
-		assertEquals(0, familleRepo.getById(1L).getDepenses());
-		
-	}
+
+//	@Test
+//	@Disabled
+//	void testAchatBoutiqueRestauration() {
+//		Boisson a = new Boisson("cafe", 15, 300);
+//		Boisson b = new Boisson("the", 15, 300);
+//		Boisson c = new Boisson("coca", 15, 300);
+//		Boisson d = new Boisson("z", 15, 300);
+//		Boisson e = new Boisson("s", 15, 300);
+//		Boisson f = new Boisson("a", 15, 300);
+//		boissonRepo.save(a);
+//		boissonRepo.save(b);
+//		boissonRepo.save(c);
+//		boissonRepo.save(d);
+//		boissonRepo.save(e);
+//		boissonRepo.save(f);
+//		Famille f1 = new Famille(5, 120, 200, 40, false, 0);
+//		familleRepo.save(f1);
+//		simulationService.achatBoutiqueRestauration(f1);
+//		assertEquals(0, familleRepo.getById(1L).getDepenses());
+
+//	}
+
 	@Test
 	void testAvancementJournee() {
-		Attraction a1 = new Attraction("Roue",7,40,110,200,false);
+		Attraction a1 = new Attraction("Roue", 7, 40, 110, 200, false, new Coordonnees(0, 0));
 		attractionRepo.save(a1);
-		Attraction a2 = new Attraction("GrandHuit",11,40,110,200,false);
+		Attraction a2 = new Attraction("GrandHuit", 11, 40, 110, 200, false, new Coordonnees(10, 0));
 		attractionRepo.save(a2);
-		Boisson a = new Boisson("cafe",15,300);
-		Boisson b = new Boisson("the",15,300);
-		Plat c = new Plat("pate",15,300);
-		Plat d = new Plat("pizza",15,300);
-		Marchandise e = new Marchandise("peluche",15,300);
-		Marchandise f = new Marchandise("poing",15,300);
+
+		Boisson a = new Boisson("cafe", 15, 300);
+		Boisson b = new Boisson("the", 15, 300);
+		List<Boisson> listeBoisson = Arrays.asList(a, b);
+		Plat c = new Plat("pate", 15, 300);
+		Plat d = new Plat("pizza", 15, 300);
+		List<Plat> listePlat = Arrays.asList(c, d);
+		Restauration r1 = new Restauration("barbecue",listeBoisson,listePlat,new Coordonnees(10, 5));
+		Marchandise e = new Marchandise("peluche", 15, 300);
+		Marchandise f = new Marchandise("poing", 15, 300);
+		List<Marchandise> listeMarchandise = Arrays.asList(e, f);
+		Boutique b1 = new Boutique("Souvenirs",listeMarchandise, new Coordonnees(5, 5));
 		boissonRepo.save(a);
 		boissonRepo.save(b);
 		platRepo.save(c);
 		platRepo.save(d);
+		restaurationRepo.save(r1);
 		marchandiseRepo.save(e);
 		marchandiseRepo.save(f);
+		boutiqueRepo.save(b1);
 		simulationService.simulation(1, 3);
 //		assertEquals(70, familleRepo.getById(1L).getDureeSejour());
-		assertEquals(0, attractionRepo.getById(2L).getNbrVisiteur());
+		assertEquals(0, attractionRepo.getById(29L).getNbrVisiteur());
 //		assertEquals(300, boissonRepo.getById(1L).getStock());
 	}
 

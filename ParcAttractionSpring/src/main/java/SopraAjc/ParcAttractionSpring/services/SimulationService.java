@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import org.hibernate.query.criteria.internal.expression.function.SqrtFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import SopraAjc.ParcAttractionSpring.model.Attraction;
 import SopraAjc.ParcAttractionSpring.model.Boisson;
 import SopraAjc.ParcAttractionSpring.model.Boutique;
 import SopraAjc.ParcAttractionSpring.model.Compte;
+import SopraAjc.ParcAttractionSpring.model.Coordonnees;
 import SopraAjc.ParcAttractionSpring.model.Famille;
 import SopraAjc.ParcAttractionSpring.model.Marchandise;
 import SopraAjc.ParcAttractionSpring.model.Plat;
@@ -64,7 +66,6 @@ public class SimulationService {
 
 	public void simulation(int nbJour, int nbFamille) {
 
-		
 		LinkedList<Double> total = new LinkedList();
 
 		int i = 1;
@@ -77,38 +78,41 @@ public class SimulationService {
 			// pour la journee suivante
 			total.add(bilanFinancier);
 			bilanFinancier = 0;
-			
 
 			i++;
 		}
 		System.out.println("-----------------------------------------");
 		System.out.println("Nombre total de visiteurs : " + nbrVisiteurTotal);
 		System.out.println("-----------------------------------------");
-		System.out.println("Bilan financier total : "+total);
+		System.out.println("Bilan financier total : " + total);
 		System.out.println("-----------------------------------------");
 		System.out.println("Voici l'�tat des stocks :");
 		System.out.println("-----------------------------------------");
 		System.out.println("Boissons :");
 		for (Boisson b : boissonRepo.findAll()) {
-			System.out.println("Nombre de "+b.getNom()+" vendus : "+b.getVente()+", pour "+b.getPrix()*b.getVente()+"� en tout. Il en reste : " + b.getStock() + " en stock.");
+			System.out.println("Nombre de " + b.getNom() + " vendus : " + b.getVente() + ", pour "
+					+ b.getPrix() * b.getVente() + "� en tout. Il en reste : " + b.getStock() + " en stock.");
 		}
 		System.out.println("Plats :");
 		for (Plat b : platRepo.findAll()) {
-			System.out.println("Nombre de "+b.getNom()+" vendus : "+b.getVente()+", pour "+b.getPrix()*b.getVente()+"� en tout. Il en reste : " + b.getStock() + " en stock.");
+			System.out.println("Nombre de " + b.getNom() + " vendus : " + b.getVente() + ", pour "
+					+ b.getPrix() * b.getVente() + "� en tout. Il en reste : " + b.getStock() + " en stock.");
 		}
 		System.out.println("Marchandises :");
 		for (Marchandise b : marchandiseRepo.findAll()) {
-			System.out.println("Nombre de "+b.getNom()+" vendus : "+b.getVente()+", pour "+b.getPrix()*b.getVente()+"� en tout. Il en reste : " + b.getStock() + " en stock.");
+			System.out.println("Nombre de " + b.getNom() + " vendus : " + b.getVente() + ", pour "
+					+ b.getPrix() * b.getVente() + "� en tout. Il en reste : " + b.getStock() + " en stock.");
 		}
 		System.out.println("-----------------------------------------");
 		System.out.println("Bilan visites Attractions :");
 		System.out.println("-----------------------------------------");
 		for (Attraction a : attractionRepo.findAll()) {
-			System.out.println(a.getNom()+" a eu "+a.getNbrVisiteur()+" visiteurs");
+			System.out.println(a.getNom() + " a eu " + a.getNbrVisiteur() + " visiteurs");
 		}
 	}
 
 	public void creationFamille(int nbFamille) {
+		System.out.println("je crée des familles");
 		List<Famille> familles = new ArrayList();
 		Random r = new Random();
 		for (int i = 0; i < nbFamille; i++) {
@@ -139,8 +143,14 @@ public class SimulationService {
 			if (alea <= 6) {// 70% de chance de rentrer dans une attraction
 
 				assignementAttraction(f);
-			} else {
-				achatBoutiqueRestauration(f);
+			} else { // 50% de chance d'être dans boutique ou restauration
+				int alea2 = r.nextInt(10);
+				if (alea2 <= 5) {
+					assignementBoutique(f);
+				} else {
+					assignementRestauration(f);
+				}
+
 			}
 		}
 	}
@@ -154,10 +164,16 @@ public class SimulationService {
 		// System.out.println(i+"------"+alea);
 		List<Famille> newQueue = a.getQueue();
 
-		if (f.getTailleMin() > a.getTailleMin() && f.getTailleMax() < a.getTailleMax()) {
+		if (f.getTailleMin() >= a.getTailleMin() && f.getTailleMax() <= a.getTailleMax()) {
+			System.out.println("Durée de trajet : " + distance(f.getPosition(), a.getCoordonnees()) / 2
+					+ ", Durée de séjour avant trajet :" + f.getDureeSejour());
+			f.setDureeSejour(f.getDureeSejour() - distance(f.getPosition(), a.getCoordonnees()) / 2);
+			System.out.println("Durée de trajet : " + distance(f.getPosition(), a.getCoordonnees()) / 2
+					+ ", Durée de séjour après trajet :" + f.getDureeSejour());
+			f.setPosition(a.getCoordonnees());
+
 			newQueue.add(f);
 			a.setQueue(newQueue);
-
 			familleRepo.save(f);
 			attractionRepo.save(a);
 		} else {
@@ -165,48 +181,80 @@ public class SimulationService {
 		}
 	}
 
-	public void achatBoutiqueRestauration(Famille f) {
-
-		// System.out.println("je rentre dans la boutique");
+	public void assignementBoutique(Famille f) {
 		Random r = new Random();
-		int i = 1;
-
-		List<Boisson> listeBoisson = boissonRepo.findAll();
-		List<Plat> listePlat = platRepo.findAll();
+		List<Boutique> listeBoutique = boutiqueRepo.findAll();
+		int alea = r.nextInt(listeBoutique.size());
+		Boutique b = listeBoutique.get(alea);
 		List<Marchandise> listeMarchandise = marchandiseRepo.findAll();
-		// Revoir la fonction pour les achats peut �tre affiner
+		f.setDureeSejour(f.getDureeSejour() - distance(f.getPosition(), b.getCoordonnees()) / 2);
+
+		f.setPosition(b.getCoordonnees());
+		int i = 1;
 		while (i <= f.getNombre()) {
-			for (Boisson b : listeBoisson) {
-				int alea = r.nextInt(10) + 1;
-				if (alea <= 2) {
-					double depensesActuelles = f.getDepenses();
-					f.setDepenses(depensesActuelles + b.getPrix());
-					bilanFinancier += b.getPrix();
-					b.setStock(b.getStock() - 1);
-					b.setVente(b.getVente()+1);
-					boissonRepo.save(b);
-				}
-			}
-			for (Plat p : listePlat) {
-				int alea = r.nextInt(10) + 1;
-				if (alea <= 2) {
-					double depensesActuelles = f.getDepenses();
-					f.setDepenses(depensesActuelles + p.getPrix());
-					bilanFinancier += p.getPrix();
-					p.setStock(p.getStock() - 1);
-					p.setVente(p.getVente()+1);
-					platRepo.save(p);
-				}
-			}
 			for (Marchandise m : listeMarchandise) {
-				int alea = r.nextInt(10) + 1;
-				if (alea <= 2) {
+				int aleaChoix = r.nextInt(10) + 1;
+				if (aleaChoix <= 2) {
 					double depensesActuelles = f.getDepenses();
 					f.setDepenses(depensesActuelles + m.getPrix());
 					bilanFinancier += m.getPrix();
 					m.setStock(m.getStock() - 1);
-					m.setVente(m.getVente()+1);
+					m.setVente(m.getVente() + 1);
 					marchandiseRepo.save(m);
+				}
+
+			}
+			i++;
+		}
+		int dureSejour = f.getDureeSejour();
+		dureSejour -= 1;
+		f.setDureeSejour(dureSejour);
+		// System.out.println(f);
+		familleRepo.save(f);
+		if (f.getDureeSejour() > 0) {
+			System.out.println("je sors de la boutique et je vais dans l'attraction");
+			System.out.println("je suis la famille " + f.getId() + " et j'ai " + f.getDepenses() + " d�penses");
+			assignementAttraction(f);
+		} else {
+
+			familleRepo.save(f);
+		}
+	}
+
+	public void assignementRestauration(Famille f) {
+		Random r = new Random();
+		List<Restauration> listeRestauration = restaurationRepo.findAll();
+		int alea = r.nextInt(listeRestauration.size());
+		Restauration restau = listeRestauration.get(alea);
+		List<Boisson> listeBoisson = restau.getBoisson();
+		List<Plat> listePlat = restau.getPlat();
+
+		f.setDureeSejour(f.getDureeSejour() - distance(f.getPosition(), restau.getCoordonnees()) / 2);
+		f.setPosition(restau.getCoordonnees());
+
+		int i = 1;
+
+		while (i <= f.getNombre()) {
+			for (Boisson b : listeBoisson) {
+				int aleaChoix = r.nextInt(10) + 1;
+				if (aleaChoix <= 2) {
+					double depensesActuelles = f.getDepenses();
+					f.setDepenses(depensesActuelles + b.getPrix());
+					bilanFinancier += b.getPrix();
+					b.setStock(b.getStock() - 1);
+					b.setVente(b.getVente() + 1);
+					boissonRepo.save(b);
+				}
+			}
+			for (Plat p : listePlat) {
+				int aleaChoix = r.nextInt(10) + 1;
+				if (aleaChoix <= 2) {
+					double depensesActuelles = f.getDepenses();
+					f.setDepenses(depensesActuelles + p.getPrix());
+					bilanFinancier += p.getPrix();
+					p.setStock(p.getStock() - 1);
+					p.setVente(p.getVente() + 1);
+					platRepo.save(p);
 				}
 			}
 			i++;
@@ -224,7 +272,6 @@ public class SimulationService {
 
 			familleRepo.save(f);
 		}
-
 	}
 
 	public void avancementJournee() // Continue tant que les familles ne sont pas parties
@@ -313,6 +360,15 @@ public class SimulationService {
 				avancementJournee();
 			}
 		}
+
+	}
+
+	public int distance(Coordonnees coordonnees1, Coordonnees coordonnees2) {
+		int x1 = coordonnees1.getX();
+		int y1 = coordonnees1.getY();
+		int x2 = coordonnees2.getX();
+		int y2 = coordonnees2.getY();
+		return (int) Math.round(Math.sqrt((y2 - y1) ^ 2 + (x2 - x1) ^ 2));
 
 	}
 

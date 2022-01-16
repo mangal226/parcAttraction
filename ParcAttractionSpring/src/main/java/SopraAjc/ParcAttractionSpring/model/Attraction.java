@@ -2,13 +2,16 @@ package SopraAjc.ParcAttractionSpring.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -36,6 +39,9 @@ public class Attraction {
 	@Column(name="nbr_visiteur")
 	private int nbrVisiteur=0;
 	
+	@Embedded
+	private Coordonnees coordonnees;
+	
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Famille> queue=new ArrayList();
 	
@@ -43,23 +49,28 @@ public class Attraction {
 	
 	}
 	
-	public Attraction(Long id, String nom, int duree, int capacite, int tailleMin, int tailleMax, boolean restHandi) {
-		this.id=id;
-		this.nom=nom;
+	
+	public Attraction(Long id, String nom, int duree, int capacite, int tailleMin, int tailleMax, boolean restHandi, Coordonnees coordonnees) {
+		super();
+		this.id = id;
+		this.nom = nom;
 		this.duree = duree;
 		this.capacite = capacite;
 		this.tailleMin = tailleMin;
 		this.tailleMax = tailleMax;
 		this.restHandi = restHandi;
+		this.coordonnees = coordonnees;
 	}
 
-	public Attraction(String nom, int duree, int capacite, int tailleMin, int tailleMax, boolean restHandi) {
-		this.nom=nom;
+
+	public Attraction(String nom, int duree, int capacite, int tailleMin, int tailleMax, boolean restHandi, Coordonnees coordonnees) {
+		this.nom = nom;
 		this.duree = duree;
 		this.capacite = capacite;
 		this.tailleMin = tailleMin;
 		this.tailleMax = tailleMax;
 		this.restHandi = restHandi;
+		this.coordonnees = coordonnees;
 	}
 	
 	public Long getId() {
@@ -138,6 +149,16 @@ public class Attraction {
 	public void setNbrVisiteur(int nbrVisiteur) {
 		this.nbrVisiteur = nbrVisiteur;
 	}
+	
+
+	public Coordonnees getCoordonnees() {
+		return coordonnees;
+	}
+
+
+	public void setCoordonnees(Coordonnees coordonnees) {
+		this.coordonnees = coordonnees;
+	}
 
 	@Override
 	public String toString() {
@@ -145,6 +166,8 @@ public class Attraction {
 				+ tailleMin + ", tailleMax=" + tailleMax + ", restHandi=" + restHandi + ", nbrVisiteur=" + nbrVisiteur
 				+ ", queue=" + queue + "]";
 	}
+
+
 
 	
 	
