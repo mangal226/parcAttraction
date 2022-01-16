@@ -1,0 +1,30 @@
+#bottom {
+  display: block;
+  margin-left: 600px;
+  width: 40%;
+  background-color: rgb(5, 50, 63);
+  position: sticky;
+  top: 11.225%;
+  z-index: 999;
+}
+
+ul.menuGerant {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+a:hover {
+  font-size: 1.5em;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+a.menuGerant0:hover {
+  font-size: 1em;
+  font-style: italic;
+  text-decoration: underline;
+}

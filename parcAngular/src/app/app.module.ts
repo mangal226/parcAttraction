@@ -11,6 +11,10 @@ import { routes } from './routes';
 import { FooterComponent } from './footer/footer.component';
 import { ProposComponent } from './propos/propos.component';
 import { ContactComponent } from './contact/contact.component';
+import { AccueilAdminComponent } from './admin/accueil-admin/accueil-admin.component';
+import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
+import { FichePersoComponent } from './admin/fiche-perso/fiche-perso.component';
+
 
 
 @NgModule({
@@ -23,7 +27,10 @@ import { ContactComponent } from './contact/contact.component';
     BoutiqueComponent,
     FooterComponent,
     ProposComponent,
-    ContactComponent
+    ContactComponent,
+    AccueilAdminComponent,
+    HeaderAdminComponent,
+    FichePersoComponent,
   ],
   imports: [
     BrowserModule,
