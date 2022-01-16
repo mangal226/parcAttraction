@@ -12,4 +12,5 @@ export class ProposComponent implements OnInit {
   ngOnInit(): void {
   }
 
-}
+
+  }
