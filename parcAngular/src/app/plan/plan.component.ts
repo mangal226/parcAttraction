@@ -35,32 +35,35 @@ export class PlanComponent implements OnInit {
     return true;
   }
 
-  // coordonneesUtilisees(){
-  //   this.attractions!.forEach(attraction =>
-  //     this.coordonneesUtilises.push(attraction.getCoordonnees());)
-  //   this.boutiques!.forEach(boutique =>
-  //     this.coordonneesUtilises.push(boutique.getCoordonnees());)
-  //   this.restaurations!.forEach(restauration =>
-  //     this.coordonneesUtilises.push(restauration.getCoordonnees());)
-  // }
+  coordonneesUtilisees(){
+    // this.attractions!.forEach(attraction =>
+    //   this.coordonneesUtilises.push(attraction.getCoordonnees());)
+    for (var i in this.boutiques){
+      this.coordonneesUtilises.push(this.boutiques[i]
+    }
+    this.boutiques!.forEach(boutique =>
+      this.coordonneesUtilises.push(boutique.coordonnees())
+    // this.restaurations!.forEach(restauration =>
+    //   this.coordonneesUtilises.push(restauration.getCoordonnees());)
+  }
 
-  // checkLequel(coordonnes: Coordonnees){
-  //   this.attractions!.forEach((attraction) =>{
-  //     if (attraction.getCoordonnees()==coordonnes) {
-  //       return attraction;
-  //      }
-  //   });
-  //   this.boutiques!.forEach((boutique) =>{
-  //     if (boutique.getCoordonnees()==coordonnes) {
-  //       return boutique;
-  //      }
-  //     });
-  //   this.restaurations!.forEach((restauration) =>{
-  //     if (restauration.getCoordonnees()==coordonnes) {
-  //       return restauration;
-  //      }
-  //     });
+  checkLequel(coordonnes: Coordonnees){
+    // this.attractions!.forEach((attraction) =>{
+    //   if (attraction.getCoordonnees()==coordonnes) {
+    //     return attraction;
+    //    }
+    // });
+    this.boutiques!.forEach((boutique) =>{
+      if (boutique.getCoordonnees()==coordonnes) {
+        return boutique;
+       }
+      });
+    // this.restaurations!.forEach((restauration) =>{
+    //   if (restauration.getCoordonnees()==coordonnes) {
+    //     return restauration;
+    //    }
+    //   });
 
-  //   return false;
-  // }
+    return false;
+  }
 }
