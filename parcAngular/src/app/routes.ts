@@ -17,6 +17,7 @@ import { FichePersoOperateurComponent } from './operateur/fiche-perso-operateur/
 import { AccueilCaissierComponent } from './caissier/accueil-caissier/accueil-caissier.component';
 import { FichePersoCaissierComponent } from './caissier/fiche-perso-caissier/fiche-perso-caissier.component';
 import { FichePaieCaissierComponent } from './caissier/fiche-paie-caissier/fiche-paie-caissier.component';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 
 export const routes: Routes = [
@@ -38,4 +39,5 @@ export const routes: Routes = [
   { path: 'caissier/accueil-caissier', component: AccueilCaissierComponent},
   { path: 'caissier/fiche-paie-caissier', component: FichePaieCaissierComponent},
   { path: 'caissier/fiche-perso-caissier', component: FichePersoCaissierComponent},
+  { path: 'connexion', component: ConnexionComponent},
 ];
