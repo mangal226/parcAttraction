@@ -1,1 +1,32 @@
-<p>simulation works!</p>
+<app-header-admin></app-header-admin>
+<div id="entree">
+  <div class="formulaire-formation">
+      <strong >Données pour la simulation</strong><br><br>
+
+      Nombre de jour : <input type="text" name="nbJour" value="" placeholder="nombre de jours"><br><br>
+      Nombre de familles : <input type="text" name="nbFamille" value="" placeholder="nombre de familles"><br><br>
+        <p>
+          <button class="button" data-modal="modalOne" type="submit">Valider</button>
+        </p>
+        <div id="modalOne" class="modal">
+          <div class="modal-content">
+            <div class="contact-form">
+              <a class="close">&times;</a>
+              <form action="/">
+                <h2>La simulation est en cours veuillez patienter</h2>
+                <img src="../../../assets/img/unknown.png" height="200" width="200" alt="">
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="modif">
+      <button type="button" class="btn btn-success">Modifier les attractions</button><br><br>
+      <button type="button" class="btn btn-info">Modifier les restaurants</button><br><br>
+      <button type="button" class="btn btn-secondary">Modifier les boutiques</button><br><br>
+    </div>
+
+</div>
+<div id="sortie">
+  <canvas id="myChart" ></canvas>
+</div>

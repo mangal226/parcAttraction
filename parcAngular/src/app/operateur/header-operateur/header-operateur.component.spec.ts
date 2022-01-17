@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FichePaieComponent } from './fiche-paie.component';
+import { HeaderOperateurComponent } from './header-operateur.component';
 
-describe('FichePaieComponent', () => {
-  let component: FichePaieComponent;
-  let fixture: ComponentFixture<FichePaieComponent>;
+describe('HeaderOperateurComponent', () => {
+  let component: HeaderOperateurComponent;
+  let fixture: ComponentFixture<HeaderOperateurComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FichePaieComponent ]
+      declarations: [ HeaderOperateurComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FichePaieComponent);
+    fixture = TestBed.createComponent(HeaderOperateurComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

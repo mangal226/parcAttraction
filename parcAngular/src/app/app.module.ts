@@ -14,6 +14,17 @@ import { ContactComponent } from './contact/contact.component';
 import { AccueilAdminComponent } from './admin/accueil-admin/accueil-admin.component';
 import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
 import { FichePersoComponent } from './admin/fiche-perso/fiche-perso.component';
+import { SimulationComponent } from './admin/simulation/simulation.component';
+import { HeaderOperateurComponent } from './operateur/header-operateur/header-operateur.component';
+import { FichePaieOperateurComponent } from './operateur/fiche-paie-operateur/fiche-paie-operateur.component';
+import { FichePersoOperateurComponent } from './operateur/fiche-perso-operateur/fiche-perso-operateur.component';
+import { FichePersoCaissierComponent } from './caissier/fiche-perso-caissier/fiche-perso-caissier.component';
+import { FichePaieCaissierComponent } from './caissier/fiche-paie-caissier/fiche-paie-caissier.component';
+import { AccueilCaissierComponent } from './caissier/accueil-caissier/accueil-caissier.component';
+import { HeaderCaissierComponent } from './caissier/header-caissier/header-caissier.component';
+import { PlanModifComponent } from './admin/plan-modif/plan-modif.component';
+import { FichePaieComponent } from './admin/fiche-paie/fiche-paie.component';
+import { AccueilOperateurComponent } from './operateur/accueil-operateur/accueil-operateur.component';
 
 
 
@@ -31,6 +42,17 @@ import { FichePersoComponent } from './admin/fiche-perso/fiche-perso.component';
     AccueilAdminComponent,
     HeaderAdminComponent,
     FichePersoComponent,
+    SimulationComponent,
+    HeaderOperateurComponent,
+    FichePaieOperateurComponent,
+    FichePersoOperateurComponent,
+    FichePersoCaissierComponent,
+    FichePaieCaissierComponent,
+    AccueilCaissierComponent,
+    HeaderCaissierComponent,
+    PlanModifComponent,
+    FichePaieComponent,
+    AccueilOperateurComponent,
   ],
   imports: [
     BrowserModule,
