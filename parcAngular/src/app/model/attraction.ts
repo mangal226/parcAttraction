@@ -2,6 +2,7 @@ import { Coordonnees } from './coordonnees';
 
 export class Attraction {
   public constructor(
+    private _id?: number,
     private _nom?: string,
     private _duree?: number,
     private _capacite?: number,
@@ -11,6 +12,13 @@ export class Attraction {
     private _nbrVisiteur?: number,
     private _coordonnees?: Coordonnees
   ) {}
+
+  public get id(): number | undefined {
+    return this._id;
+  }
+  public set id(value: number | undefined) {
+    this._id = value;
+  }
 
   public get nom(): string | undefined {
     return this._nom;

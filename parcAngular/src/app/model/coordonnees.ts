@@ -1,18 +1,18 @@
 export class Coordonnees {
-  public constructor(private _abscisse?: number, private _ordonnees?: number) {}
+  public constructor(private _x?: number, private _y?: number) {}
 
-  public get abscisse(): number | undefined {
-    return this._abscisse;
+  public get x(): number | undefined {
+    return this._x;
   }
 
-  public set abscisse(value: number | undefined) {
-    this._abscisse = value;
+  public set x(value: number | undefined) {
+    this._x = value;
   }
-  public get ordonnees(): number | undefined {
-    return this._ordonnees;
+  public get y(): number | undefined {
+    return this._y;
   }
 
-  public set ordonnees(value: number | undefined) {
-    this._ordonnees = value;
+  public set y(value: number | undefined) {
+    this._y = value;
   }
 }

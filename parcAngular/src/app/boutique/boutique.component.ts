@@ -16,7 +16,8 @@ export class BoutiqueComponent implements OnInit {
 
   ngOnInit(): void {
     this.boutiques=this.boutiqueService.getAll();
-  }
+    }
+
 
   delete(id: number){
     this.boutiqueService.delete(id);

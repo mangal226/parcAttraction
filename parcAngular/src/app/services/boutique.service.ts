@@ -13,9 +13,7 @@ export class BoutiqueService {
   constructor(private http: HttpClient, private auth: AuthenticationService) {}
 
   public getAll(): Observable<Boutique[]> {
-    return this.http.get<Boutique[]>(BoutiqueService.URL, {
-      headers: this.auth.headers,
-    });
+    return this.http.get<Boutique[]>(BoutiqueService.URL);
   }
 
 

@@ -23,6 +23,7 @@ public class Boutique {
 	@JsonView(JsonViews.Common.class)
 	private Long id;
 	
+	@JsonView(JsonViews.Common.class)
 	private String nom;
 	
 	@ManyToMany
@@ -30,6 +31,7 @@ public class Boutique {
 	private List <Marchandise> enVente = new ArrayList();
 	
 	@Embedded
+	@JsonView(JsonViews.Common.class)
 	private Coordonnees coordonnees;
 	
 	public Boutique() {
