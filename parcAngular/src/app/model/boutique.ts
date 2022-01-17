@@ -1,2 +1,1 @@
-export class Boutique {
-}
+export class Boutique {}
