@@ -25,6 +25,7 @@ import { HeaderCaissierComponent } from './caissier/header-caissier/header-caiss
 import { PlanModifComponent } from './admin/plan-modif/plan-modif.component';
 import { FichePaieComponent } from './admin/fiche-paie/fiche-paie.component';
 import { AccueilOperateurComponent } from './operateur/accueil-operateur/accueil-operateur.component';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 
 
@@ -53,6 +54,7 @@ import { AccueilOperateurComponent } from './operateur/accueil-operateur/accueil
     PlanModifComponent,
     FichePaieComponent,
     AccueilOperateurComponent,
+    ConnexionComponent,
   ],
   imports: [
     BrowserModule,
