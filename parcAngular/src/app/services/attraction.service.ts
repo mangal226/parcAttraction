@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { AuthenticationService } from './authentification.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Boutique } from '../model/attraction';
+import { Attraction } from '../model/attraction';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AtttractionService {
+export class AttractionService {
 
   private static URL: string = 'http://localhost:8080/lotr/api/attraction';
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
