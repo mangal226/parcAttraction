@@ -32,3 +32,6 @@ HTML:
 -RER dans le parc
 
 -plan d'accès
+
+Angular :
+faire message d'erreur lorsque user existe déjà
