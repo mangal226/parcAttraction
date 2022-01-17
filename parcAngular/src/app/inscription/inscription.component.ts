@@ -49,7 +49,7 @@ export class InscriptionComponent implements OnInit {
     let user = {
       login: this.form.controls['login'].value,
       password: group.controls['password'].value,
-      role: group.controls['roles'].value,
+      roles: [group.controls['roles'].value],
     };
     this.inscriptionService.inscription(user).subscribe((ok) => {
       this.router.navigate(['']);
