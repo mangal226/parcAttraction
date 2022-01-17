@@ -12,6 +12,9 @@ export class Attraction {
     private _nbrVisiteur?: number,
     private _coordonnees?: Coordonnees
   ) {}
+  public get id(): number | undefined {
+    return this._id;
+  }
 
   public get id(): number | undefined {
     return this._id;

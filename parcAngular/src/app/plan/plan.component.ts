@@ -36,11 +36,31 @@ export class PlanComponent implements OnInit {
   }
 
   // coordonneesUtilisees(){
-  //   this.attractions.forEach(attraction =>
-  //     coordonneesUtilises.add(attraction.getCoordonnees());)
-  //   this.boutiques.forEach(boutique =>
-  //     coordonneesUtilises.add(boutique.getCoordonnees());)
-  //   this.restaurations.forEach(restauration =>
-  //     coordonneesUtilises.add(restauration.getCoordonnees());)
+  //   this.attractions!.forEach(attraction =>
+  //     this.coordonneesUtilises.push(attraction.getCoordonnees());)
+  //   this.boutiques!.forEach(boutique =>
+  //     this.coordonneesUtilises.push(boutique.getCoordonnees());)
+  //   this.restaurations!.forEach(restauration =>
+  //     this.coordonneesUtilises.push(restauration.getCoordonnees());)
+  // }
+
+  // checkLequel(coordonnes: Coordonnees){
+  //   this.attractions!.forEach((attraction) =>{
+  //     if (attraction.getCoordonnees()==coordonnes) {
+  //       return attraction;
+  //      }
+  //   });
+  //   this.boutiques!.forEach((boutique) =>{
+  //     if (boutique.getCoordonnees()==coordonnes) {
+  //       return boutique;
+  //      }
+  //     });
+  //   this.restaurations!.forEach((restauration) =>{
+  //     if (restauration.getCoordonnees()==coordonnes) {
+  //       return restauration;
+  //      }
+  //     });
+
+  //   return false;
   // }
 }

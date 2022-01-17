@@ -1,5 +1,6 @@
 <div *ngFor="let a of abscisse; let indexA = index">
   <div *ngFor="let o of coordonnees; let indexO = index">
-    <p ngIf="index"></p>
+    <p ngIf="checkVide(indexA,indexO)" ;else afficherLogo>+</p>
+    <p ng-template #afficherLogo>bonjour</p>
   </div>
 </div>

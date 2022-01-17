@@ -22,7 +22,6 @@ public class Boutique {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(JsonViews.Common.class)
 	private Long id;
-	
 	@JsonView(JsonViews.Common.class)
 	private String nom;
 	
