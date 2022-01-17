@@ -64,10 +64,12 @@ public class SimulationService {
 	static List<Marchandise> marchandise = new ArrayList();
 	static boolean fermeture = true;
 
-	public void simulation(int nbJour, int nbFamille) {
+	public void simulation(int nbJour, int nbFamille, double nbVisiteur) {
 
 		LinkedList<Double> total = new LinkedList();
-
+		LinkedList<Double> nbVisiteurs = new LinkedList();
+		LinkedList<Double> bilanVisiteurs = new LinkedList(); // bilan par visiteur
+		
 		int i = 1;
 		while (i <= nbJour) {
 			creationFamille(nbFamille);
@@ -76,11 +78,25 @@ public class SimulationService {
 			avancementJournee();
 			// ajout du bilanFinancier dans une liste et r�initialisation du bilanFinancier
 			// pour la journee suivante
+			nbVisiteurs.add(nbVisiteur);
 			total.add(bilanFinancier);
+			double bilanVisiteur = bilanFinancier/nbVisiteur;
+			bilanVisiteurs.add(bilanVisiteur);
+			
+			bilanVisiteur=0;
+			nbVisiteur=0;
 			bilanFinancier = 0;
-
 			i++;
 		}
+		
+		Double [] bilanVisiteurs_tableau = bilanVisiteurs.toArray(new Double[bilanVisiteurs.size()]);
+		Double [] total_tableau = total.toArray(new Double[total.size()]);
+		Double [] nbVisiteurs_tableau = nbVisiteurs.toArray(new Double[nbVisiteurs.size()]);
+		
+		System.out.println(bilanVisiteurs_tableau);
+		System.out.println(total_tableau);
+		System.out.println(nbVisiteurs_tableau);
+		
 		System.out.println("-----------------------------------------");
 		System.out.println("Nombre total de visiteurs : " + nbrVisiteurTotal);
 		System.out.println("-----------------------------------------");
@@ -130,6 +146,7 @@ public class SimulationService {
 			familleRepo.save(f);
 
 			nbrVisiteurTotal += nombre;
+			double nbVisiteur = nbrVisiteurTotal;
 		}
 	}
 
