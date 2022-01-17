@@ -1,1 +1,20 @@
-<p>Connexion works!!</p>
+<div *ngIf="error">erreur authentification</div>
+<form (ngSubmit)="validate()" [formGroup]="form">
+  <div>
+    login:<input formControlName="login" />
+    <div *ngIf="form.controls['login'].dirty && form.controls['login'].invalid">
+      login invalide
+    </div>
+  </div>
+  <div>
+    password:<input formControlName="password" />
+    <div
+      *ngIf="
+        form.controls['password'].dirty && form.controls['password'].invalid
+      "
+    >
+      password invalide
+    </div>
+  </div>
+  <div><button type="submit">connection</button></div>
+</form>

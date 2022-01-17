@@ -50,7 +50,7 @@ export class InscriptionComponent implements OnInit {
       password: group.controls['password'].value,
     };
     this.inscriptionService.inscription(user).subscribe((ok) => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['']);
     });
   }
 }
