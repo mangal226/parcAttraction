@@ -64,7 +64,7 @@ public class SimulationService {
 	static List<Marchandise> marchandise = new ArrayList();
 	static boolean fermeture = true;
 
-	public void simulation(int nbJour, int nbFamille, double nbVisiteur) {
+	public void simulation(int nbJour, int nbFamille) {
 
 		LinkedList<Double> total = new LinkedList();
 		LinkedList<Double> nbVisiteurs = new LinkedList();
@@ -78,6 +78,9 @@ public class SimulationService {
 			avancementJournee();
 			// ajout du bilanFinancier dans une liste et r�initialisation du bilanFinancier
 			// pour la journee suivante
+			for (Attraction a : attractionRepo.findAll(){
+				nbVisiteurs+=a.getNbrVisiteur();
+			}
 			nbVisiteurs.add(nbVisiteur);
 			total.add(bilanFinancier);
 			double bilanVisiteur = bilanFinancier/nbVisiteur;
