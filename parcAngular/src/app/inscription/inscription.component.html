@@ -8,6 +8,34 @@
   <div formGroupName="passwordGroup">
     <div>password:<input formControlName="password" /></div>
     <div>confirmation:<input formControlName="confirm" /></div>
+    <div>
+      <input
+        type="radio"
+        id="roleAdmin"
+        name="role"
+        value="ROLE_ADMIN"
+        formControlName="role"
+      />
+      <label for="contactChoice1">Admin</label>
+
+      <input
+        type="radio"
+        id="roleOperateur"
+        name="role"
+        value="ROLE_OPERATEUR"
+        formControlName="role"
+      />
+      <label for="roleOperateur">Opérateur</label>
+
+      <input
+        type="radio"
+        id="roleCaissier"
+        name="role"
+        value="ROLE_CAISSIER"
+        formControlName="role"
+      />
+      <label for="roleCaissier">Caissier</label>
+    </div>
     <div *ngIf="form.controls['passwordGroup'].invalid">invalide</div>
   </div>
   <div><button type="submit" [disabled]="form.invalid">valider</button></div>

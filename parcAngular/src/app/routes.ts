@@ -53,4 +53,5 @@ export const routes: Routes = [
   },
   { path: 'connexion', component: ConnexionComponent },
   { path: 'inscription', component: InscriptionComponent },
+  { path: 'home', redirectTo: '', pathMatch: 'full' },
 ];

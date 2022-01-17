@@ -25,11 +25,13 @@
       </ul>
     </div>
     <div id="compte">
-      <p style="color: orange">Compte :</p>
-      <p>{{}}</p>
-      <a (click)="deconnection()">Deconnection</a>
-      <a routerLink="/connexion" routerLinkActive="active">Connexion</a>
-      <a routerLink="/inscription" routerLinkActive="active">Inscription</a>
+      <p style="color: orange" *ngIf="!!login">Compte connecté : {{ login }}</p>
+      <button *ngIf="!!login" (click)="logoff()" class="btn btn-link">
+        deconnection
+      </button>
+      <a routerLink="/connexion" routerLinkActive="active" *ngIf="login == null"
+        >Connexion</a
+      >
     </div>
   </div>
 </header>

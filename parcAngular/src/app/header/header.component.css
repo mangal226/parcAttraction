@@ -30,6 +30,10 @@ header {
   flex-direction: column;
 }
 
+#deconnection {
+  color: red;
+}
+
 ul.menu {
   list-style-type: none;
   display: flex;

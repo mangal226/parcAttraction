@@ -32,10 +32,29 @@ public class UserRestController {
 	@PostMapping("/inscription")
 	@JsonView(JsonViews.Common.class)
 	public User inscription(@RequestBody User user) {
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		user.setRoles(Arrays.asList(Role.ROLE_ADMIN));
-		user.setEnable(true);
-		return userRepo.save(user);
+		if (user.getRoles().get(0)==Role.ROLE_ADMIN){
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
+			user.setRoles(Arrays.asList(Role.ROLE_ADMIN));
+			user.setEnable(true);
+			return userRepo.save(user);
+		}
+		else if (user.getRoles().get(0)==Role.ROLE_CAISSIER) {
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
+			user.setRoles(Arrays.asList(Role.ROLE_CAISSIER));
+			user.setEnable(true);
+			return userRepo.save(user);
+		}
+		else {
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
+			user.setRoles(Arrays.asList(Role.ROLE_OPERATEUR));
+			user.setEnable(true);
+			return userRepo.save(user);
+		}
+//		user.setPassword(passwordEncoder.encode(user.getPassword()));
+//		user.setRoles(Arrays.asList(Role.ROLE_ADMIN));
+//		user.setRoles(user.getRoles());
+//		user.setEnable(true);
+//		return userRepo.save(user);
 	}
 	
 	@GetMapping("")
