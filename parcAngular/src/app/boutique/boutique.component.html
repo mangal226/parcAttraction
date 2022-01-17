@@ -1,4 +1,4 @@
-<div class="desc">
+<!-- <div class="desc">
   <p id="intro"> Vous voulez rapporter un souvenir inoubliable ? Venez découvrir notre large gamme de produits dérivés à l'image des vos personnages préférés !</p>
 </div>
 <div class="boutique1">
@@ -16,4 +16,11 @@
 <div class="boutique4">
   <input type="button" id="bouton2" onclick="" value=" 🎁🎁 Accéder à cette boutique 🎁🎁 !">
   <input type="text" class="nomBoutique4" value="Venez tenter votre chance !"/>
-</div>
+</div> -->
+
+<table class="table">
+  <tr *ngFor="let boutique of boutiques | async">
+    <td>{{ boutique.id }}</td>
+    <td>{{ boutique.nom }}</td>
+  </tr>
+</table>
