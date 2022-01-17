@@ -19,8 +19,9 @@
 </div> -->
 
 <table class="table">
-  <tr *ngFor="let boutique of boutiques | async">
-    <td>{{ boutique.id }}</td>
-    <td>{{ boutique.nom }}</td>
+  <tr *ngFor="let b of boutiques | async">
+    <td>{{ b.id }}</td>
+    <td>{{ b.id }}</td>
+    <td>{{ b.nom }}</td>
   </tr>
 </table>

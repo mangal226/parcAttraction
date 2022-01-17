@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { Boutique } from '../model/boutique';
+import { Component, OnInit } from '@angular/core';
 import { BoutiqueService } from '../services/boutique.service';
 import { Observable } from 'rxjs';
 
