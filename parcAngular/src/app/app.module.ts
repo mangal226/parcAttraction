@@ -26,8 +26,9 @@ import { PlanModifComponent } from './admin/plan-modif/plan-modif.component';
 import { FichePaieComponent } from './admin/fiche-paie/fiche-paie.component';
 import { AccueilOperateurComponent } from './operateur/accueil-operateur/accueil-operateur.component';
 import { ConnexionComponent } from './connexion/connexion.component';
-
-
+import { InscriptionComponent } from './inscription/inscription.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -55,13 +56,16 @@ import { ConnexionComponent } from './connexion/connexion.component';
     FichePaieComponent,
     AccueilOperateurComponent,
     ConnexionComponent,
+    InscriptionComponent,
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
-
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

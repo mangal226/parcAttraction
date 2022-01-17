@@ -1,0 +1,14 @@
+<form (ngSubmit)="validate()" [formGroup]="form">
+  <div>
+    login:<input formControlName="login" />
+    <div *ngIf="form.controls['login'].dirty && form.controls['login'].invalid">
+      login invalide
+    </div>
+  </div>
+  <div formGroupName="passwordGroup">
+    <div>password:<input formControlName="password" /></div>
+    <div>confirmation:<input formControlName="confirm" /></div>
+    <div *ngIf="form.controls['passwordGroup'].invalid">invalide</div>
+  </div>
+  <div><button type="submit" [disabled]="form.invalid">valider</button></div>
+</form>
