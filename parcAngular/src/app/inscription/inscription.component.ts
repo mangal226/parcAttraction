@@ -27,7 +27,7 @@ export class InscriptionComponent implements OnInit {
         {
           password: new FormControl('', Validators.required),
           confirm: new FormControl(''),
-          role: new FormControl('', Validators.required),
+          roles: new FormControl('', Validators.required),
         },
         this.checkEquals
       ),
@@ -49,7 +49,7 @@ export class InscriptionComponent implements OnInit {
     let user = {
       login: this.form.controls['login'].value,
       password: group.controls['password'].value,
-      role: group.controls['role'].value,
+      role: group.controls['roles'].value,
     };
     this.inscriptionService.inscription(user).subscribe((ok) => {
       this.router.navigate(['']);
