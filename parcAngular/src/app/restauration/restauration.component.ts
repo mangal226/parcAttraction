@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-restauration',
@@ -11,5 +12,13 @@ export class RestaurationComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  onFormSubmit(userForm:NgForm){
+   console.log(userForm);
+
+  }
+resetUserForm(UserForm:NgForm){
+  UserForm.resetForm;
+}
+
 
 }
