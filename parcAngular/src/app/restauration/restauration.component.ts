@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./restauration.component.css']
 })
 export class RestaurationComponent implements OnInit {
+  source : string []=[];
 
   restauration: Observable<Restauration[]> | null=null;
 
@@ -22,6 +23,18 @@ export class RestaurationComponent implements OnInit {
 
   ngOnInit(): void {
     this.restauration=this.restaurationService.getAll();
+    this.source[0]="../assets/img/boutique.jpg";
+    this.source[1]='../assets/img/boutique1.jpg';
+    this.source[2]="../assets/img/boutique2.jpg";
+    this.source[3]="../assets/img/boutique1.jpg";
+    this.source[4]="../assets/img/boutique2.jpg";
+    this.source[5]="../assets/img/boutique.jpg";
+    this.source[6]="../assets/img/boutique.jpg";
+    this.source[7]='../assets/img/boutique1.jpg';
+    this.source[8]="../assets/img/boutique2.jpg";
+    this.source[9]="../assets/img/boutique1.jpg";
+    this.source[10]="../assets/img/boutique2.jpg";
+    this.source[11]="../assets/img/boutique.jpg";
   }
 
   delete(id: number){

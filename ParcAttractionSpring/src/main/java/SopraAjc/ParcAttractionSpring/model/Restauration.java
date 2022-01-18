@@ -23,7 +23,7 @@ public class Restauration {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(JsonViews.Common.class)
 	private Long Id;
-	
+	@JsonView(JsonViews.Common.class)
 	private String nom;
 	
 	@ManyToMany

@@ -22,34 +22,23 @@ public class Boutique {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(JsonViews.Common.class)
 	private Long id;
-	
+	@JsonView(JsonViews.Common.class)
 	private String nom;
 	
-	@JsonView(JsonViews.Common.class)
-	private String description;
-	
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	@ManyToMany
 	@JsonView(JsonViews.BoutiqueMarchandise.class)
 	private List <Marchandise> enVente = new ArrayList();
 	
 	@Embedded
+	@JsonView(JsonViews.Common.class)
 	private Coordonnees coordonnees;
 	
 	public Boutique() {
 		
 	}
 
-	public Boutique(String nom,String description, List<Marchandise> enVente, Coordonnees coordonnees) {
+	public Boutique(String nom,List<Marchandise> enVente, Coordonnees coordonnees) {
 		this.nom=nom;
-		this.description=description;
 		this.enVente = enVente;
 		this.coordonnees = coordonnees;
 	}

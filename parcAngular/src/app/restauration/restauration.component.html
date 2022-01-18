@@ -1,84 +1,18 @@
-
-<!--<div class=container>
-<div class=row>
-<div class="col-md-8">
-
-<form #userForm="ngForm" (NgSubmit)="onFormSubmit(userForm)">
-  <div class="form-group">
-  <label>Ajouter un restaurant</label>
-  <input type ="text";
-  NgModel
-  name="UserName"
-  id="UserName"
-class="form-control">
-
-
-
-
-  </div>
-
-
-</form>
-</div>
-
-</div>
-
-</div>-->
-
-
-<mat-card>
-  <mat-card-header>
-      <mat-card-title>Example Login Form</mat-card-title>
-  </mat-card-header>
-      <mat-card-content>
-       <!-- This is where you need to add your login form -->
-       </mat-card-content>
-       <form>
-        <!-- Form fields -->
-        <mat-form-field>
-          <input  matInput  placeholder="your email" [(ngModel)]="restauration"  type="email" name="email"  required>
-          </mat-form-field>
-          <mat-form-field>
-          <input  matInput  placeholder="your password" [(ngModel)]="restauration"  type="password"  name="password"  required>
-          </mat-form-field>
-
-
-    </form>
-
 <div class="desc">
-  <p id="intro">👨‍🍳‍Chaque jour, nos retaurants sont approvisionnés en denrées fraîches et soigneusement sélectionnées par nos chefs. La satisfaction client est au coeur de nos préoccupations.👨‍🍳</p>
-</div>
-<div class="restau1">
-  <input type="button" id="bouton1" onclick="" value="😋😋 Accéder à ce restaurant 😋😋!">
-  <input type="text" class="nomRestau1" value="Le Chalet, l'Empire du fromage 🤤🤤"/>
-</div>
-<div class="restau2">
-  <input type="button" id="bouton2" onclick="" value="😋😋 Accéder à ce restaurant 😋😋!">
-  <input type="text" class="nomRestau2" value="Mc Fat, le Roi du gras 🤤🤤"/>
-</div>
-<div class="restau3">
-  <input type="button" id="bouton2" onclick="" value="😋😋 Accéder à ce restaurant 😋😋!">
-  <input type="text" class="nomRestau3" value="Venez tenter votre chance !"/>
+  <p id="intro"> Vous voulez rapporter un souvenir inoubliable ? Venez découvrir notre large gamme de produits dérivés à l'image des vos personnages préférés !</p>
 </div>
 
-<table class="test">
-<tr *ngFor="let r of restauration | async" >
-  <td>{{r.id}}</td>
-  <td>{{r.nom}}</td>
-</tr>
-</table>
-
-<!--<form (ngSubmit)="validate()" [formGroup]="form">
-  <div>
-    login:<input formControlName="login" />
-    <div *ngIf="form.controls['login'].dirty && form.controls['login'].invalid">
-      login invalide
+<table class="table" *ngFor="let r of restauration | async; let indexOfElement=index">
+  <div class="row">
+    <div class="col-md-10" style="margin: 0 auto">
+      <div class="card mb-6 box-shadow">
+        <img class="card-img-top"  alt="Thumbnail [60%x155]"  style="display: block; height: 305px;" src={{source[indexOfElement]}}>
+        <div class="card-body">
+          <h3><p class="card-text" style="text-align: center;">🎁🎁{{ r.nom }}🎁🎁</p></h3>
+           <!--<h5><p class="card-text" style="text-align: center;">🎁🎁{{ r.description }}🎁🎁</p></h5>-->
+           <p class="card-text" style="text-align: center;">{{ indexOfElement }}</p>
+        </div>
+      </div>
     </div>
   </div>
-  <div formGroupName="passwordGroup">
-    <div>password:<input formControlName="password" /></div>
-    <div>confirmation:<input formControlName="confirm" /></div>
-    <div *ngIf="form.controls['passwordGroup'].invalid">invalide</div>
-  </div>
-  <div><button type="submit" [disabled]="form.invalid">valider</button></div>
-</form>-->
+</table>

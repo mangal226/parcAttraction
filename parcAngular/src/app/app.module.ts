@@ -36,7 +36,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -65,7 +65,7 @@ import { LoginComponent } from './login/login.component';
     AccueilOperateurComponent,
     ConnexionComponent,
     InscriptionComponent,
-    LoginComponent,
+
     PlanComponent,
   ],
   imports: [

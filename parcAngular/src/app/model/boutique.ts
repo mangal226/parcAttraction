@@ -1,3 +1,4 @@
+import { Coordonnees } from "./coordonnees";
 import { Marchandise } from "./marchandise";
 
 export class Boutique {
@@ -12,10 +13,6 @@ export class Boutique {
     return this._id;
   }
 
-    }
-    public get id(): number | undefined {
-      return this._id;
-    }
 
   public get coordonnees(): Coordonnees | undefined {
     return this._coordonnees;
