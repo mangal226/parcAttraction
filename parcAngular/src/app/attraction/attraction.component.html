@@ -1,81 +1,18 @@
-<div class="haut">
-  <h2 id="title">Les attractions : </h2>
-  <button type="button" data-modal="modalTwo" class="button-17">Ajouter une nouvelle attraction</button>
+<div class="desc">
+  <p id="intro"> Venez découvrir nos incroyables attractions!</p>
 </div>
 
-<div id="content">
-  <div class="album py-5 bg-light">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" height="280" width="280" style="display: block;" src="../assets/img/auto_tamponneuse.jpg" data-holder-rendered="true">
-                  <div class="card-body">
-                    <p class="card-text">Les auto-tamponneuses</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <small class="text-muted">9 mins</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" height="280" width="280" src="../assets/img/grand_huit.jpg" data-holder-rendered="true" style="display: block;">
-                  <div class="card-body">
-                    <p class="card-text">Le grand huit</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <small class="text-muted">9 mins</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" height="280" width="280" src="../assets/img/grande_roue.jpg" data-holder-rendered="true" style="display: block;">
-                  <div class="card-body">
-                    <p class="card-text">La grande roue</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <small class="text-muted">9 mins</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" height="280" width="280" src="../assets/img/pedalo.jpg" data-holder-rendered="true" style="display: block;">
-                  <div class="card-body">
-                    <p class="card-text">Le pédalo</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <small class="text-muted">9 mins</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" height="280" width="280" src="../assets/img/splash.jpg" data-holder-rendered="true" style="display: block;">
-                  <div class="card-body">
-                    <p class="card-text">Le tobogan aquatique</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <small class="text-muted">9 mins</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" height="280" width="280" src="../assets/img/bateau.jpg" data-holder-rendered="true" style="display: block;">
-                  <div class="card-body">
-                    <p class="card-text">Le bateau viking</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <small class="text-muted">9 mins</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
+<table class="table" *ngFor="let a of attraction | async; let indexOfElement=index">
+  <div class="row">
+    <div class="col-md-10" style="margin: 0 auto">
+      <div class="card mb-6 box-shadow">
+        <img class="card-img-top"  alt="Thumbnail [60%x155]"  style="display: block; height: 305px;" src={{source[indexOfElement]}}>
+        <div class="card-body">
+          <h3><p class="card-text" style="text-align: center;">🎁🎁{{ a.nom }}🎁🎁</p></h3>
+           <!--<h5><p class="card-text" style="text-align: center;">🎁🎁{{ r.description }}🎁🎁</p></h5>-->
+           <p class="card-text" style="text-align: center;">{{ indexOfElement }}</p>
         </div>
       </div>
-</div>
+    </div>
+  </div>
+</table>
