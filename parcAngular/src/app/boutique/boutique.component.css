@@ -1,6 +1,6 @@
 .desc {
   color: purple;
-  width: 70%;
+  width: 95%;
   height: 80px;
   margin: 30px 35px;
   font-size: 30px;
@@ -10,86 +10,9 @@
   background-color: white;
 }
 
-.boutique1 {
-  background-image: url("../../assets/img/boutique1.jpg");
-  width: 700px;
-  height: 300px;
-  border: 4.5px solid purple;
-  padding: 00px;
-  margin-left: 150px;
-}
-
-.boutique2 {
-  background-image: url("../../assets/img/boutique2.jpg");
-  width: 700px;
-  height: 300px;
-  border: 4.5px solid purple;
-  padding: 00px;
-  margin: 150px;
-  margin-left: 450px;
-}
-
-.boutique3 {
-  background-image: url("../../assets/img/boutique2.jpg");
-  width: 700px;
-  height: 300px;
-  border: 4.5px solid purple;
-  padding: 00px;
-  margin-left: 60px;
-  margin: 150px;
-}
-
-.boutique4 {
-  background-image: url("../../assets/img/boutique2.jpg");
-  width: 700px;
-  height: 300px;
-  border: 4.5px solid purple;
-  padding: 00px;
-  margin-left: 300px;
+.table {
+  margin: 0 auto;
+  width: 95%;
+  margin-top: 100px;
   margin-bottom: 100px;
-}
-
-input {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  width: 270px;
-  height: 30px;
-  padding: 00px 00px;
-  display: inline-block;
-  font-size: 14px;
-  background-color: blue;
-  color: white;
-}
-
-.nomBoutique1 {
-  height: 30px;
-  padding: 20px 30px;
-  margin: 250px 200px;
-  background-color: orange;
-  color: black;
-}
-
-.nomBoutique2 {
-  height: 30px;
-  padding: 20px 30px;
-  margin: 250px 200px;
-  background-color: orange;
-  color: black;
-}
-
-.nomBoutique3 {
-  height: 30px;
-  padding: 20px 30px;
-  margin: 250px 200px;
-  background-color: orange;
-  color: black;
-}
-
-.nomBoutique4 {
-  height: 30px;
-  padding: 20px 30px;
-  margin: 250px 200px;
-  background-color: orange;
-  color: black;
 }

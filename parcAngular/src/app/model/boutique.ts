@@ -5,6 +5,7 @@ export class Boutique {
   public constructor(
     private _id?: number,
     private _nom?: string,
+    private _description?: string,
     private _coordonnees?: Coordonnees,
     private marchandise?: Marchandise[]
   ) {}
@@ -30,5 +31,13 @@ export class Boutique {
 
   public set nom(value: string | undefined) {
     this._nom = value;
+  }
+
+  public get description(): string | undefined {
+    return this._description;
+  }
+
+  public set description(value: string | undefined) {
+    this._description = value;
   }
 }
