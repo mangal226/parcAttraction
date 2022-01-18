@@ -32,7 +32,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AttractionComponent } from './attraction/attraction.component';
 
-
 @NgModule({
   declarations: [
     AttractionComponent,

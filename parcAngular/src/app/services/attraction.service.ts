@@ -5,17 +5,15 @@ import { Observable } from 'rxjs';
 import { Attraction } from '../model/attraction';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AttractionService {
-
   private static URL: string = 'http://localhost:8080/lotr/api/attraction';
-  constructor(private http: HttpClient, private auth: AuthenticationService) { }
+  constructor(private http: HttpClient, private auth: AuthenticationService) {}
 
   public getAll(): Observable<Attraction[]> {
     return this.http.get<Attraction[]>(AttractionService.URL);
   }
-
 
   public getById(id: number): Observable<Attraction> {
     return this.http.get<Attraction>(AttractionService.URL + '/' + id, {

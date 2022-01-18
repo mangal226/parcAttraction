@@ -4,7 +4,7 @@
       <p>{{ a }} {{ o }}</p>
       <div *ngIf="checkVide(a, o); else pasbon">
         <div>
-          <img src="../assets/img/maisonBleu.png" />
+          <img src="../assets/img/maisonBleu.png" *ngIf="checkBoutique(a, o)" />
         </div>
       </div>
       <ng-template #pasbon>vide</ng-template>

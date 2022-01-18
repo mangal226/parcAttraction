@@ -6,6 +6,7 @@ import { Boutique } from '../model/boutique';
 import { Coordonnees } from '../model/coordonnees';
 import { Restauration } from '../model/restauration';
 import { BoutiqueService } from '../services/boutique.service';
+import { AttractionService } from '../services/attraction.service';
 
 @Component({
   selector: 'app-plan',
@@ -17,18 +18,20 @@ export class PlanComponent implements OnInit {
   ordonnee: number[] = [0, 1, 2, 3, 4, 5];
   coordonnees: Coordonnees = new Coordonnees();
   attractions: Observable<Attraction[]> | null = null;
+  attractionsLocal: Attraction[] = [];
   boutiques: Observable<Boutique[]> | null = null;
+  boutiquesLocal: Boutique[] = [];
   restaurations: Observable<Restauration[]> | null = null;
-  coordonneesUtilises: Coordonnees[] = [];
+  restaurationsLocal: Restauration[] = [];
+  coordonneesUtilisesLocal: Coordonnees[] = [];
 
   constructor(
     private boutiqueService: BoutiqueService,
-    private restaurationService: RestaurationService
+    private restaurationService: RestaurationService,
+    private attractionService: AttractionService
   ) {}
-  // constructor() {}
-  // ngOnInit(): void {}
   ngOnInit(): void {
-    // this.attractions = this.attractionService.getAll();
+    this.attractions.subscribe() = this.attractionService.getAll();
     this.boutiques = this.boutiqueService.getAll();
 
     this.restaurations = this.restaurationService.getAll();
@@ -39,7 +42,7 @@ export class PlanComponent implements OnInit {
     let coordonneesLocal: Coordonnees = new Coordonnees(a, b);
     console.log();
     if (
-      this.coordonneesUtilises.findIndex(
+      this.coordonneesUtilisesLocal.findIndex(
         (choix) =>
           choix.x == coordonneesLocal.x && choix.y == coordonneesLocal.y
       ) == -1
@@ -50,16 +53,19 @@ export class PlanComponent implements OnInit {
   }
 
   coordonneesUtilisees() {
-    // this.attractions!.forEach(attraction =>
-    //   this.coordonneesUtilises.push(attraction.getCoordonnees());)
     this.boutiques!.subscribe((boutique) => {
       for (let index in boutique) {
-        this.coordonneesUtilises.push(boutique[index].coordonnees!);
+        this.coordonneesUtilisesLocal.push(boutique[index].coordonnees!);
       }
     });
     this.restaurations!.subscribe((restau) => {
       for (let index2 in restau) {
-        this.coordonneesUtilises.push(restau[index2].coordonnees!);
+        this.coordonneesUtilisesLocal.push(restau[index2].coordonnees!);
+      }
+    });
+    this.attractions!.subscribe((attraction) => {
+      for (let index3 in attraction) {
+        this.coordonneesUtilisesLocal.push(attraction[index3].coordonnees!);
       }
     });
   }
@@ -67,27 +73,16 @@ export class PlanComponent implements OnInit {
   checkBoutique(a: number, b: number) {
     let coordonneesLocal: Coordonnees = new Coordonnees(a, b);
     this.boutiques!.subscribe((sub) => {
-      for (let index in sub) {
-        if (
-          sub[index].coordonnees!.x == coordonneesLocal.x &&
-          sub[index].coordonnees!.y == coordonneesLocal.y
-        ) {
-          return true;
-        }
-      }
+      console.log(sub);
+      // for (let index in sub) {
+      //   if (
+      //     sub[index].coordonnees!.x == coordonneesLocal.x &&
+      //     sub[index].coordonnees!.y == coordonneesLocal.y
+      //   ) {
+      //     return true;
+      //   }
+      // }
       return false;
     });
   }
-
-  // this.attractions!.forEach((attraction) =>{
-  //   if (attraction.getCoordonnees()==coordonnes) {
-  //     return attraction;
-  //    }
-  // });
-  // this.restaurations!.forEach((restauration) =>{
-  //   if (restauration.getCoordonnees()==coordonnes) {
-  //     return restauration;
-  //    }
-  //   });
-  // }
 }
