@@ -21,7 +21,7 @@ export class AttractionComponent implements OnInit {
 
   ngOnInit(): void {
     this.attraction=this.attractionService.getAll();
-    this.source[0]="../assets/img/auto_tamponeuse.jpg";
+    this.source[0]="../assets/img/auto_tamponneuse.jpg";
     this.source[1]='../assets/img/bateau.jpg';
     this.source[2]="../assets/img/grand_huit.jpg";
     this.source[3]="../assets/img/grande_roue.jpg";
