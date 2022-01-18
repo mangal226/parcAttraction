@@ -70,7 +70,8 @@ import { AttractionComponent } from './attraction/attraction.component';
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],
