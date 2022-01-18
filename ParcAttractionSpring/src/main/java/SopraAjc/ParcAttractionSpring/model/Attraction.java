@@ -38,7 +38,7 @@ public class Attraction {
 	@JsonView(JsonViews.Common.class)
 	@Column(name="nbr_visiteur")
 	private int nbrVisiteur=0;
-	
+	@JsonView(JsonViews.Common.class)
 	@Embedded
 	private Coordonnees coordonnees;
 	

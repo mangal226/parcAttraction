@@ -1,0 +1,7 @@
+#caseTableau {
+  height: 60px;
+  width: 60px;
+  border: solid;
+  border: 5px;
+  border-color: black;
+}

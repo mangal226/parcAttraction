@@ -25,14 +25,14 @@ public class Restauration {
 	private Long Id;
 	@JsonView(JsonViews.Common.class)
 	private String nom;
-	
+	@JsonView(JsonViews.Common.class)
 	@ManyToMany
 	private List<Boisson> boisson = new ArrayList();
-	
+	@JsonView(JsonViews.Common.class)
 	@ManyToMany
 	private  List<Plat> plat = new ArrayList();
 	
-
+	@JsonView(JsonViews.Common.class)
 	@Embedded
 	private Coordonnees coordonnees;
 	
