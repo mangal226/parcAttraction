@@ -1,6 +1,6 @@
 import { RestaurationService } from './../services/restauration.service';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { Attraction } from '../model/attraction';
 import { Boutique } from '../model/boutique';
 import { Coordonnees } from '../model/coordonnees';
@@ -31,20 +31,16 @@ export class PlanComponent implements OnInit {
     private attractionService: AttractionService
   ) {}
   ngOnInit(): void {
-    this.attractionService.getAll().subscribe((result) => {
-      this.attractionsLocal = result;
-    });
-    this.boutiqueService.getAll().subscribe((result) => {
-      this.boutiquesLocal = result;
-    });
-    this.restaurationService.getAll().subscribe((result) => {
-      this.restaurationsLocal = result;
+    forkJoin([
+      this.attractionService.getAll(),
+      this.boutiqueService.getAll(),
+      this.restaurationService.getAll(),
+    ]).subscribe((result) => {
+      this.attractionsLocal = result[0];
+      this.boutiquesLocal = result[1];
+      this.restaurationsLocal = result[2];
       this.coordonneesUtilisees();
     });
-
-    // this.boutiques = this.boutiqueService.getAll();
-    // this.restaurations = this.restaurationService.getAll();
-    // this.attractions=this.attractionService.getAll();
   }
 
   checkVide(a: number, b: number) {
