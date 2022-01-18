@@ -42,7 +42,7 @@ export class Attraction {
   public set capacite(value: number | undefined) {
     this._capacite = value;
   }
-  public get tailleMind(): number | undefined {
+  public get tailleMin(): number | undefined {
     return this._tailleMin;
   }
 
