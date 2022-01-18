@@ -16,7 +16,7 @@ export class Boutique {
     this._id = value;
   }
 
-  public getCoordonnees(): Coordonnees | undefined {
+  public get coordonnees(): Coordonnees | undefined {
     return this._coordonnees;
   }
 
