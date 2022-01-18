@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AccueilComponent } from './accueil/accueil.component';
-import { AttractionComponent } from './attraction/attraction.component';
 import { RestaurationComponent } from './restauration/restauration.component';
 import { BoutiqueComponent } from './boutique/boutique.component';
 import { RouterModule } from '@angular/router';
@@ -31,13 +30,15 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AttractionComponent } from './attraction/attraction.component';
+
 
 @NgModule({
   declarations: [
+    AttractionComponent,
     AppComponent,
     HeaderComponent,
     AccueilComponent,
-    AttractionComponent,
     RestaurationComponent,
     BoutiqueComponent,
     FooterComponent,

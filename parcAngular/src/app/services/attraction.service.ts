@@ -2,25 +2,29 @@ import { Injectable } from '@angular/core';
 import { AuthenticationService } from './authentification.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Boutique } from '../model/attraction';
+import { Attraction } from '../model/attraction';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AtttractionService {
+export class AttractionService {
 
   private static URL: string = 'http://localhost:8080/lotr/api/attraction';
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
 
   public getAll(): Observable<Attraction[]> {
-    return this.http.get<Attraction[]>(AttractionService.URL, {
-      headers: this.auth.headers,
-    });
+    return this.http.get<Attraction[]>(AttractionService.URL);
   }
 
 
   public getById(id: number): Observable<Attraction> {
     return this.http.get<Attraction>(AttractionService.URL + '/' + id, {
+      headers: this.auth.headers,
+    });
+  }
+
+  public getByNom(nom: string): Observable<Attraction> {
+    return this.http.get<Attraction>(AttractionService.URL + '/' + nom, {
       headers: this.auth.headers,
     });
   }
