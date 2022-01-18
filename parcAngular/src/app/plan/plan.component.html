@@ -4,7 +4,18 @@
       <p>{{ a }} {{ o }}</p>
       <div *ngIf="checkVide(a, o); else pasbon">
         <div>
-          <img src="../assets/img/maisonBleu.png" *ngIf="checkBoutique(a, o)" />
+          <img
+            src="../assets/img/maisonBleu.png"
+            *ngIf="checkBoutique(a, o); else checkAttractionHTML"
+          />
+          <ng-template #checkAttractionHTML
+            ><img
+              src="../assets/img/maisonVerte.png"
+              *ngIf="checkAttraction(a, o); else checkRestaurationHTML"
+          /></ng-template>
+          <ng-template #checkRestaurationHTML
+            ><img src="../assets/img/maisonRouge.png"
+          /></ng-template>
         </div>
       </div>
       <ng-template #pasbon>vide</ng-template>
