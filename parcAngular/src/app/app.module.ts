@@ -1,3 +1,4 @@
+import { PlanComponent } from './plan/plan.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
@@ -65,6 +66,7 @@ import { LoginComponent } from './login/login.component';
     ConnexionComponent,
     InscriptionComponent,
     LoginComponent,
+    PlanComponent,
   ],
   imports: [
     BrowserModule,

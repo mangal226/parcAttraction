@@ -1,19 +1,18 @@
 <div class="desc">
   <p id="intro"> Vous voulez rapporter un souvenir inoubliable ? Venez découvrir notre large gamme de produits dérivés à l'image des vos personnages préférés !</p>
 </div>
-<div class="boutique1">
-  <input type="button" id="bouton1" onclick="" value="🎁🎁 Accéder à cette boutique! 🎁🎁">
-  <input type="text" class="nomBoutique1" value="La boutique officielle ! "/>
-</div>
-<div class="boutique2">
-  <input type="button" id="bouton2" onclick="" value=" 🎁🎁 Accéder à cette boutique 🎁🎁 !">
-  <input type="text" class="nomBoutique2" value="Venez tenter votre chance !"/>
-</div>
-<div class="boutique3">
-  <input type="button" id="bouton2" onclick="" value=" 🎁🎁 Accéder à cette boutique 🎁🎁 !">
-  <input type="text" class="nomBoutique3" value="Venez tenter votre chance !"/>
-</div>
-<div class="boutique4">
-  <input type="button" id="bouton2" onclick="" value=" 🎁🎁 Accéder à cette boutique 🎁🎁 !">
-  <input type="text" class="nomBoutique4" value="Venez tenter votre chance !"/>
-</div>
+
+<table class="table" *ngFor="let b of boutiques | async; let indexOfElement=index">
+  <div class="row">
+    <div class="col-md-10" style="margin: 0 auto">
+      <div class="card mb-6 box-shadow">
+        <img class="card-img-top"  alt="Thumbnail [60%x155]"  style="display: block; height: 305px;" src={{source[indexOfElement]}}>
+        <div class="card-body">
+          <h3><p class="card-text" style="text-align: center;">🎁🎁{{ b.nom }}🎁🎁</p></h3>
+          <h5><p class="card-text" style="text-align: center;">🎁🎁{{ b.description }}🎁🎁</p></h5>
+          <!-- <p class="card-text" style="text-align: center;">{{ indexOfElement }}</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</table>
