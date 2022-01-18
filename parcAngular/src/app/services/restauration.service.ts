@@ -14,9 +14,7 @@ export class RestaurationService {
   constructor(private http: HttpClient, private auth: AuthenticationService) {}
 
   public getAll(): Observable<Restauration[]> {
-    return this.http.get<Restauration[]>(RestaurationService.URL, {
-      headers: this.auth.headers,
-    });
+    return this.http.get<Restauration[]>(RestaurationService.URL);
   }
 
 
@@ -26,7 +24,13 @@ export class RestaurationService {
     });
   }
 
-  public update(boutique: Restauration): Observable<Restauration> {
+  public getByNom(nom: string): Observable<Restauration> {
+    return this.http.get<Restauration>(RestaurationService.URL + '/' + nom, {
+      headers: this.auth.headers,
+    });
+  }
+
+  public update(restauration: Restauration): Observable<Restauration> {
     return this.http.put<Restauration>(
       RestaurationService.URL + '/' + restauration.id,
       restauration,

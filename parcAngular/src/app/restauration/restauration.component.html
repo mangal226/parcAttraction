@@ -1,9 +1,9 @@
 
-<div class=container>
+<!--<div class=container>
 <div class=row>
 <div class="col-md-8">
 
-<form #userForm="NgForm" (NgSubmit)="onFormSubmit(userForm)">
+<form #userForm="ngForm" (NgSubmit)="onFormSubmit(userForm)">
   <div class="form-group">
   <label>Ajouter un restaurant</label>
   <input type ="text";
@@ -23,8 +23,27 @@ class="form-control">
 
 </div>
 
-</div>
+</div>-->
 
+
+<mat-card>
+  <mat-card-header>
+      <mat-card-title>Example Login Form</mat-card-title>
+  </mat-card-header>
+      <mat-card-content>
+       <!-- This is where you need to add your login form -->
+       </mat-card-content>
+       <form>
+        <!-- Form fields -->
+        <mat-form-field>
+          <input  matInput  placeholder="your email" [(ngModel)]="restauration"  type="email" name="email"  required>
+          </mat-form-field>
+          <mat-form-field>
+          <input  matInput  placeholder="your password" [(ngModel)]="restauration"  type="password"  name="password"  required>
+          </mat-form-field>
+
+
+    </form>
 
 <div class="desc">
   <p id="intro">👨‍🍳‍Chaque jour, nos retaurants sont approvisionnés en denrées fraîches et soigneusement sélectionnées par nos chefs. La satisfaction client est au coeur de nos préoccupations.👨‍🍳</p>
@@ -42,7 +61,14 @@ class="form-control">
   <input type="text" class="nomRestau3" value="Venez tenter votre chance !"/>
 </div>
 
-<form (ngSubmit)="validate()" [formGroup]="form">
+<table class="test">
+<tr *ngFor="let r of restauration | async" >
+  <td>{{r.id}}</td>
+  <td>{{r.nom}}</td>
+</tr>
+</table>
+
+<!--<form (ngSubmit)="validate()" [formGroup]="form">
   <div>
     login:<input formControlName="login" />
     <div *ngIf="form.controls['login'].dirty && form.controls['login'].invalid">
@@ -55,4 +81,4 @@ class="form-control">
     <div *ngIf="form.controls['passwordGroup'].invalid">invalide</div>
   </div>
   <div><button type="submit" [disabled]="form.invalid">valider</button></div>
-</form>
+</form>-->
