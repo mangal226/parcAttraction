@@ -9,6 +9,7 @@ import org.hibernate.query.criteria.internal.expression.function.SqrtFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import SopraAjc.ParcAttractionSpring.exception.SimulationException;
 import SopraAjc.ParcAttractionSpring.model.Attraction;
 import SopraAjc.ParcAttractionSpring.model.Boisson;
 import SopraAjc.ParcAttractionSpring.model.Boutique;
@@ -18,6 +19,7 @@ import SopraAjc.ParcAttractionSpring.model.Famille;
 import SopraAjc.ParcAttractionSpring.model.Marchandise;
 import SopraAjc.ParcAttractionSpring.model.Plat;
 import SopraAjc.ParcAttractionSpring.model.Restauration;
+import SopraAjc.ParcAttractionSpring.model.Simulation;
 import SopraAjc.ParcAttractionSpring.repository.AttractionRepository;
 import SopraAjc.ParcAttractionSpring.repository.BoissonRepository;
 import SopraAjc.ParcAttractionSpring.repository.BoutiqueRepository;
@@ -26,10 +28,63 @@ import SopraAjc.ParcAttractionSpring.repository.FamilleRepository;
 import SopraAjc.ParcAttractionSpring.repository.MarchandiseRepository;
 import SopraAjc.ParcAttractionSpring.repository.PlatRepository;
 import SopraAjc.ParcAttractionSpring.repository.RestaurationRepository;
+import SopraAjc.ParcAttractionSpring.repository.SimulationRepository;
 
 @Service
 public class SimulationService {
 
+	// Ajout services
+	@Autowired
+	private SimulationRepository simulationRepo;
+
+	public void creationSimulation(Simulation simulation) {
+		if (simulation.getId() == null) {
+			throw new SimulationException();
+		}
+		simulationRepo.save(simulation);
+	}
+	
+//	public void update(Simulation simulation) {
+//		if (simulation.getId() == null) {
+//			throw new SimulationException();
+//		}
+//		Simulation simulationEnBase = getById(simulation.getId());
+//		personnage.setVersion(personnageEnBase.getVersion());
+//		
+//		personnageRepo.save(personnage);
+//	}
+	
+	public void suppression(Long id) {
+		// traitement sur le compagnon
+		// delete
+		// null maitre
+		Simulation simulationEnBase = simulationRepo.findById(id).orElseThrow(SimulationException::new);
+		simulationRepo.delete(simulationEnBase);
+	}
+	
+	public void suppression(Simulation simulation) {
+		// traitement sur le compagnon
+		// delete
+		// null maitre
+		Simulation simulationEnBase = simulationRepo.findById(simulation.getId()).orElseThrow(SimulationException::new);
+		simulationRepo.delete(simulationEnBase);
+	}
+	
+	public List<Simulation> getAll(){
+		return simulationRepo.findAll();
+	}
+	
+	public Simulation getById(Long id) {
+		if (id !=null) {
+			return simulationRepo.findById(id).orElseThrow(SimulationException::new);
+		}
+		throw new SimulationException();
+	}
+	
+		
+	// Simulation du parc
+	
+	
 	static double bilanFinancier = 0;
 
 	static int nbrVisiteurTotal = 0;
@@ -67,8 +122,8 @@ public class SimulationService {
 	public void simulation(int nbJour, int nbFamille) {
 
 		LinkedList<Double> total = new LinkedList();
-		LinkedList<Double> nbVisiteurs = new LinkedList();
-		LinkedList<Double> bilanVisiteurs = new LinkedList(); // bilan par visiteur
+		//LinkedList<Double> nbVisiteurs = new LinkedList();
+		//LinkedList<Double> bilanVisiteurs = new LinkedList(); // bilan par visiteur
 		
 		int i = 1;
 		while (i <= nbJour) {
@@ -78,27 +133,27 @@ public class SimulationService {
 			avancementJournee();
 			// ajout du bilanFinancier dans une liste et r�initialisation du bilanFinancier
 			// pour la journee suivante
-			for (Attraction a : attractionRepo.findAll(){
-				nbVisiteurs+=a.getNbrVisiteur();
-			}
-			nbVisiteurs.add(nbVisiteur);
+			//for (Attraction a : attractionRepo.findAll(){
+			//	nbVisiteurs+=a.getNbrVisiteur();
+			//}
+			//nbVisiteurs.add(nbVisiteur);
 			total.add(bilanFinancier);
-			double bilanVisiteur = bilanFinancier/nbVisiteur;
-			bilanVisiteurs.add(bilanVisiteur);
+			//double bilanVisiteur = bilanFinancier/nbVisiteur;
+			//bilanVisiteurs.add(bilanVisiteur);
 			
-			bilanVisiteur=0;
-			nbVisiteur=0;
+			//bilanVisiteur=0;
+			//nbVisiteur=0;
 			bilanFinancier = 0;
 			i++;
 		}
 		
-		Double [] bilanVisiteurs_tableau = bilanVisiteurs.toArray(new Double[bilanVisiteurs.size()]);
+		//Double [] bilanVisiteurs_tableau = bilanVisiteurs.toArray(new Double[bilanVisiteurs.size()]);
 		Double [] total_tableau = total.toArray(new Double[total.size()]);
-		Double [] nbVisiteurs_tableau = nbVisiteurs.toArray(new Double[nbVisiteurs.size()]);
+		//Double [] nbVisiteurs_tableau = nbVisiteurs.toArray(new Double[nbVisiteurs.size()]);
 		
-		System.out.println(bilanVisiteurs_tableau);
+		//System.out.println(bilanVisiteurs_tableau);
 		System.out.println(total_tableau);
-		System.out.println(nbVisiteurs_tableau);
+		//System.out.println(nbVisiteurs_tableau);
 		
 		System.out.println("-----------------------------------------");
 		System.out.println("Nombre total de visiteurs : " + nbrVisiteurTotal);
