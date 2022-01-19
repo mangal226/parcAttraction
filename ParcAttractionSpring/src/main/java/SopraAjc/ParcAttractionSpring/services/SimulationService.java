@@ -40,7 +40,7 @@ public class SimulationService {
 		@Autowired
 		private SimulationRepository simulationRepo;
 
-		public void creation(Simulation simulation) {
+		public void creationSimulation(Simulation simulation) {
 			if (simulation.getId() == null) {
 				throw new AttractionException();
 			}
@@ -84,8 +84,7 @@ public class SimulationService {
 			throw new SimulationException();
 		}
 		
-		
-		
+			
 		// Simulation du parc
 		
 
@@ -122,16 +121,19 @@ public class SimulationService {
 
 	static List<Marchandise> marchandise = new ArrayList();
 	static boolean fermeture = true;
+	
 
-	public void simulation(int nbJour, int nbFamille) {
+	public Simulation simulation(int nbJour, int nbFamille, Simulation donneesSimulation) {
 
-		LinkedList<Double> total = new LinkedList();
-		LinkedList<Integer> nbVisiteurs = new LinkedList();
-		LinkedList<Double> bilanVisiteurs = new LinkedList(); // bilan par visiteur///modif
-//		double total;
-		int nbVisiteursAttraction=0;
+
+//		//double total;
+
+
+////		double total;
+		int nbVisiteursAttractions=0;
 		//int bilanVisiteur;
-		
+		donneesSimulation.setNbJours(nbJour);
+		donneesSimulation.setNbFamilles(nbFamille);
 		int i = 1;
 		while (i <= nbJour) {
 			creationFamille(nbFamille);
@@ -141,15 +143,29 @@ public class SimulationService {
 			// ajout du bilanFinancier dans une liste et r�initialisation du bilanFinancier
 			// pour la journee suivante
 			for (Attraction a : attractionRepo.findAll()){
-				nbVisiteursAttraction=a.getNbrVisiteur();
+				nbVisiteursAttractions+=a.getNbrVisiteur();
 			}
-			nbVisiteurs.add(nbVisiteursAttraction);
+			LinkedList<Integer> nbVisiteurs = new LinkedList();
+			nbVisiteurs=donneesSimulation.getNbVisiteursJournaliers();
+			nbVisiteurs.add(nbVisiteursAttractions);
+			donneesSimulation.setNbVisiteursJournaliers(nbVisiteurs);
+			
+			LinkedList<Double> total = new LinkedList();
+			total=donneesSimulation.getBilanJournaliers();
 			total.add(bilanFinancier);
-			double bilanVisiteurJour = bilanFinancier/(double)nbVisiteursAttraction;//modif
-			bilanVisiteurs.add(bilanVisiteurJour);
+			donneesSimulation.setBilanJournaliers(total);
+			
+			
+			LinkedList<Double> bilanVisiteur = new LinkedList(); // bilan par visiteur///modif
+			bilanVisiteur=donneesSimulation.getBilanVisiteursJournaliers();
+			
+			double bilanVisiteurJour = bilanFinancier/(double)nbVisiteursAttractions;//modif
+			
+			bilanVisiteur.add(bilanVisiteurJour);
+			donneesSimulation.setBilanVisiteursJournaliers(bilanVisiteur);
 			
 			bilanVisiteurJour=0;
-			nbVisiteursAttraction=0;
+			nbVisiteursAttractions=0;
 			bilanFinancier = 0;
 			i++;
 		}
@@ -157,43 +173,49 @@ public class SimulationService {
 		
 		
 		
-		Double [] bilanVisiteurs_tableau = bilanVisiteurs.toArray(new Double[bilanVisiteurs.size()]);
-		Double [] total_tableau = total.toArray(new Double[total.size()]);
-		Double [] nbVisiteurs_tableau = nbVisiteurs.toArray(new Double[nbVisiteurs.size()]);
+//		Double [] bilanVisiteurs_tableau = bilanVisiteurs.toArray(new Double[bilanVisiteurs.size()]);
+//		Double [] total_tableau = total.toArray(new Double[total.size()]);
+//		Double [] nbVisiteurs_tableau = nbVisiteurs.toArray(new Double[nbVisiteurs.size()]);
 		
-		System.out.println(bilanVisiteurs_tableau);
-		System.out.println(total_tableau);
-		System.out.println(nbVisiteurs_tableau);
+//		System.out.println(bilanVisiteurs_tableau);
+//		System.out.println(total_tableau);
+//		System.out.println(nbVisiteurs_tableau);
 		
-		System.out.println("-----------------------------------------");
-		System.out.println("Nombre total de visiteurs : " + nbrVisiteurTotal);// comprendPas
-		System.out.println("-----------------------------------------");
-		System.out.println("Bilan financier total : " + total);
-		System.out.println("-----------------------------------------");
-		System.out.println("Voici l'�tat des stocks :");
-		System.out.println("-----------------------------------------");
-		System.out.println("Boissons :");
-		for (Boisson b : boissonRepo.findAll()) {
-			System.out.println("Nombre de " + b.getNom() + " vendus : " + b.getVente() + ", pour "
-					+ b.getPrix() * b.getVente() + "� en tout. Il en reste : " + b.getStock() + " en stock.");
-		}
-		System.out.println("Plats :");
-		for (Plat b : platRepo.findAll()) {
-			System.out.println("Nombre de " + b.getNom() + " vendus : " + b.getVente() + ", pour "
-					+ b.getPrix() * b.getVente() + "� en tout. Il en reste : " + b.getStock() + " en stock.");
-		}
-		System.out.println("Marchandises :");
-		for (Marchandise b : marchandiseRepo.findAll()) {
-			System.out.println("Nombre de " + b.getNom() + " vendus : " + b.getVente() + ", pour "
-					+ b.getPrix() * b.getVente() + "� en tout. Il en reste : " + b.getStock() + " en stock.");
-		}
-		System.out.println("-----------------------------------------");
-		System.out.println("Bilan visites Attractions :");
-		System.out.println("-----------------------------------------");
-		for (Attraction a : attractionRepo.findAll()) {
-			System.out.println(a.getNom() + " a eu " + a.getNbrVisiteur() + " visiteurs");
-		}
+//		System.out.println("-----------------------------------------");
+//		System.out.println("Nombre total de visiteurs : " + nbrVisiteurTotal);// comprendPas
+//		//donneesSimulation.setNbVisiteursTotal(nbrVisiteurTotal);
+//		System.out.println("-----------------------------------------");
+//		System.out.println("Bilan financier total : " + total);
+//		//donneesSimulation.setBilanFinancier(total);
+//		System.out.println("-----------------------------------------");
+//		System.out.println("Voici l'�tat des stocks :");
+//		System.out.println("-----------------------------------------");
+//		System.out.println("Boissons :");
+//		for (Boisson b : boissonRepo.findAll()) {
+//			System.out.println("Nombre de " + b.getNom() + " vendus : " + b.getVente() + ", pour "
+//					+ b.getPrix() * b.getVente() + "� en tout. Il en reste : " + b.getStock() + " en stock.");
+//		}
+//		System.out.println("Plats :");
+//		for (Plat b : platRepo.findAll()) {
+//			System.out.println("Nombre de " + b.getNom() + " vendus : " + b.getVente() + ", pour "
+//					+ b.getPrix() * b.getVente() + "� en tout. Il en reste : " + b.getStock() + " en stock.");
+//		}
+//		System.out.println("Marchandises :");
+//		for (Marchandise b : marchandiseRepo.findAll()) {
+//			System.out.println("Nombre de " + b.getNom() + " vendus : " + b.getVente() + ", pour "
+//					+ b.getPrix() * b.getVente() + "� en tout. Il en reste : " + b.getStock() + " en stock.");
+//		}
+//		System.out.println("-----------------------------------------");
+//		System.out.println("Bilan visites Attractions :");
+//		System.out.println("-----------------------------------------");
+//		for (Attraction a : attractionRepo.findAll()) {
+//			System.out.println(a.getNom() + " a eu " + a.getNbrVisiteur() + " visiteurs");
+//		}
+		creationSimulation(donneesSimulation);
+		return donneesSimulation;
 	}
+	
+	
 
 	public void creationFamille(int nbFamille) {
 		System.out.println("je crée des familles");

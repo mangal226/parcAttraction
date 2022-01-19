@@ -25,6 +25,7 @@ import SopraAjc.ParcAttractionSpring.model.Famille;
 import SopraAjc.ParcAttractionSpring.model.Marchandise;
 import SopraAjc.ParcAttractionSpring.model.Plat;
 import SopraAjc.ParcAttractionSpring.model.Restauration;
+import SopraAjc.ParcAttractionSpring.model.Simulation;
 import SopraAjc.ParcAttractionSpring.repository.AttractionRepository;
 import SopraAjc.ParcAttractionSpring.repository.BoissonRepository;
 import SopraAjc.ParcAttractionSpring.repository.BoutiqueRepository;
@@ -157,7 +158,8 @@ class SimulationTest {
 		marchandiseRepo.save(e);
 		marchandiseRepo.save(f);
 		boutiqueRepo.save(b1);
-		simulationService.simulation(1, 3);
+		Simulation simulation=new Simulation();
+		simulationService.simulation(1, 3, simulation);
 //		assertEquals(70, familleRepo.getById(1L).getDureeSejour());
 		assertEquals(0, attractionRepo.getById(29L).getNbrVisiteur());
 //		assertEquals(300, boissonRepo.getById(1L).getStock());

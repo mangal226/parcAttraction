@@ -1,5 +1,7 @@
 package SopraAjc.ParcAttractionSpring.model;
 
+import java.util.LinkedList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,8 +23,19 @@ public class Simulation {
 	private int nbJours;
 	@JsonView(JsonViews.Common.class)
 	private int nbVisiteursTotal;
+	
 	@JsonView(JsonViews.Common.class)
-	private double bilanFinancier;
+	private LinkedList<Double> BilanJournaliers = new LinkedList();
+
+	@JsonView(JsonViews.Common.class)
+	private LinkedList<Integer> nbVisiteursJournaliers = new LinkedList();
+	
+	@JsonView(JsonViews.Common.class)
+	private LinkedList<Double> bilanVisiteursJournaliers = new LinkedList();
+	
+	@JsonView(JsonViews.Common.class)
+	private double bilanTotal;
+	
 	@JsonView(JsonViews.Common.class)
 	private int nbBoissonsVendus;
 	@JsonView(JsonViews.Common.class)
@@ -47,7 +60,7 @@ public class Simulation {
 		this.nbFamilles = nbFamilles;
 		this.nbJours = nbJours;
 		this.nbVisiteursTotal = nbVisiteursTotal;
-		this.bilanFinancier = bilanFinancier;
+		this.bilanTotal = bilanFinancier;
 		this.nbBoissonsVendus = nbBoissonsVendus;
 		this.nbPlatsVendus = nbPlatsVendus;
 		this.nbMarchandisesVendus = nbMarchandisesVendus;
@@ -64,7 +77,7 @@ public class Simulation {
 		this.nbFamilles = nbFamilles;
 		this.nbJours = nbJours;
 		this.nbVisiteursTotal = nbVisiteursTotal;
-		this.bilanFinancier = bilanFinancier;
+		this.bilanTotal = bilanFinancier;
 		this.nbBoissonsVendus = nbBoissonsVendus;
 		this.nbPlatsVendus = nbPlatsVendus;
 		this.nbMarchandisesVendus = nbMarchandisesVendus;
@@ -112,12 +125,12 @@ public class Simulation {
 
 
 	public double getBilanFinancier() {
-		return bilanFinancier;
+		return bilanTotal;
 	}
 
 
 	public void setBilanFinancier(double bilanFinancier) {
-		this.bilanFinancier = bilanFinancier;
+		this.bilanTotal = bilanFinancier;
 	}
 
 
@@ -169,17 +182,48 @@ public class Simulation {
 	public void setNbMarchandisesEnStock(int nbMarchandisesEnStock) {
 		this.nbMarchandisesEnStock = nbMarchandisesEnStock;
 	}
+
+
+	public LinkedList<Double> getBilanJournaliers() {
+		return BilanJournaliers;
+	}
+
+
+	public void setBilanJournaliers(LinkedList<Double> bilanJournaliers) {
+		BilanJournaliers = bilanJournaliers;
+	}
+
+
+	public LinkedList<Integer> getNbVisiteursJournaliers() {
+		return nbVisiteursJournaliers;
+	}
+
+
+	public void setNbVisiteursJournaliers(LinkedList<Integer> nbVisiteursJournaliers) {
+		this.nbVisiteursJournaliers = nbVisiteursJournaliers;
+	}
+
+
+	public LinkedList<Double> getBilanVisiteursJournaliers() {
+		return bilanVisiteursJournaliers;
+	}
+
+
+	public void setBilanVisiteursJournaliers(LinkedList<Double> bilanVisiteursJournaliers) {
+		this.bilanVisiteursJournaliers = bilanVisiteursJournaliers;
+	}
+
+
+	public double getBilanTotal() {
+		return bilanTotal;
+	}
+
+
+	public void setBilanTotal(double bilanTotal) {
+		this.bilanTotal = bilanTotal;
+	}
 	
 
-
-
-	@Override
-	public String toString() {
-		return "Simulation [id=" + id + ", nbFamilles=" + nbFamilles + ", nbJours=" + nbJours + ", nbVisiteursTotal="
-				+ nbVisiteursTotal + ", bilanFinancier=" + bilanFinancier + ", nbBoissonsVendus=" + nbBoissonsVendus
-				+ ", nbPlatsVendus=" + nbPlatsVendus + ", nbMarchandisesVendus=" + nbMarchandisesVendus
-				+ ", nbBoissonsEnStock=" + nbBoissonsEnStock + ", nbMarchandisesEnStock=" + nbMarchandisesEnStock + "]";
-	}
 	
 	
 	
