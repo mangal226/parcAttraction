@@ -22,30 +22,19 @@ public class Simulation {
 	@JsonView(JsonViews.Common.class)
 	private int nbJours;
 	@JsonView(JsonViews.Common.class)
-	private int nbVisiteursTotal;
+	private int nbrVisiteurs;
 	
 	@JsonView(JsonViews.Common.class)
-	private LinkedList<Double> BilanJournaliers = new LinkedList();
-
-	@JsonView(JsonViews.Common.class)
-	private LinkedList<Integer> nbVisiteursJournaliers = new LinkedList();
+	private int nbBoissons;
 	
 	@JsonView(JsonViews.Common.class)
-	private LinkedList<Double> bilanVisiteursJournaliers = new LinkedList();
+	private int nbPlats;
 	
 	@JsonView(JsonViews.Common.class)
-	private double bilanTotal;
+	private int nbMarchandises;
 	
 	@JsonView(JsonViews.Common.class)
-	private int nbBoissonsVendus;
-	@JsonView(JsonViews.Common.class)
-	private int nbPlatsVendus;
-	@JsonView(JsonViews.Common.class)
-	private int nbMarchandisesVendus;
-	@JsonView(JsonViews.Common.class)
-	private int nbBoissonsEnStock;
-	@JsonView(JsonViews.Common.class)
-	private int nbMarchandisesEnStock;
+	private double bilanFinancier;
 	
 	
 	public Simulation() {
@@ -96,6 +85,58 @@ public class Simulation {
 	public void setNbJours(int nbJours) {
 		this.nbJours = nbJours;
 	}
+
+
+	public int getNbrVisiteurs() {
+		return nbrVisiteurs;
+	}
+
+
+	public void setNbrVisiteurs(int nbrVisiteurs) {
+		this.nbrVisiteurs = nbrVisiteurs;
+	}
+
+
+	public int getNbBoissons() {
+		return nbBoissons;
+	}
+
+
+	public void setNbBoissons(int nbBoissons) {
+		this.nbBoissons = nbBoissons;
+	}
+
+
+	public int getNbPlats() {
+		return nbPlats;
+	}
+
+
+	public void setNbPlats(int nbPlats) {
+		this.nbPlats = nbPlats;
+	}
+
+
+	public int getNbMarchandises() {
+		return nbMarchandises;
+	}
+
+
+	public void setNbMarchandises(int nbMarchandises) {
+		this.nbMarchandises = nbMarchandises;
+	}
+
+
+	public double getBilanFinancier() {
+		return bilanFinancier;
+	}
+
+
+	public void setBilanFinancier(double bilanFinancier) {
+		this.bilanFinancier = bilanFinancier;
+	}
+	
+	
 
 
 
