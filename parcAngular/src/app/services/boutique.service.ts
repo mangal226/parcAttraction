@@ -47,9 +47,13 @@ export class BoutiqueService {
 
   public create(boutique: Boutique): Observable<Boutique> {
     console.log(boutique);
-    return this.http.post<Boutique>(BoutiqueService.URL, boutique, {
-      headers: this.auth.headers,
-    });
+    return this.http.post<Boutique>(
+      BoutiqueService.URL,
+      this.formatBoutiqueToJson(boutique),
+      {
+        headers: this.auth.headers,
+      }
+    );
   }
 
   private formatBoutiqueToJson(boutique: Boutique): Object {
@@ -60,11 +64,18 @@ export class BoutiqueService {
         x: boutique.coordonnees!.x,
         y: boutique.coordonnees!.y,
       },
+      enVente: [
+        boutique.enVente![0],
+        boutique.enVente![1],
+        boutique.enVente![2],
+        boutique.enVente![3],
+        boutique.enVente![4],
+      ],
     };
-    if (!!boutique.id) {
-      Object.assign(b, { id: boutique.id });
-    }
-    Object.assign(b, { marchandise: boutique.enVente });
+    // if (!!boutique.id) {
+    //   Object.assign(b, { id: boutique.id });
+    // }
+    // Object.assign(b, { marchandise: boutique.enVente });
     console.log(b);
     return b;
   }
