@@ -25,6 +25,8 @@ public class Attraction {
 	@JsonView(JsonViews.Common.class)
 	private String nom;
 	@JsonView(JsonViews.Common.class)
+	private String description;
+	@JsonView(JsonViews.Common.class)
 	private int duree, capacite;
 	@JsonView(JsonViews.Common.class)
 	@Column(name="taille_min")
@@ -50,10 +52,11 @@ public class Attraction {
 	}
 	
 	
-	public Attraction(Long id, String nom, int duree, int capacite, int tailleMin, int tailleMax, boolean restHandi, Coordonnees coordonnees) {
+	public Attraction(Long id, String nom, String description, int duree, int capacite, int tailleMin, int tailleMax, boolean restHandi, Coordonnees coordonnees) {
 		super();
 		this.id = id;
 		this.nom = nom;
+		this.description=description;
 		this.duree = duree;
 		this.capacite = capacite;
 		this.tailleMin = tailleMin;
@@ -130,6 +133,15 @@ public class Attraction {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public List<Famille> getQueue() {

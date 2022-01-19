@@ -4,15 +4,15 @@
 
 <table class="table" *ngFor="let a of attraction | async; let indexOfElement=index">
   <div class="row">
-    <div class="col-md-10" style="margin: 0 auto">
-      <div class="card mb-6 box-shadow">
+    <div class="col-md-4" style="margin: 0 auto">
+      <div class="card mb-4 box-shadow">
         <img class="card-img-top"  alt="Thumbnail [60%x155]"  style="display: block; height: 305px;" src={{source[indexOfElement]}}>
         <div class="card-body">
-          <h3><p class="card-text" style="text-align: center;">🎁🎁{{ a.nom }}🎁🎁</p></h3>
-          <h3><p class="card-text" style="text-align: center;">🎁🎁{{ a.capacite }}🎁🎁</p></h3>
-          <h3><p class="card-text" style="text-align: center;">🎁🎁{{ a.tailleMin }}🎁🎁</p></h3>
-          <h3><p class="card-text" style="text-align: center;">🎁🎁{{ a.tailleMax }}🎁🎁</p></h3>
-           <!--<h5><p class="card-text" style="text-align: center;">🎁🎁{{ r.description }}🎁🎁</p></h5>-->
+          <h3><p class="card-text" style="text-align: center;">{{ a.nom }}</p></h3>
+          <h3><p class="card-text" style="text-align: center;">{{ a.capacite }}</p></h3>
+          <h3><p class="card-text" style="text-align: center;">{{ a.tailleMin }}</p></h3>
+          <h3><p class="card-text" style="text-align: center;">{{ a.tailleMax }}</p></h3>
+           <h5><p class="card-text" style="text-align: center;">{{ a.description }}</p></h5>
            <p class="card-text" style="text-align: center;">{{ indexOfElement }}</p>
         </div>
       </div>

@@ -27,6 +27,12 @@ export class AttractionService {
     });
   }
 
+  public getByDescription(description: string): Observable<Attraction> {
+    return this.http.get<Attraction>(AttractionService.URL + '/' + description, {
+      headers: this.auth.headers,
+    });
+  }
+
   public update(attraction: Attraction): Observable<Attraction> {
     return this.http.put<Attraction>(
       AttractionService.URL + '/' + attraction.id,
