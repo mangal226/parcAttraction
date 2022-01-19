@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Attraction } from '../model/attraction';
 import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+
 
 
 @Component({
