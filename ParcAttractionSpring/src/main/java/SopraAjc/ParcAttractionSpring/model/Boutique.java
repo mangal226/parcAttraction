@@ -84,6 +84,20 @@ public class Boutique {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
+	@Override
+	public String toString() {
+		return "Boutique [id=" + id + ", nom=" + nom + ", enVente=" + enVente + ", coordonnees=" + coordonnees + "]";
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	
 	public String getDescription() {
 		return description;

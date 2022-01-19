@@ -5,10 +5,9 @@ import { Observable } from 'rxjs';
 import { Boutique } from '../model/boutique';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BoutiqueService {
-
   private static URL: string = 'http://localhost:8080/lotr/api/boutique';
   constructor(private http: HttpClient, private auth: AuthenticationService) {}
 
@@ -17,7 +16,6 @@ export class BoutiqueService {
       headers: this.auth.headers,
     });
   }
-
 
   public getById(id: number): Observable<Boutique> {
     return this.http.get<Boutique>(BoutiqueService.URL + '/' + id, {
@@ -41,37 +39,46 @@ export class BoutiqueService {
     );
   }
 
-  public create(boutique: Boutique): Observable<Boutique> {
-    const o = {
-      nom: boutique.nom,
-    };
-    return this.http.post<Boutique>(BoutiqueService.URL, o, {
-      headers: this.auth.headers,
-    });
-  }
-
   public delete(id: number): Observable<void> {
     return this.http.delete<void>(BoutiqueService.URL + '/' + id, {
       headers: this.auth.headers,
     });
   }
 
-  private formatBoutiqueToJson(boutique: Boutique): Object {
-    const p = {
-      id: boutique.id,
-      nom: boutique.nom,
-      description: boutique.description,
-      coordonnees: boutique.coordonnees,
-      marchandise: boutique.marchandise
-
-
-    };
-    if (!!boutique.id) {
-      Object.assign(p, { id: boutique.id });
-    }
-    return p;
+  public create(boutique: Boutique): Observable<Boutique> {
+    console.log(boutique);
+    return this.http.post<Boutique>(
+      BoutiqueService.URL,
+      this.formatBoutiqueToJson(boutique),
+      {
+        headers: this.auth.headers,
+      }
+    );
   }
 
+  private formatBoutiqueToJson(boutique: Boutique): Object {
+    const b = {
+      nom: boutique.nom,
+      description: boutique.description,
+      coordonnees: {
+        x: boutique.coordonnees!.x,
+        y: boutique.coordonnees!.y,
+      },
+      enVente: [
+        boutique.enVente![0],
+        boutique.enVente![1],
+        boutique.enVente![2],
+        boutique.enVente![3],
+        boutique.enVente![4],
+      ],
+    };
+    // if (!!boutique.id) {
+    //   Object.assign(b, { id: boutique.id });
+    // }
+    // Object.assign(b, { marchandise: boutique.enVente });
+    console.log(b);
+    return b;
+  }
 
   put(boutique: Boutique): Observable<Boutique> {
     return this.http.put<Boutique>(
@@ -82,10 +89,4 @@ export class BoutiqueService {
       }
     );
   }
-
-
-
-
 }
-
-

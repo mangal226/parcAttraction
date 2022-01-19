@@ -7,7 +7,7 @@ export class Boutique {
     private _nom?: string,
     private _description?: string,
     private _coordonnees?: Coordonnees,
-    private _marchandise?: Marchandise[]
+    private _enVente?: Marchandise[]
   ) {}
 
   public get id(): number | undefined {
@@ -42,11 +42,11 @@ export class Boutique {
     this._description = value;
   }
 
-  public get marchandise(): Marchandise[] | undefined {
-    return this._marchandise;
+  public get enVente(): Marchandise[] | undefined {
+    return this._enVente;
   }
 
-  public set marchandise(value: Marchandise[] | undefined) {
-    this._marchandise = value;
+  public set enVente(value: Marchandise[] | undefined) {
+    this._enVente = value;
   }
 }
