@@ -25,6 +25,12 @@ export class BoutiqueService {
     });
   }
 
+  public getByDescription(description: string): Observable<Boutique> {
+    return this.http.get<Boutique>(BoutiqueService.URL + '/' + description, {
+      headers: this.auth.headers,
+    });
+  }
+
   public update(boutique: Boutique): Observable<Boutique> {
     return this.http.put<Boutique>(
       BoutiqueService.URL + '/' + boutique.id,
