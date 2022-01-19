@@ -20,16 +20,26 @@
     <label>coordonnees en y:</label>
     <input [(ngModel)]="boutique.coordonnees!.y" class="form-control" />
   </div>
-  <div class="form-group">
-    <div class="form-check">
-      <label class="form-check-label">vivant</label>
-      <input
-        type="checkbox"
-        [(ngModel)]="boutique.marchandise"
-        class="form-check-input"
-      />
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="form-group">
+      <div
+        class="form-check"
+        *ngFor="let m of marchandisesLocal; let i = index"
+      >
+        <label class="form-check-label"
+          >nom : {{ m.nom }}/prix :{{ m.prix }}€</label
+        >
+        <input
+          formArrayName="marchandisesAEnvoyer"
+          type="checkbox"
+          name="m.nom"
+          [value]="i"
+          class="form-check-input"
+          (change)="onCheckboxChange($event)"
+        />
+      </div>
     </div>
-  </div>
+  </form>
   <button class="btn btn-outline-primary" (click)="save()">enregistrer</button>
   <a routerLink="/admin/plan-modif" class="btn btn-link">annuler</a>
 </div>
