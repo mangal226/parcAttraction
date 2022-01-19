@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Boutique } from '../model/boutique';
+import { Marchandise } from '../model/marchandise';
 import { BoutiqueService } from '../services/boutique.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { BoutiqueService } from '../services/boutique.service';
   styleUrls: ['./update-boutique.component.css'],
 })
 export class UpdateBoutiqueComponent implements OnInit {
+  marchandises: Marchandise[] = [];
   boutique: Boutique = new Boutique();
   constructor(
     private boutiqueService: BoutiqueService,

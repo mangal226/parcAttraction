@@ -21,14 +21,15 @@
     <input [(ngModel)]="boutique.coordonnees!.y" class="form-control" />
   </div>
   <div class="form-group">
-    <label>marchandise:</label>
-    <input [(ngModel)]="boutique.marchandise" class="form-control" />
+    <div class="form-check">
+      <label class="form-check-label">vivant</label>
+      <input
+        type="checkbox"
+        [(ngModel)]="boutique.marchandise"
+        class="form-check-input"
+      />
+    </div>
   </div>
-  <div>
-    <button class="btn btn-outline-primary" (click)="save()">
-      enregistrer
-    </button>
-    <a routerLink="/admin/plan-modif" class="btn btn-link">annuler</a>
-  </div>
+  <button class="btn btn-outline-primary" (click)="save()">enregistrer</button>
+  <a routerLink="/admin/plan-modif" class="btn btn-link">annuler</a>
 </div>
-
