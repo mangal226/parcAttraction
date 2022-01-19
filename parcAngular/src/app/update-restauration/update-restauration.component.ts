@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Restauration } from '../model/restauration';
 import { RestaurationService } from '../services/restauration.service';
+import { Coordonnees } from '../model/coordonnees';
 
 @Component({
   selector: 'app-update-restauration',
@@ -9,12 +10,16 @@ import { RestaurationService } from '../services/restauration.service';
   styleUrls: ['./update-restauration.component.css'],
 })
 export class UpdateRestaurationComponent implements OnInit {
+  coordonnees: Coordonnees = new Coordonnees(0, 0);
   restauration: Restauration = new Restauration();
   constructor(
     private restaurationService: RestaurationService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+
+    this.restauration.coordonnees = this.coordonnees;
+  }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
