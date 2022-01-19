@@ -68,8 +68,11 @@ private formatRestaurationToJson(restauration: Restauration): Object {
     nom: restauration.nom,
     boisson: restauration.boisson,
     plat: restauration.plat,
-    coordonnees: restauration.coordonnees,
-    description: restauration.description,
+    coordonnees: {
+      x: restauration.coordonnees!.x,
+      y: restauration.coordonnees!.y,
+    },
+    description: restauration.description
 
   };
   if (!!restauration.id) {
