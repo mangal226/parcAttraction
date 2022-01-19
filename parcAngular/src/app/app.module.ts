@@ -1,3 +1,4 @@
+import { UpdateAttractionComponent } from './update-attraction/update-attraction.component';
 import { PlanComponent } from './plan/plan.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -59,8 +60,8 @@ import { AttractionComponent } from './attraction/attraction.component';
     AccueilOperateurComponent,
     ConnexionComponent,
     InscriptionComponent,
-
     PlanComponent,
+    UpdateAttractionComponent,
   ],
   imports: [
     BrowserModule,

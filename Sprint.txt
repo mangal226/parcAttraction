@@ -33,5 +33,30 @@ Restauration
 Clement :
 Attraction
 
+Mercredi:
+Quentin :
+Formulaire/plan-modif
+
+Hamed :
+Simulation
+
+Robin :
+Formulaire/plan-modif
+
+Clement :
+Simulation
+
+A faire :
+Formulaire/plan-modif
+Simulation
+
+
+Visuel du site(html/css)
+menu utilisateurs(fiche paie,info perso,à propos,contact)
+
+
+
+Présentation PowerPoint
+
 
 

@@ -37,6 +37,27 @@ export class AttractionService {
     );
   }
 
+  public delete(id: number): Observable<void> {
+    return this.http.delete<void>(AttractionService.URL + '/' + id, {
+      headers: this.auth.headers,
+    });
+  }
+
+  private formatAttractionToJson(attraction: Attraction): Object {
+    const p = {
+      nom: attraction.nom,
+      capacite: attraction.capacite,
+      Coordonnees: attraction.coordonnees,
+      duree: attraction.duree,
+      restHandi: attraction.restHandi,
+      tailleMax: attraction.tailleMax,
+      tailleMin: attraction.tailleMin,
+    };
+    if (!!attraction.id) {
+      Object.assign(p, { id: attraction.id });
+    }
+    return p;
+  }
   public create(attraction: Attraction): Observable<Attraction> {
     const o = {
       nom: attraction.nom,
@@ -46,9 +67,13 @@ export class AttractionService {
     });
   }
 
-  public delete(id: number): Observable<void> {
-    return this.http.delete<void>(AttractionService.URL + '/' + id, {
-      headers: this.auth.headers,
-    });
+  put(attraction: Attraction): Observable<Attraction> {
+    return this.http.put<Attraction>(
+      AttractionService.URL + '/' + attraction.id,
+      this.formatAttractionToJson(attraction),
+      {
+        headers: this.auth.headers,
+      }
+    );
   }
 }

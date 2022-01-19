@@ -19,12 +19,14 @@ import { AccueilCaissierComponent } from './caissier/accueil-caissier/accueil-ca
 import { FichePersoCaissierComponent } from './caissier/fiche-perso-caissier/fiche-perso-caissier.component';
 import { FichePaieCaissierComponent } from './caissier/fiche-paie-caissier/fiche-paie-caissier.component';
 import { ConnexionComponent } from './connexion/connexion.component';
+import { UpdateAttractionComponent } from './update-attraction/update-attraction.component';
 
 export const routes: Routes = [
   { path: '', component: AccueilComponent },
   { path: 'attraction', component: AttractionComponent },
   { path: 'boutique', component: BoutiqueComponent },
   { path: 'restauration', component: RestaurationComponent },
+  { path: 'attraction/update', component: UpdateAttractionComponent },
   { path: 'propos', component: ProposComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'plan', component: PlanComponent },

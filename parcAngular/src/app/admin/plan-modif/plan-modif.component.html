@@ -1,2 +1,37 @@
 <app-header-admin></app-header-admin>
-
+<table>
+  <tr *ngFor="let a of abscisse">
+    <td *ngFor="let o of ordonnee" id="caseTableau">
+      <p>{{ a }} {{ o }}</p>
+      <div *ngIf="checkVide(a, o); else pasbon">
+        <div>
+          <img
+            src="../assets/img/maisonBleu.png"
+            *ngIf="checkBoutique(a, o); else checkAttractionHTML"
+          />
+          <ng-template #checkAttractionHTML
+            ><img
+              src="../assets/img/maisonVerte.png"
+              *ngIf="checkAttraction(a, o); else checkRestaurationHTML"
+          /></ng-template>
+          <ng-template #checkRestaurationHTML
+            ><img src="../assets/img/maisonRouge.png"
+          /></ng-template>
+        </div>
+      </div>
+      <ng-template #pasbon>
+        <p>
+          <a
+            routerLink="/attraction/update"
+            routerLinkActive="active"
+            class="btn btn-link"
+            >ajout Attraction</a
+          >
+        </p>
+        <p>ajout Boutique</p>
+        <p>ajout Restaurant</p>
+      </ng-template>
+    </td>
+  </tr>
+</table>
+<p>plan works !</p>
