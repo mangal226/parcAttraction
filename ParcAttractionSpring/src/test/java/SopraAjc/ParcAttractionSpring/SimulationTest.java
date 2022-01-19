@@ -144,11 +144,11 @@ class SimulationTest {
 		Plat c = new Plat("pate", 15, 300);
 		Plat d = new Plat("pizza", 15, 300);
 		List<Plat> listePlat = Arrays.asList(c, d);
-		Restauration r1 = new Restauration("barbecue",listeBoisson,listePlat,new Coordonnees(10, 5));
+		Restauration r1 = new Restauration("barbecue","zfzfz",listeBoisson,listePlat,new Coordonnees(10, 5));
 		Marchandise e = new Marchandise("peluche", 15, 300);
 		Marchandise f = new Marchandise("poing", 15, 300);
 		List<Marchandise> listeMarchandise = Arrays.asList(e, f);
-		Boutique b1 = new Boutique("Souvenirs",listeMarchandise, new Coordonnees(5, 5));
+		Boutique b1 = new Boutique("Souvenirs","zfzfz",listeMarchandise, new Coordonnees(5, 5));
 		boissonRepo.save(a);
 		boissonRepo.save(b);
 		platRepo.save(c);
@@ -159,7 +159,7 @@ class SimulationTest {
 		boutiqueRepo.save(b1);
 		simulationService.simulation(1, 3);
 //		assertEquals(70, familleRepo.getById(1L).getDureeSejour());
-		assertEquals(0, attractionRepo.getById(29L).getNbrVisiteur());
+		assertEquals(0, attractionRepo.getById(1L).getNbrVisiteur());
 //		assertEquals(300, boissonRepo.getById(1L).getStock());
 	}
 
