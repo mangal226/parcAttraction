@@ -20,12 +20,16 @@ import { FichePersoCaissierComponent } from './caissier/fiche-perso-caissier/fic
 import { FichePaieCaissierComponent } from './caissier/fiche-paie-caissier/fiche-paie-caissier.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { UpdateAttractionComponent } from './update-attraction/update-attraction.component';
+import { UpdateBoutiqueComponent } from './update-boutique/update-boutique.component';
+import { UpdateRestaurationComponent } from './update-restauration/update-restauration.component';
 
 export const routes: Routes = [
   { path: '', component: AccueilComponent },
   { path: 'attraction', component: AttractionComponent },
   { path: 'boutique', component: BoutiqueComponent },
+  { path: 'boutique/update', component: UpdateBoutiqueComponent },
   { path: 'restauration', component: RestaurationComponent },
+  { path: 'restauration/update', component: UpdateRestaurationComponent },
   { path: 'attraction/update', component: UpdateAttractionComponent },
   { path: 'propos', component: ProposComponent },
   { path: 'contact', component: ContactComponent },

@@ -32,10 +32,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AttractionComponent } from './attraction/attraction.component';
+import { UpdateRestaurationComponent } from './update-restauration/update-restauration.component';
+import { UpdateBoutiqueComponent } from './update-boutique/update-boutique.component';
 
 @NgModule({
   declarations: [
-    AttractionComponent,
+    //AttractionComponent,
     AppComponent,
     HeaderComponent,
     AccueilComponent,
@@ -62,6 +64,8 @@ import { AttractionComponent } from './attraction/attraction.component';
     InscriptionComponent,
     PlanComponent,
     UpdateAttractionComponent,
+    UpdateRestaurationComponent,
+    UpdateBoutiqueComponent,
   ],
   imports: [
     BrowserModule,

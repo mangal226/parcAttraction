@@ -9,10 +9,14 @@ export class Boutique {
     private _coordonnees?: Coordonnees,
     private marchandise?: Marchandise[]
   ) {}
+
   public get id(): number | undefined {
     return this._id;
   }
 
+  public set id(value: number | undefined) {
+    this._id = value;
+  }
 
   public get coordonnees(): Coordonnees | undefined {
     return this._coordonnees;

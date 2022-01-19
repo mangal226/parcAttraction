@@ -8,8 +8,19 @@ export class Restauration {
     private _nom?: string,
     private _boisson?: Boisson[],
     private _plat?: Plat[],
-    private _coordonnees?: Coordonnees
+    private _coordonnees?: Coordonnees,
+    private _description?: string
   ) {}
+
+  public get description(): string | undefined {
+    return this._description;
+  }
+
+  public set description(value: string | undefined) {
+    this._description = value;
+  }
+
+
 
   public get id(): number | undefined {
     return this._id;

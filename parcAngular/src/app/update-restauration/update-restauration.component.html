@@ -1,0 +1,33 @@
+<div>
+  <div class="form-group">
+    <label>id:</label>
+    <input [(ngModel)]="restauration.id" readonly class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>nom:</label>
+    <input [(ngModel)]="restauration.nom" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>boisson:</label>
+    <input [(ngModel)]="restauration.boisson" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>plat:</label>
+    <input [(ngModel)]="restauration.plat" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Coordonnees en x:</label>
+    <input [(ngModel)]="restauration.coordonnees!.x" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>coordonnees en y:</label>
+    <input [(ngModel)]="restauration.coordonnees!.y" class="form-control" />
+  </div>
+  <div>
+    <button class="btn btn-outline-primary" (click)="save()">
+      enregistrer
+    </button>
+    <a routerLink="/admin/plan-modif" class="btn btn-link">annuler</a>
+  </div>
+</div>
+
