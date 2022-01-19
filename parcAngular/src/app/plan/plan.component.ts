@@ -72,21 +72,6 @@ export class PlanComponent implements OnInit {
         this.restaurationsLocal[index].coordonnees!
       );
     }
-    // this.boutiques!.subscribe((boutique) => {
-    //   for (let index in boutique) {
-    //     this.coordonneesUtilisesLocal.push(boutique[index].coordonnees!);
-    //   }
-    // });
-    // this.restaurations!.subscribe((restau) => {
-    //   for (let index2 in restau) {
-    //     this.coordonneesUtilisesLocal.push(restau[index2].coordonnees!);
-    //   }
-    // });
-    // this.attractions!.subscribe((attraction) => {
-    //   for (let index3 in attraction) {
-    //     this.coordonneesUtilisesLocal.push(attraction[index3].coordonnees!);
-    //   }
-    // });
   }
 
   checkBoutique(a: number, b: number) {
