@@ -1,3 +1,4 @@
+import { UpdateAttractionComponent } from './update-attraction/update-attraction.component';
 import { PlanComponent } from './plan/plan.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -31,10 +32,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AttractionComponent } from './attraction/attraction.component';
+import { UpdateRestaurationComponent } from './update-restauration/update-restauration.component';
+import { UpdateBoutiqueComponent } from './update-boutique/update-boutique.component';
 
 @NgModule({
   declarations: [
-    AttractionComponent,
+    //AttractionComponent,
     AppComponent,
     HeaderComponent,
     AccueilComponent,
@@ -59,8 +62,10 @@ import { AttractionComponent } from './attraction/attraction.component';
     AccueilOperateurComponent,
     ConnexionComponent,
     InscriptionComponent,
-
     PlanComponent,
+    UpdateAttractionComponent,
+    UpdateRestaurationComponent,
+    UpdateBoutiqueComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +73,8 @@ import { AttractionComponent } from './attraction/attraction.component';
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -30,6 +30,12 @@ export class RestaurationService {
     });
   }
 
+  public getByDescription(description: string): Observable<Restauration> {
+    return this.http.get<Restauration>(RestaurationService.URL + '/' + description, {
+      headers: this.auth.headers,
+    });
+  }
+
   public update(restauration: Restauration): Observable<Restauration> {
     return this.http.put<Restauration>(
       RestaurationService.URL + '/' + restauration.id,
@@ -54,6 +60,36 @@ export class RestaurationService {
       headers: this.auth.headers,
     });
   }
+
+
+private formatRestaurationToJson(restauration: Restauration): Object {
+  const p = {
+    id: restauration.id,
+    nom: restauration.nom,
+    boisson: restauration.boisson,
+    plat: restauration.plat,
+    coordonnees: {
+      x: restauration.coordonnees!.x,
+      y: restauration.coordonnees!.y,
+    },
+    description: restauration.description
+
+  };
+  if (!!restauration.id) {
+    Object.assign(p, { id: restauration.id });
+  }
+  return p;
 }
 
+
+put(restauration: Restauration): Observable<Restauration> {
+  return this.http.put<Restauration>(
+    RestaurationService.URL + '/' + restauration.id,
+    this.formatRestaurationToJson(restauration),
+    {
+      headers: this.auth.headers,
+    }
+  );
+}
+}
 

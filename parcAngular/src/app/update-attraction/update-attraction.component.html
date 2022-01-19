@@ -1,50 +1,43 @@
-<!-- <div id="modalOne" class="modal">
-  <div class="modal-content">
-    <div class="contact-form" *ngFor="let a of attraction | async>
-      <a class="close">&times;</a>
-      <form (ngSubmit)="update()">
-          <legend>&nbsp;Formulaire Update&nbsp;</legend>
-        Charactéristiques de l'attraction à modifier : <br><br>
-
-        <div class="form-group">
-          <label for="ID">Saisir l'ID de l'attraction à modifier : </label>
-        <input name="id" type="number" placeholder="saisir l'ID" class="from-control" formControlName="id" ngModel><br><br>
-        </div>
-
-        <div class="form-group">
-        Nouveau Nom : <input name="nom" required placeholder="saisir le nom" type="nom" class="from-control" formControlName="nom" ngModel><br><br>
-        </div>
-
-        <div class="form-group">
-          <label for="duree">Saisir la durée : </label>
-        <input name="duree" required placeholder="saisir la durée" type="number" class="from-control" formControlName="duree" ngModel><br><br>
-        </div>
-
-        <div class="form-group">
-          <label for="capacite">Saisir la capacité : </label>
-        <input name="capacite" required placeholder="saisir la capacité" type="number" class="from-control" formControlName="capacite" ngModel><br><br>
-        </div>
-
-        <div class="form-group">
-          <label for="tailleMin">Saisir la taille minimale : </label>
-        <input name="tailleMin" required placeholder="saisir la taille min" type="number" class="from-control" formControlName="tailleMin" ngModel><br><br>
-        </div>
-
-        <div class="form-group">
-          <label for="tailleMax">Saisir la taille maximale : </label>
-        <input name="tailleMax" required placeholder="saisir la taille max" type="number" class="from-control" formControlName="tailleMax" ngModel><br><br>
-        </div>
-
-        <div class="form-group">
-          <label for="handi">Y a t'il des restrictions pour les handicapés: </label>
-        <input id="handiFalse" checked name="handicap" value="false" type="radio" class="from-control" formControlName="handi" ngModel><label for="civMr">Non</label>
-        <input id="handiTrue" value="true" name="handicap" type="radio" class="from-control" formControlName="handi" ngModel><label for="civMme">Oui</label>
-        </div>
-        <br><br>
-        <input class ="btn btn-warning" type="button" value="Update l'attraction" id="buttonFormulaire" (ngSubmit)="update()" >
-
-      </form>
-    </div>
+<div>
+  <div class="form-group">
+    <label>id:</label>
+    <input [(ngModel)]="attraction.id" readonly class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>nom:</label>
+    <input [(ngModel)]="attraction.nom" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>capacite:</label>
+    <input [(ngModel)]="attraction.capacite" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>restriction handicapés</label>
+    <select class="form-control" [(ngModel)]="attraction.restHandi">
+      <option [ngValue]="true">Oui</option>
+      <option [ngValue]="false">Non</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>taille maximale autorisée :</label>
+    <input [(ngModel)]="attraction.tailleMax" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>taille minimale autorisée:</label>
+    <input [(ngModel)]="attraction.tailleMin" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>Coordonnees en x:</label>
+    <input [(ngModel)]="attraction.coordonnees!.x" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label>coordonnees en y:</label>
+    <input [(ngModel)]="attraction.coordonnees!.y" class="form-control" />
+  </div>
+  <div>
+    <button class="btn btn-outline-primary" (click)="save()" >
+      enregistrer
+    </button>
+    <a routerLink="/admin/plan-modif" class="btn btn-link">annuler</a>
   </div>
 </div>
-<p>update-attraction works!</p>*/ -->

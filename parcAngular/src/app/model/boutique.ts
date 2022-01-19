@@ -1,5 +1,5 @@
-import { Coordonnees } from "./coordonnees";
-import { Marchandise } from "./marchandise";
+import { Coordonnees } from './coordonnees';
+import { Marchandise } from './marchandise';
 
 export class Boutique {
   public constructor(
@@ -7,12 +7,16 @@ export class Boutique {
     private _nom?: string,
     private _description?: string,
     private _coordonnees?: Coordonnees,
-    private marchandise?: Marchandise[]
+    private _marchandise?: Marchandise[]
   ) {}
+
   public get id(): number | undefined {
     return this._id;
   }
 
+  public set id(value: number | undefined) {
+    this._id = value;
+  }
 
   public get coordonnees(): Coordonnees | undefined {
     return this._coordonnees;
@@ -36,5 +40,13 @@ export class Boutique {
 
   public set description(value: string | undefined) {
     this._description = value;
+  }
+
+  public get marchandise(): Marchandise[] | undefined {
+    return this._marchandise;
+  }
+
+  public set marchandise(value: Marchandise[] | undefined) {
+    this._marchandise = value;
   }
 }

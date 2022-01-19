@@ -5,6 +5,7 @@ export class Attraction {
     private _nom?: string,
     private _id?: number,
     private _duree?: number,
+    private _description?: string,
     private _capacite?: number,
     private _tailleMin?: number,
     private _tailleMax?: number,
@@ -25,6 +26,13 @@ export class Attraction {
     return this._nom;
   }
   public set nom(value: string | undefined) {
+    this._nom = value;
+  }
+
+  public get description(): string | undefined {
+    return this._nom;
+  }
+  public set description(value: string | undefined) {
     this._nom = value;
   }
 
