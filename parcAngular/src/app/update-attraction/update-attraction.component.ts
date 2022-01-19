@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Attraction } from '../model/attraction';
+import { Coordonnees } from '../model/coordonnees';
 import { AttractionService } from '../services/attraction.service';
 
 @Component({
@@ -9,12 +10,15 @@ import { AttractionService } from '../services/attraction.service';
   styleUrls: ['./update-attraction.component.css'],
 })
 export class UpdateAttractionComponent implements OnInit {
+  coordonnees: Coordonnees = new Coordonnees(0, 0);
   attraction: Attraction = new Attraction();
   constructor(
     private attractionService: AttractionService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.attraction.coordonnees = this.coordonnees;
+  }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -35,11 +39,11 @@ export class UpdateAttractionComponent implements OnInit {
   save() {
     if (!!this.attraction.id) {
       this.attractionService.put(this.attraction).subscribe((ok) => {
-        this.router.navigate(['/plan-modif']);
+        this.router.navigate(['/admin/plan-modif']);
       });
     } else {
       this.attractionService.create(this.attraction).subscribe((ok) => {
-        this.router.navigate(['/plan-modif']);
+        this.router.navigate(['/admin/plan-modif']);
       });
     }
   }

@@ -44,27 +44,31 @@ export class AttractionService {
   }
 
   private formatAttractionToJson(attraction: Attraction): Object {
-    const p = {
+    const a = {
       nom: attraction.nom,
-      capacite: attraction.capacite,
-      Coordonnees: attraction.coordonnees,
       duree: attraction.duree,
-      restHandi: attraction.restHandi,
+      capacite: attraction.capacite,
       tailleMax: attraction.tailleMax,
       tailleMin: attraction.tailleMin,
+      restHandi: attraction.restHandi,
+      coordonnees: {
+        x: attraction.coordonnees!.x,
+        y: attraction.coordonnees!.y,
+      },
     };
     if (!!attraction.id) {
-      Object.assign(p, { id: attraction.id });
+      Object.assign(a, { id: attraction.id });
     }
-    return p;
+    return a;
   }
-  public create(attraction: Attraction): Observable<Attraction> {
-    const o = {
-      nom: attraction.nom,
-    };
-    return this.http.post<Attraction>(AttractionService.URL, o, {
-      headers: this.auth.headers,
-    });
+  create(attraction: Attraction): Observable<Attraction> {
+    return this.http.post<Attraction>(
+      AttractionService.URL,
+      this.formatAttractionToJson(attraction),
+      {
+        headers: this.auth.headers,
+      }
+    );
   }
 
   put(attraction: Attraction): Observable<Attraction> {
