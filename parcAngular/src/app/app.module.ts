@@ -34,11 +34,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AttractionComponent } from './attraction/attraction.component';
 import { UpdateRestaurationComponent } from './update-restauration/update-restauration.component';
 import { UpdateBoutiqueComponent } from './update-boutique/update-boutique.component';
+<<<<<<< HEAD
 import { ResultSimuComponent } from './admin/result-simu/result-simu.component';
+=======
+import { PlatComponent } from './plat/plat.component';
+//import { AdminComponent } from './model/admin/admin.component';
+
+>>>>>>> main
 
 @NgModule({
   declarations: [
-    //AttractionComponent,
+    AttractionComponent,
     AppComponent,
     HeaderComponent,
     AccueilComponent,
@@ -67,7 +73,12 @@ import { ResultSimuComponent } from './admin/result-simu/result-simu.component';
     UpdateAttractionComponent,
     UpdateRestaurationComponent,
     UpdateBoutiqueComponent,
+<<<<<<< HEAD
     ResultSimuComponent,
+=======
+    PlatComponent,
+    //AdminComponent,
+>>>>>>> main
   ],
   imports: [
     BrowserModule,

@@ -53,17 +53,25 @@ Simulation
 Jeudi :
 Quentin :
 Pouvoir modifier/supprimer des attractions/boutiques/restauration
+/////////////////
+Présentation PowerPoint
 
 Hamed :
 Simulation
+/////////////////////////
+html/css
 
 Robin :
 Formulaire/plan-modif
 Présentation PowerPoint
+////////////////////////
+html/css
 
 Clement :
 Simulation
 Présentation PowerPoint
+////////////////////////////
+html/css
 
 A faire :
 Pouvoir modifier/supprimer des attractions/boutiques/restauration
@@ -71,7 +79,6 @@ Simulation
 
 Visuel du site(html/css)
 menu utilisateurs(fiche paie,info perso,à propos,contact)
-
 
 
 
