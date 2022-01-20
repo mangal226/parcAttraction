@@ -25,7 +25,7 @@ export class AttractionComponent implements OnInit {
     this.attraction=this.attractionService.getAll();
     this.source[0]="../assets/img/auto_tamponneuse.jpg";
     this.source[1]='../assets/img/bateau.jpg';
-    this.source[2]="../assets/img/grand_huit.jpg";
+    this.source[2]="../assets/img/train.jpg";
     this.source[3]="../assets/img/grande_roue.jpg";
     this.source[4]="../assets/img/pedalo.jpg";
     this.source[5]="../assets/img/splash.jpg";
