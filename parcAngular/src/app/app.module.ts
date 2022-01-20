@@ -37,7 +37,7 @@ import { UpdateBoutiqueComponent } from './update-boutique/update-boutique.compo
 
 @NgModule({
   declarations: [
-    //AttractionComponent,
+    AttractionComponent,
     AppComponent,
     HeaderComponent,
     AccueilComponent,
