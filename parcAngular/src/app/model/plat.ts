@@ -7,6 +7,7 @@ export class Plat {
     private _vente?: number
   ) {}
 
+
   public get nom(): string | undefined {
     return this._nom;
   }
