@@ -5,3 +5,8 @@
   border: 5px;
   border-color: black;
 }
+#tableau {
+  display: flex;
+  justify-content: center;
+  height: 150%;
+}

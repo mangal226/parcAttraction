@@ -1,7 +1,8 @@
-<table style="background-image: url('../assets/img/fond_plan.jpg');">
-  <tr *ngFor="let a of abscisse">
+<div id="tableau">
+<table  style="background-image: url('../assets/img/fond_plan.jpg'); width: 60%;">
+  <tr style="height: 125px;" *ngFor="let a of abscisse">
     <td *ngFor="let o of ordonnee" id="caseTableau">
-      <p>{{ a }} {{ o }}</p>
+      <!-- <p>{{ a }} {{ o }}</p> -->
       <div *ngIf="checkVide(a, o); else pasbon">
         <div>
           <img
@@ -18,8 +19,10 @@
           /></ng-template>
         </div>
       </div>
-      <ng-template #pasbon>vide</ng-template>
+      <ng-template #pasbon></ng-template>
+      <!-- <ng-template #pasbon>vide</ng-template> -->
     </td>
   </tr>
 </table>
-<p>plan works !</p>
+</div>
+
