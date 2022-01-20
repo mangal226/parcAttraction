@@ -40,7 +40,7 @@ import { PlatComponent } from './plat/plat.component';
 
 @NgModule({
   declarations: [
-    AttractionComponent,
+    //AttractionComponent,
     AppComponent,
     HeaderComponent,
     AccueilComponent,
