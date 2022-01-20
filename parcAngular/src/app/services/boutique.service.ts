@@ -40,6 +40,7 @@ export class BoutiqueService {
   }
 
   public delete(id: number): Observable<void> {
+    console.log(id);
     return this.http.delete<void>(BoutiqueService.URL + '/' + id, {
       headers: this.auth.headers,
     });
@@ -72,10 +73,10 @@ export class BoutiqueService {
         boutique.enVente![4],
       ],
     };
-    // if (!!boutique.id) {
-    //   Object.assign(b, { id: boutique.id });
-    // }
-    // Object.assign(b, { marchandise: boutique.enVente });
+    if (!!boutique.id) {
+      Object.assign(b, { id: boutique.id });
+    }
+    Object.assign(b, { marchandise: boutique.enVente });
     console.log(b);
     return b;
   }

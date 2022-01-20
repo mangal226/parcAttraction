@@ -1,10 +1,17 @@
 export class Plat {
   public constructor(
+    private _id?: number,
     private _nom?: string,
     private _prix?: number,
     private _stock?: number,
     private _vente?: number
   ) {}
+  public get id(): number | undefined {
+    return this._id;
+  }
+  public set id(value: number | undefined) {
+    this._id = value;
+  }
 
   public get nom(): string | undefined {
     return this._nom;
