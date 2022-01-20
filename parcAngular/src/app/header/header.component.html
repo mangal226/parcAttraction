@@ -27,11 +27,12 @@
     <div id="compte">
       <p style="color: orange" *ngIf="!!login">Compte connecté : {{ login }}</p>
       <button *ngIf="!!login" (click)="logoff()" class="btn btn-link">
-        deconnection
+        deconnexion
       </button>
       <a routerLink="/connexion" routerLinkActive="active" *ngIf="login == null"
         >Connexion</a
       >
+      <img id="logine"  src="../assets/img/loginImage3.jpg" alt="">
     </div>
   </div>
 </header>
