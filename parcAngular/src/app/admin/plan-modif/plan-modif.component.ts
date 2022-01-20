@@ -99,4 +99,79 @@ export class PlanModifComponent implements OnInit {
     }
     return false;
   }
+  deleteId(id: number) {}
+
+  delete(a: number, b: number) {
+    for (let index in this.boutiquesLocal) {
+      let i: number = 0;
+      if (
+        this.boutiquesLocal[index].coordonnees!.x == a &&
+        this.boutiquesLocal[index].coordonnees!.y == b
+      ) {
+        this.boutiqueService
+          .delete(this.boutiquesLocal[index].id!)
+          .subscribe((ok) => {
+            this.boutiques = this.boutiqueService.getAll();
+          });
+        this.boutiquesLocal.splice(i, 1);
+        this.coordonneesUtilisesLocal.splice(
+          this.coordonneesUtilisesLocal.findIndex(
+            (choix) => choix.x == a && choix.y == b
+          ),
+          1
+        );
+      }
+      i++;
+    }
+    for (let index in this.attractionsLocal) {
+      let i: number = 0;
+      if (
+        this.attractionsLocal[index].coordonnees!.x == a &&
+        this.attractionsLocal[index].coordonnees!.y == b
+      ) {
+        console.log(index);
+        console.log(this.attractionsLocal);
+        console.log(this.attractionsLocal[index].id!);
+        this.attractionService
+          .delete(this.attractionsLocal[index].id!)
+          .subscribe((ok) => {
+            this.attractions = this.attractionService.getAll();
+          });
+        this.attractionsLocal.splice(i, 1);
+        this.coordonneesUtilisesLocal.splice(
+          this.coordonneesUtilisesLocal.findIndex(
+            (choix) => choix.x == a && choix.y == b
+          ),
+          1
+        );
+      }
+      i++;
+    }
+    for (let index in this.restaurationsLocal) {
+      let i: number = 0;
+      if (
+        this.restaurationsLocal[index].coordonnees!.x == a &&
+        this.restaurationsLocal[index].coordonnees!.y == b
+      ) {
+        console.log(index);
+        console.log(this.restaurationsLocal);
+        console.log(this.restaurationsLocal[index]);
+        console.log(this.restaurationsLocal[index].nom);
+        console.log(this.restaurationsLocal[index].id);
+        this.restaurationService
+          .delete(this.restaurationsLocal[index].id!)
+          .subscribe((ok) => {
+            this.restaurations = this.restaurationService.getAll();
+          });
+        this.restaurationsLocal.splice(i, 1);
+        this.coordonneesUtilisesLocal.splice(
+          this.coordonneesUtilisesLocal.findIndex(
+            (choix) => choix.x == a && choix.y == b
+          ),
+          1
+        );
+      }
+      i++;
+    }
+  }
 }

@@ -16,7 +16,7 @@ public class RestaurationService {
 	private RestaurationRepository restoRepo;
 	
 	public void creationOuModification(Restauration restauration) {
-		if (restauration.getId() == null) {
+		if (restauration.getNom() == null) {
 			throw new RestaurationException();
 		}
 		restoRepo.save(restauration);

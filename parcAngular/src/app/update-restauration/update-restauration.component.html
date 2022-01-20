@@ -8,13 +8,43 @@
     <input [(ngModel)]="restauration.nom" class="form-control" />
   </div>
   <div class="form-group">
-    <label>boisson:</label>
-    <input [(ngModel)]="restauration.boisson" class="form-control" />
+    <label>description:</label>
+    <input [(ngModel)]="restauration.description" class="form-control" />
   </div>
-  <div class="form-group">
-    <label>plat:</label>
-    <input [(ngModel)]="restauration.plat" class="form-control" />
-  </div>
+  <form [formGroup]="form">
+    <div class="form-group">
+      <div class="form-check" *ngFor="let p of platLocal; let i = index">
+        <label class="form-check-label"
+          >nom : {{ p.nom }}/prix :{{ p.prix }}€</label
+        >
+        <input
+          formArrayName="platAEnvoyer"
+          type="checkbox"
+          name="p.nom"
+          [value]="i"
+          class="form-check-input"
+          (change)="onCheckboxChangePlat($event)"
+        />
+      </div>
+    </div>
+  </form>
+  <form [formGroup]="form">
+    <div class="form-group">
+      <div class="form-check" *ngFor="let b of boissonLocal; let i = index">
+        <label class="form-check-label"
+          >nom : {{ b.nom }}/prix :{{ b.prix }}€</label
+        >
+        <input
+          formArrayName="boissonAEnvoyer"
+          type="checkbox"
+          name="b.nom"
+          [value]="i"
+          class="form-check-input"
+          (change)="onCheckboxChangeBoisson($event)"
+        />
+      </div>
+    </div>
+  </form>
   <div class="form-group">
     <label>Coordonnees en x:</label>
     <input [(ngModel)]="restauration.coordonnees!.x" class="form-control" />
@@ -30,4 +60,3 @@
     <a routerLink="/admin/plan-modif" class="btn btn-link">annuler</a>
   </div>
 </div>
-
