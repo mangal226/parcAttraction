@@ -25,8 +25,8 @@ export class RestaurationComponent implements OnInit {
     this.restauration=this.restaurationService.getAll();
     this.source[0]="../assets/img/le-chalet.jpg";
     this.source[1]='../assets/img/mcfat.png';
-    this.source[2]="../assets/img/boutique2.jpg";
-    this.source[3]="../assets/img/boutique1.jpg";
+    this.source[2]="../assets/img/interieur.jpg";
+    this.source[3]="../assets/img/western.jpg";
     this.source[4]="../assets/img/boutique2.jpg";
     this.source[5]="../assets/img/boutique.jpg";
     this.source[6]="../assets/img/boutique.jpg";
