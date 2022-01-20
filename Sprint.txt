@@ -33,6 +33,9 @@ Restauration
 Clement :
 Attraction
 
+
+
+
 Mercredi:
 Quentin :
 Formulaire/plan-modif
@@ -46,17 +49,29 @@ Formulaire/plan-modif
 Clement :
 Simulation
 
-A faire :
-Formulaire/plan-modif
+
+Jeudi :
+Quentin :
+Pouvoir modifier/supprimer des attractions/boutiques/restauration
+
+Hamed :
 Simulation
 
+Robin :
+Formulaire/plan-modif
+Présentation PowerPoint
+
+Clement :
+Simulation
+Présentation PowerPoint
+
+A faire :
+Pouvoir modifier/supprimer des attractions/boutiques/restauration
+Simulation
 
 Visuel du site(html/css)
 menu utilisateurs(fiche paie,info perso,à propos,contact)
 
-
-
-Présentation PowerPoint
 
 
 

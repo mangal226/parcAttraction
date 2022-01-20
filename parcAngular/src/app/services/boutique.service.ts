@@ -40,6 +40,7 @@ export class BoutiqueService {
   }
 
   public delete(id: number): Observable<void> {
+    console.log(id);
     return this.http.delete<void>(BoutiqueService.URL + '/' + id, {
       headers: this.auth.headers,
     });
