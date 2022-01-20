@@ -1,42 +1,131 @@
-<form (ngSubmit)="validate()" [formGroup]="form">
-  <div>
-    login:<input formControlName="login" />
-    <div *ngIf="form.controls['login'].dirty && form.controls['login'].invalid">
-      login invalide
-    </div>
-  </div>
-  <div formGroupName="passwordGroup">
-    <div>password:<input formControlName="password" type="password"/></div>
-    <div>confirmation:<input formControlName="confirm" type="password"/></div>
+
+<div class="divPrinci">
+  <form (ngSubmit)="validate()" [formGroup]="form">
     <div>
-      <input
-        type="radio"
-        id="roleAdmin"
-        name="roles"
-        value="ROLE_ADMIN"
-        formControlName="roles"
-      />
-      <label for="roleAdmin">Admin</label>
-
-      <input
-        type="radio"
-        id="roleOperateur"
-        name="roles"
-        value="ROLE_OPERATEUR"
-        formControlName="roles"
-      />
-      <label for="roleOperateur">Opérateur</label>
-
-      <input
-        type="radio"
-        id="roleCaissier"
-        name="roles"
-        value="ROLE_CAISSIER"
-        formControlName="roles"
-      />
-      <label for="roleCaissier">Caissier</label>
+      login:<input formControlName="login" />
+      <div *ngIf="form.controls['login'].dirty && form.controls['login'].invalid">
+        login invalide
+      </div>
+      <br>
+      <br>
     </div>
-    <div *ngIf="form.controls['passwordGroup'].invalid">invalide</div>
-  </div>
-  <div><button type="submit" [disabled]="form.invalid">valider</button></div>
-</form>
+    <div formGroupName="passwordGroup">
+      <div>password:<input formControlName="password" type="password"/></div><br><br>
+      <div>confirmation:<input formControlName="confirm" type="password"/></div><br><br>
+      <div>
+        <input
+          type="radio"
+          id="roleAdmin"
+          name="roles"
+          value="ROLE_ADMIN"
+          formControlName="roles"
+        />
+        <label for="roleAdmin">Admin</label>
+
+        <input
+          type="radio"
+          id="roleOperateur"
+          name="roles"
+          value="ROLE_OPERATEUR"
+          formControlName="roles"
+        />
+        <label for="roleOperateur">Opérateur</label>
+
+        <input
+          type="radio"
+          id="roleCaissier"
+          name="roles"
+          value="ROLE_CAISSIER"
+          formControlName="roles"
+        />
+        <label for="roleCaissier">Caissier</label>
+      </div>
+      <div *ngIf="form.controls['passwordGroup'].invalid">invalide</div>
+    </div>
+    <div><button type="submit" [disabled]="form.invalid">valider</button></div>
+  </form>
+</div>
+
+
+<!-- Creation compte-->
+
+<!-- <form (ngSubmit)="validate()" [formGroup]="form">
+  <table>
+    <h2>
+      Creation de compte
+    </h2>
+    <br>
+    <br>
+    <br>
+    <tr>
+      <td>
+        <label for="">Entrer un login:</label>
+      </td>
+      <td>
+        <input formControlName="login" />
+      </td>
+    </tr>
+    <div formGroupName="passwordGroup">
+      <tr *ngIf="form.controls['login'].dirty && form.controls['login'].invalid">
+          login invalide
+      </tr>
+      <tr>
+        <td>
+            <label for="">Entrer un mot de passe</label>
+        </td>
+        <td>
+          <input formControlName="password" type="password"/>
+        </td>
+      </tr>
+      <br>
+      <tr>
+        <td>
+          <label for="">Confirmer le mot de passe</label>
+        </td>
+        <td>
+          <input formControlName="confirm" type="password"/>
+        </td>
+      </tr>
+      <br>
+      <tr>
+        <td>
+          <input
+          type="radio"
+          id="roleAdmin"
+          name="roles"
+          value="ROLE_ADMIN"
+          formControlName="roles"
+        /> <label for="roleAdmin">Admin</label>
+        </td>
+        <td>
+          <input
+          type="radio"
+          id="roleOperateur"
+          name="roles"
+          value="ROLE_OPERATEUR"
+          formControlName="roles"
+          />
+          <label for="roleOperateur">Opérateur</label>
+        </td>
+        <td>
+          <input
+          type="radio"
+          id="roleCaissier"
+          name="roles"
+          value="ROLE_CAISSIER"
+          formControlName="roles"
+          />
+          <label for="roleCaissier">Caissier</label>
+        </td>
+      </tr>
+      <tr>
+        <div *ngIf="form.controls['passwordGroup'].invalid">invalide</div>
+      </tr>
+    </div>
+    <br>
+    <tr>
+      <button type="submit" [disabled]="form.invalid">valider</button>
+    </tr>
+  </table>
+  </form> -->
+

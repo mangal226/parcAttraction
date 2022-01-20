@@ -1,9 +1,10 @@
 <app-header-admin></app-header-admin>
+<h2>Test</h2>
 <div id="tableau">
-<table style="background-image: url('../assets/img/fond_plan.jpg');">
+  <table style="background-image: url('../assets/img/fond_plan.jpg');">
   <tr *ngFor="let a of abscisse">
     <td *ngFor="let o of ordonnee" id="caseTableau">
-      <!-- <p>{{ a }} {{ o }}</p> -->
+      <p>{{ a }} {{ o }}</p>
       <div *ngIf="checkVide(a, o); else pasbon">
         <div>
           <img
@@ -37,16 +38,15 @@
 
         <p>
           <a
-
             routerLink="/boutique/update"
             routerLinkActive="active"
             class="btn btn-link"
             >ajout Boutique</a
           >
         </p>
+
         <p>
           <a
-            id="button-18"
             routerLink="/restauration/update"
             routerLinkActive="active"
             class="btn btn-link"
@@ -58,7 +58,6 @@
   </tr>
 </table>
 </div>
-
 <table class="table">
   Liste des Restaurants :
   <thead>

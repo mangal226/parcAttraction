@@ -1,4 +1,4 @@
-<div *ngIf="error">erreur authentification</div>
+<!-- <div *ngIf="error">erreur authentification</div>
 <form (ngSubmit)="validate()" [formGroup]="form">
   <div>
     login:<input formControlName="login" />
@@ -20,4 +20,55 @@
   <a routerLink="/inscription" routerLinkActive="active"
     >Je n'ai pas de compte</a
   >
+</form> -->
+
+
+
+<form (ngSubmit)="validate()" [formGroup]="form">
+<table>
+  <h2>
+    Connexion
+  </h2>
+  <br>
+  <br>
+  <tr>
+    <td>
+      <label for="">login:</label>
+    </td>
+    <td>
+      <input formControlName="login" />
+    </td>
+  </tr>
+  <tr>
+  <tr *ngIf="form.controls['login'].dirty && form.controls['login'].invalid">
+      login invalide
+  </tr>
+  <br>
+  <br>
+  <tr>
+    <td>
+      <label for="">password:</label>
+    </td>
+    <td>
+      <input formControlName="password" type="password"/>
+    </td>
+  </tr>
+  <tr *ngIf="   form.controls['password'].dirty && form.controls['password'].invalid
+      "
+    >
+      password invalide
+  </tr>
+  <tr *ngIf="error">
+    erreur authentification
+  </tr>
+  <br>
+  <tr>
+    <td>
+      <div><button class="btn btn-info" type="submit">connexion</button></div>
+    </td>
+    <td>
+      <button type="button" class="btn btn-secondary" routerLink="/inscription" routerLinkActive="active">Je n'ai pas de compte</button>
+    </td>
+  </tr>
+</table>
 </form>

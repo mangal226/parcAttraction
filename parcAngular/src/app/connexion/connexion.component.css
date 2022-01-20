@@ -1,0 +1,11 @@
+table {
+  border: aqua;
+  margin: 0 auto;
+  margin-top: 15%;
+  margin-bottom: 19%;
+}
+
+td {
+  width: 200px;
+  text-align: justify;
+}

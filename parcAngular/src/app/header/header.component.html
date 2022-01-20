@@ -25,14 +25,13 @@
       </ul>
     </div>
     <div id="compte">
-      <p style="color: orange" *ngIf="!!login">Compte connecté : {{ login }}</p>
       <button *ngIf="!!login" (click)="logoff()" class="btn btn-link">
-        deconnexion
+        <img  id="logineDeco"src="../assets/img/loginImage6.png" alt="">
       </button>
-      <a routerLink="/connexion" routerLinkActive="active" *ngIf="login == null"
-        >Connexion</a
-      >
-      <img id="logine"  src="../assets/img/loginImage3.jpg" alt="">
+      <!-- <p style="color: orange" *ngIf="!!login">{{ login | uppercase}}</p> -->
+      <a  class="connexionIdd" routerLink="/connexion" routerLinkActive="active" *ngIf="login == null"
+        >
+        <img id="logine"  src="../assets/img/loginImage5.png" alt=""><br></a>
     </div>
   </div>
 </header>
