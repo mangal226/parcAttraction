@@ -27,16 +27,17 @@ export class SimulationComponent implements OnInit {
 
   save()
   {
-    if (!!this.simulation.id) {
-      console.log(this.simulation);
-      this.simulationService.put(this.simulation).subscribe((ok) => {
-        this.router.navigate(['/admin/result-simu']);
-      });
-    } else {
-      console.log(this.simulation);
-      this.simulationService.create(this.simulation).subscribe((ok) => {
-        this.router.navigate(['/admin/result-simu2']);
-      })
-    }
+  //   if (!!this.simulation.id) {
+  //     console.log(this.simulation);
+  //     this.simulationService.put(this.simulation).subscribe((ok) => {
+  //       this.router.navigate(['/admin/result-simu']);
+  //     });
+  //   } else {
+  //     console.log(this.simulation);
+  //     this.simulationService.create(this.simulation).subscribe((ok) => {
+  //       this.router.navigate(['/admin/result-simu2']);
+  //     })
+  //   }
+   this.router.navigate(['/admin/result-simu2']);
   }
 }

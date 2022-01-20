@@ -12,7 +12,7 @@
             *ngIf="checkBoutique(a, o); else checkAttractionHTML"
           />
           <p></p>
-          <button class="btn btn-outline-danger" (click)="delete(a, o)">
+          <button class="btn btn-danger" (click)="delete(a, o)">
             supprimer
           </button>
           <ng-template #checkAttractionHTML
@@ -28,30 +28,36 @@
       </div>
       <ng-template #pasbon>
         <p>
-          <a
+          <button type="button"  routerLink="/attraction/update"
+          routerLinkActive="active" class="btn btn-primary">Ajout attraction</button>
+
+          <!-- <a
             routerLink="/attraction/update"
             routerLinkActive="active"
             class="btn btn-link"
-            >ajout Attraction</a
-          >
+            >ajout Attraction</a> -->
         </p>
 
         <p>
-          <a
+          <button type="button"  routerLink="/boutique/update"
+          routerLinkActive="active" class="btn btn-success">Ajout boutique</button>
+          <!-- <a
             routerLink="/boutique/update"
             routerLinkActive="active"
             class="btn btn-link"
             >ajout Boutique</a
-          >
+          > -->
         </p>
 
         <p>
-          <a
+          <button type="button"  routerLink="/restauration/update"
+          routerLinkActive="active" class="btn btn-info">Ajout restauration</button>
+          <!-- <a
             routerLink="/restauration/update"
             routerLinkActive="active"
             class="btn btn-link"
             >ajout Restaurant</a
-          >
+          > -->
         </p>
       </ng-template>
     </td>
@@ -99,7 +105,7 @@
       <th>restriction Handicapé</th>
       <th>tailleMin</th>
       <th>tailleMax</th>
-      <th>description</th>
+      <!-- <th>description</th> -->
       <th>x</th>
       <th>y</th>
     </tr>
@@ -112,7 +118,7 @@
       <td>{{ r.restHandi }}</td>
       <td>{{ r.tailleMax }}</td>
       <td>{{ r.tailleMin }}</td>
-      <td>{{ r.description }}</td>
+      <!-- <td>{{ r.description }}</td> -->
       <td>{{ r.coordonnees!.x }}</td>
       <td>{{ r.coordonnees!.y }}</td>
       <td>
