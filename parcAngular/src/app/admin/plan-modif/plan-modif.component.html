@@ -1,5 +1,5 @@
 <app-header-admin></app-header-admin>
-<table>
+<table style="background-image: url('../assets/img/fond_plan.jpg');">
   <tr *ngFor="let a of abscisse">
     <td *ngFor="let o of ordonnee" id="caseTableau">
       <p>{{ a }} {{ o }}</p>
@@ -42,7 +42,6 @@
             >ajout Boutique</a
           >
         </p>
-
         <p>
           <a
             routerLink="/restauration/update"
