@@ -99,6 +99,7 @@ export class PlanModifComponent implements OnInit {
     }
     return false;
   }
+  deleteId(id: number) {}
 
   delete(a: number, b: number) {
     for (let index in this.boutiquesLocal) {
@@ -156,6 +157,7 @@ export class PlanModifComponent implements OnInit {
         console.log(this.restaurationsLocal);
         console.log(this.restaurationsLocal[index]);
         console.log(this.restaurationsLocal[index].nom);
+        console.log(this.restaurationsLocal[index].id);
         this.restaurationService
           .delete(this.restaurationsLocal[index].id!)
           .subscribe((ok) => {

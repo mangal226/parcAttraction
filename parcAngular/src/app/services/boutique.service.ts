@@ -73,10 +73,10 @@ export class BoutiqueService {
         boutique.enVente![4],
       ],
     };
-    // if (!!boutique.id) {
-    //   Object.assign(b, { id: boutique.id });
-    // }
-    // Object.assign(b, { marchandise: boutique.enVente });
+    if (!!boutique.id) {
+      Object.assign(b, { id: boutique.id });
+    }
+    Object.assign(b, { marchandise: boutique.enVente });
     console.log(b);
     return b;
   }

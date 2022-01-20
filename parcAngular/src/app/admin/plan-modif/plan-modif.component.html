@@ -9,6 +9,7 @@
             src="../assets/img/maisonBleu.png"
             *ngIf="checkBoutique(a, o); else checkAttractionHTML"
           />
+          <p></p>
           <button class="btn btn-outline-danger" (click)="delete(a, o)">
             supprimer
           </button>
@@ -54,4 +55,106 @@
     </td>
   </tr>
 </table>
-<p>plan works !</p>
+<table class="table">
+  Liste des Restaurants :
+  <thead>
+    <tr>
+      <th>nom</th>
+      <th>description</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of restaurationsLocal">
+      <td>{{ r.nom }}</td>
+      <td>{{ r.description }}</td>
+      <td>{{ r.coordonnees!.x }}</td>
+      <td>{{ r.coordonnees!.y }}</td>
+      <td>
+        <button
+          [routerLink]="['/restauration', 'update', r.id]"
+          routerLinkActive="active"
+          class="btn btn-outline-primary"
+        >
+          editer
+        </button>
+      </td>
+      <!-- <td><button class="btn btn-outline-danger" (click)="deleteId(r.id)">
+        supprimer
+      </button></td> -->
+    </tr>
+  </tbody>
+</table>
+<table class="table">
+  Liste des Attractions :
+  <thead>
+    <tr>
+      <th>nom</th>
+      <th>capacite</th>
+      <th>duree</th>
+      <th>restriction Handicapé</th>
+      <th>tailleMin</th>
+      <th>tailleMax</th>
+      <th>description</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of attractionsLocal">
+      <td>{{ r.nom }}</td>
+      <td>{{ r.capacite }}</td>
+      <td>{{ r.duree }}</td>
+      <td>{{ r.restHandi }}</td>
+      <td>{{ r.tailleMax }}</td>
+      <td>{{ r.tailleMin }}</td>
+      <td>{{ r.description }}</td>
+      <td>{{ r.coordonnees!.x }}</td>
+      <td>{{ r.coordonnees!.y }}</td>
+      <td>
+        <button
+          [routerLink]="['/attraction', 'update', r.id]"
+          routerLinkActive="active"
+          class="btn btn-outline-primary"
+        >
+          editer
+        </button>
+      </td>
+      <!-- <td><button class="btn btn-outline-danger" (click)="deleteId(r.id)">
+        supprimer
+      </button></td> -->
+    </tr>
+  </tbody>
+</table>
+<table class="table">
+  Liste des Boutiques :
+  <thead>
+    <tr>
+      <th>nom</th>
+      <th>description</th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of boutiquesLocal">
+      <td>{{ r.nom }}</td>
+      <td>{{ r.description }}</td>
+      <td>{{ r.coordonnees!.x }}</td>
+      <td>{{ r.coordonnees!.y }}</td>
+      <td>
+        <button
+          [routerLink]="['/boutique', 'update', r.id]"
+          routerLinkActive="active"
+          class="btn btn-outline-primary"
+        >
+          editer
+        </button>
+      </td>
+      <!-- <td><button class="btn btn-outline-danger" (click)="deleteId(r.id)">
+        supprimer
+      </button></td> -->
+    </tr>
+  </tbody>
+</table>
