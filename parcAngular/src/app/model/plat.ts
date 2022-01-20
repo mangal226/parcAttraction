@@ -6,12 +6,7 @@ export class Plat {
     private _stock?: number,
     private _vente?: number
   ) {}
-  public get id(): number | undefined {
-    return this._id;
-  }
-  public set id(value: number | undefined) {
-    this._id = value;
-  }
+
 
   public get nom(): string | undefined {
     return this._nom;
