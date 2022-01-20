@@ -38,7 +38,7 @@ public class SimulationService {
 	private SimulationRepository simulationRepo;
 
 	public void creationSimulation(Simulation simulation) {
-		if (simulation.getId() == null) {
+		if (simulation.getNbrVisiteurs() == 10000) {
 			throw new SimulationException();
 		}
 		simulationRepo.save(simulation);
@@ -85,10 +85,6 @@ public class SimulationService {
 	// Simulation du parc
 	
 	
-	static double bilanFinancier = 0;
-
-	static int nbrVisiteurTotal = 0;
-
 	@Autowired
 	private FamilleRepository familleRepo;
 	@Autowired
@@ -105,38 +101,59 @@ public class SimulationService {
 	private RestaurationRepository restaurationRepo;
 	@Autowired
 	private BoissonRepository boissonRepo;
+	
+	static double bilanFinancier = 0;
 
-	static List<Famille> famille = new ArrayList();
-	static List<Boisson> boisson = new ArrayList();
-	static List<Plat> plat = new ArrayList();
-	static List<Attraction> attraction = new ArrayList();
-	static List<Boutique> boutique = new ArrayList();
-	static List<Restauration> restauration = new ArrayList();
-	static Compte connected;
-	static LinkedList<Famille> fileAttente = new LinkedList();
-	/* static LinkedList<Famille> fileAttenteFP = new LinkedList(); */
+	static int nbrVisiteurTotal = 0;
+	static int nbVisiteurs=0;
 
-	static List<Marchandise> marchandise = new ArrayList();
-	static boolean fermeture = true;
 
 	public void simulation(int nbJour, int nbFamille) {
+		Simulation simulation=new Simulation();
+		simulation.setNbJours(nbJour);
+		simulation.setNbFamilles(nbFamille);
+		
+		
+		
 
-		LinkedList<Double> total = new LinkedList();
-		//LinkedList<Double> nbVisiteurs = new LinkedList();
-		//LinkedList<Double> bilanVisiteurs = new LinkedList(); // bilan par visiteur
+		List<Famille> famille = new ArrayList();
+		List<Boisson> boisson = new ArrayList();
+		List<Plat> plat = new ArrayList();
+		List<Attraction> attraction = new ArrayList();
+		List<Boutique> boutique = new ArrayList();
+		List<Restauration> restauration = new ArrayList();
+		LinkedList <Double> total = new LinkedList();
+		Compte connected;
+		LinkedList<Famille> fileAttente = new LinkedList();
+		/* static LinkedList<Famille> fileAttenteFP = new LinkedList(); */
+
+		List<Marchandise> marchandise = new ArrayList();
+		boolean fermeture = true;
+		int dureeSejour=0;
 		
 		int i = 1;
 		while (i <= nbJour) {
+			System.out.println("jour"+i);
 			creationFamille(nbFamille);
 			List<Famille> listeFamille = familleRepo.findAll();
+			int visiteursParc=0;
+			
+			for(Famille f:listeFamille) {
+				visiteursParc +=f.getNombre();
+			}
+			simulation.setNbrVisiteurs(visiteursParc);
+			
 			choixAssignation(listeFamille); // Boutique ou attraction ?
 			avancementJournee();
 			// ajout du bilanFinancier dans une liste et r�initialisation du bilanFinancier
 			// pour la journee suivante
-//			for (Attraction a : attractionRepo.findAll(){
-//				nbVisiteurs+=a.getNbrVisiteur();
-//			}
-//			nbVisiteurs.add(nbVisiteur);
+			for (Attraction a : attractionRepo.findAll()){
+				nbVisiteurs+=a.getNbrVisiteur();
+			}
+
+			//simulation.setNbrVisiteurs(nbrVisiteurTotal);
+			
+			//nbVisiteurs.add(nbVisiteur);
 			total.add(bilanFinancier);
 //			double bilanVisiteur = bilanFinancier/nbVisiteur;
 //			bilanVisiteurs.add(bilanVisiteur);
@@ -148,17 +165,25 @@ public class SimulationService {
 		}
 		
 		//Double [] bilanVisiteurs_tableau = bilanVisiteurs.toArray(new Double[bilanVisiteurs.size()]);
-		Double [] total_tableau = total.toArray(new Double[total.size()]);
+		//Double [] total_tableau = total.toArray(new Double[total.size()]);
 		//Double [] nbVisiteurs_tableau = nbVisiteurs.toArray(new Double[nbVisiteurs.size()]);
 		
 		//System.out.println(bilanVisiteurs_tableau);
-		System.out.println(total_tableau);
+		//System.out.println(total_tableau);
 		//System.out.println(nbVisiteurs_tableau);
 		
 		System.out.println("-----------------------------------------");
 		System.out.println("Nombre total de visiteurs : " + nbrVisiteurTotal);
 		System.out.println("-----------------------------------------");
 		System.out.println("Bilan financier total : " + total);
+		
+		
+		double bilanFinancierTotal=0;
+		for ( double bilan : total) {
+			bilanFinancierTotal+=bilan;
+		}
+		simulation.setBilanFinancier(bilanFinancierTotal);
+		
 		System.out.println("-----------------------------------------");
 		System.out.println("Voici l'�tat des stocks :");
 		System.out.println("-----------------------------------------");
@@ -183,34 +208,47 @@ public class SimulationService {
 		for (Attraction a : attractionRepo.findAll()) {
 			System.out.println(a.getNom() + " a eu " + a.getNbrVisiteur() + " visiteurs");
 		}
+		
+		creationSimulation(simulation);
 	}
 
 	public void creationFamille(int nbFamille) {
 		System.out.println("je crée des familles");
+		
+		//Famille f=new Famille();
 		List<Famille> familles = new ArrayList();
 		Random r = new Random();
 		for (int i = 0; i < nbFamille; i++) {
 			double depenses = 0;
 			int tailleMin, tailleMax, nombre;
+			
 			int dureeSejour = 40;
+			//f.setDureeSejour(dureeSejour);
 			Boolean handicap;
+			//f.setHandicap(false);
 			nombre = r.nextInt(10) + 1;
 			tailleMin = r.nextInt(140 - 120 + 1) + 120;
+			//f.setTailleMin(tailleMin);
 			tailleMax = r.nextInt(190 - 165 + 1) + 165;
+			//f.setTailleMax(tailleMax);
 			handicap = r.nextBoolean();
 			depenses = 30 * nombre;
-
-			Famille f = new Famille(nombre, tailleMin, tailleMax, dureeSejour, handicap, depenses);
+			//f.setDepenses(depenses);
+			System.out.println("je crée des familles en local");
+			Famille f = new Famille(10L, nombre, tailleMin, tailleMax, dureeSejour, handicap, depenses);
+			System.out.println("je crée des familles en base");
+			System.out.println(f);
 			familleRepo.save(f);
 
-			nbrVisiteurTotal += nombre;
-			double nbVisiteur = nbrVisiteurTotal;
+			//nbrVisiteurTotal += nombre;
+			//double nbVisiteur = nbrVisiteurTotal;
 		}
+		System.out.println("Les familles ont été créé");
 	}
 
 	public void choixAssignation(List<Famille> listeFamille) {
 
-		// System.out.println("voici la liste des familles dans le parc"+listeFamille);
+		System.out.println("voici la liste des familles dans le parc"+listeFamille);
 		Random r = new Random();
 		for (Famille f : listeFamille) {
 
@@ -272,7 +310,7 @@ public class SimulationService {
 				if (aleaChoix <= 2) {
 					double depensesActuelles = f.getDepenses();
 					f.setDepenses(depensesActuelles + m.getPrix());
-					bilanFinancier += m.getPrix();
+					//bilanFinancier += m.getPrix();
 					m.setStock(m.getStock() - 1);
 					m.setVente(m.getVente() + 1);
 					marchandiseRepo.save(m);
