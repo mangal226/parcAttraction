@@ -1,3 +1,4 @@
+import { ResultSimuComponent } from './admin/result-simu/result-simu.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { FichePersoComponent } from './admin/fiche-perso/fiche-perso.component';
 import { AccueilAdminComponent } from './admin/accueil-admin/accueil-admin.component';
@@ -63,4 +64,5 @@ export const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'home', redirectTo: '', pathMatch: 'full' },
+  {path: 'admin/result-simu', component: ResultSimuComponent }
 ];

@@ -34,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AttractionComponent } from './attraction/attraction.component';
 import { UpdateRestaurationComponent } from './update-restauration/update-restauration.component';
 import { UpdateBoutiqueComponent } from './update-boutique/update-boutique.component';
+import { ResultSimuComponent } from './admin/result-simu/result-simu.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { UpdateBoutiqueComponent } from './update-boutique/update-boutique.compo
     UpdateAttractionComponent,
     UpdateRestaurationComponent,
     UpdateBoutiqueComponent,
+    ResultSimuComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,14 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./simulation.component.css']
 })
 export class SimulationComponent implements OnInit {
-  simulation: Simulation=new Simulation();
-  simulationService!: SimulationService;
+  simulation: Simulation =new Simulation();
+
+
+
+  // router!: Router;
 
 
 
 
 
-  constructor(private router?: Router) {
+  constructor(private simulationService: SimulationService, private router: Router){
   }
 
   ngOnInit(): void {
@@ -24,15 +27,16 @@ export class SimulationComponent implements OnInit {
 
   save()
   {
-    // if (!!this.simulation.id) {
-    //   this.simulationService.put(this.simulation).subscribe((ok) => {
-    //     this.router?.navigate(['/admin/simulation']);
-    //   });
-    // } else {
+    if (!!this.simulation.id) {
+      console.log(this.simulation);
+      this.simulationService.put(this.simulation).subscribe((ok) => {
+        this.router.navigate(['/admin/result-simu']);
+      });
+    } else {
       console.log(this.simulation);
       this.simulationService.create(this.simulation).subscribe((ok) => {
-        this.router?.navigate(['/admin/plan-modif']);
+        this.router.navigate(['/admin/result-simu']);
       })
     }
   }
-
+}

@@ -1,0 +1,19 @@
+<table class="table" *ngFor="let b of simulationLocal ; let indexOfElement=index">
+  <div class="row">
+    <div class="col-md-4" style="margin: 0 auto">
+      <div class="card mb-4 box-shadow">
+        <!-- <img class="card-img-top"  alt="Thumbnail [60%x155]"  style="display: block; height: 305px;" src={{source[indexOfElement]}}> -->
+        <div class="card-body">
+          <h3><p class="card-text" style="text-align: center;">{{ b.nbFamilles }}</p></h3>
+          <h3><p class="card-text" style="text-align: center;">{{ b.nbJours }}</p></h3>
+          <h3><p class="card-text" style="text-align: center;">{{ b.nbVisiteurs }}</p></h3>
+          <h3><p class="card-text" style="text-align: center;">{{ b.nbPlats }}</p></h3>
+          <h3><p class="card-text" style="text-align: center;">{{ b.nbBoissons }}</p></h3>
+          <h3><p class="card-text" style="text-align: center;">{{ b.nbMarchandises }}</p></h3>
+          <h3><p class="card-text" style="text-align: center;">{{ b.bilanFinancier }}</p></h3>
+          <!-- <p class="card-text" style="text-align: center;">{{ indexOfElement }}</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</table>
