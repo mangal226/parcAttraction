@@ -21,7 +21,7 @@ public class BoutiqueService {
 	private MarchandiseRepository marchandiseRepo;
 
 	public void creation(Boutique boutique) {
-		if (boutique.getId() == null) {
+		if (boutique.getNom() == null) {
 			throw new BoutiqueException();
 		}
 		boutiqueRepo.save(boutique);

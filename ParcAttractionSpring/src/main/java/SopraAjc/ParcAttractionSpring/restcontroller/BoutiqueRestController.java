@@ -60,9 +60,11 @@ public class BoutiqueRestController {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@JsonView(JsonViews.Common.class)
 	public Boutique creation(@Valid @RequestBody Boutique boutique, BindingResult br) {
+		System.out.println(boutique);
 		if (br.hasErrors()) {
 			throw new BoutiqueException();
 		}
+		
 		boutiqueService.creation(boutique);
 		return boutique;
 

@@ -133,16 +133,16 @@ public class SimulationService {
 			avancementJournee();
 			// ajout du bilanFinancier dans une liste et r�initialisation du bilanFinancier
 			// pour la journee suivante
-			//for (Attraction a : attractionRepo.findAll(){
-			//	nbVisiteurs+=a.getNbrVisiteur();
-			//}
-			//nbVisiteurs.add(nbVisiteur);
+//			for (Attraction a : attractionRepo.findAll(){
+//				nbVisiteurs+=a.getNbrVisiteur();
+//			}
+//			nbVisiteurs.add(nbVisiteur);
 			total.add(bilanFinancier);
-			//double bilanVisiteur = bilanFinancier/nbVisiteur;
-			//bilanVisiteurs.add(bilanVisiteur);
+//			double bilanVisiteur = bilanFinancier/nbVisiteur;
+//			bilanVisiteurs.add(bilanVisiteur);
 			
-			//bilanVisiteur=0;
-			//nbVisiteur=0;
+//			bilanVisiteur=0;
+//			nbVisiteur=0;
 			bilanFinancier = 0;
 			i++;
 		}
