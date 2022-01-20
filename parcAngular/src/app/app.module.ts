@@ -34,10 +34,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AttractionComponent } from './attraction/attraction.component';
 import { UpdateRestaurationComponent } from './update-restauration/update-restauration.component';
 import { UpdateBoutiqueComponent } from './update-boutique/update-boutique.component';
+import { PlatComponent } from './plat/plat.component';
+//import { AdminComponent } from './model/admin/admin.component';
+
 
 @NgModule({
   declarations: [
-    //AttractionComponent,
+    AttractionComponent,
     AppComponent,
     HeaderComponent,
     AccueilComponent,
@@ -66,6 +69,8 @@ import { UpdateBoutiqueComponent } from './update-boutique/update-boutique.compo
     UpdateAttractionComponent,
     UpdateRestaurationComponent,
     UpdateBoutiqueComponent,
+    PlatComponent,
+    //AdminComponent,
   ],
   imports: [
     BrowserModule,
