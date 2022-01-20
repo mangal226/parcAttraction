@@ -1,26 +1,47 @@
 <app-header-admin></app-header-admin>
 
 
-  <div id="entree">
-    <div class="formulaire-formation">
-        <strong >Données pour la simulation</strong><br><br>
 
-        Nombre de jour : <input [(ngModel)]="simulation!.nbJours" class="form-control" /><br><br>
-        Nombre de familles : <input [(ngModel)]="simulation!.nbFamilles" class="form-control" /><br><br>
-          <p>
-            <button button class="btn btn-outline-primary" (click)="save()">Lancer la simulation </button>
-          </p>
-          <a routerLink="/admin/plan-modif" class="btn btn-link">annuler</a>
-          <div id="modalOne" class="modal">
-            <div class="modal-content">
-              <div class="contact-form">
-                <a class="close">&times;</a>
-                <form action="/">
-                  <h2>La simulation est en cours veuillez patienter</h2>
-                  <img src="../../../assets/img/unknown.png" height="200" width="200" alt="">
-                </form>
-              </div>
-            </div>
+
+<div id="baliseDiv">
+  <div id="left">
+    <table>
+      <tr><h3 >Données pour la simulation</h3></tr><br><br>
+      <div id="entree">
+        <div class="formulaire-formation">
+            <tr>
+              <td>
+                <label>Nombre de jours de la simulation : </label>
+              </td>
+              <td>
+                <input [(ngModel)]="simulation!.nbJours" class="form-control"/>
+              </td>
+            </tr>
+            <br>
+            <tr>
+              <td>
+                <label>Nombre de familles dans le parc: </label>
+              </td>
+              <td>
+                <input [(ngModel)]="simulation!.nbFamilles" class="form-control" />
+              </td>
+            </tr>
+            <br>
+            <br>
+            <br>
+            <tr>
+              <td>
+                <button button class="btn btn-outline-primary" (click)="save()">Lancer la simulation </button>
+              </td>
+              <td>
+                <button button class="btn btn-danger" routerLink="/admin/simulation">Annuler </button>
+              </td>
+            </tr>
           </div>
-        </div>
+      </div>
+    </table>
   </div>
+  <div id="right">
+<img src="../assets/img/simulation.gif" alt="">
+  </div>
+</div>
