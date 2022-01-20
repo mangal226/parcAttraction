@@ -1,26 +1,29 @@
-
-import { AdminService } from 'src/app/services/admin.service';
+import { PlatService } from './../services/plat.service';
+import { Coordonnees } from './../model/coordonnees';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Admin } from 'src/app/model/admin';
+
+import { Boisson } from '../model/boisson';
+import { Plat } from '../model/plat';
 import { Observable } from 'rxjs';
 
 
 @Component({
-  selector: 'app-fiche-perso',
-  templateUrl: './fiche-perso.component.html',
-  styleUrls: ['./fiche-perso.component.css']
+  selector: 'app-plat',
+  templateUrl: './plat.component.html',
+  styleUrls: ['./plat.component.css']
 })
-export class FichePersoComponent implements OnInit {
+export class PlatComponent implements OnInit {
   source : string []=[];
 
-  admin: Observable<Admin[]> | null=null;
+  plat: Observable<Plat[]> | null=null;
 
-  constructor( private adminService: AdminService) { }
+
+  constructor( private platService: PlatService) { }
 
 
   ngOnInit(): void {
-    this.admin=this.adminService.getAll();
+    this.plat=this.platService.getAll();
     this.source[0]="../assets/img/le-chalet.jpg";
     this.source[1]='../assets/img/mcfat.png';
     this.source[2]="../assets/img/boutique2.jpg";
@@ -36,8 +39,8 @@ export class FichePersoComponent implements OnInit {
   }
 
   delete(id: number){
-    this.adminService.delete(id);
-    this.admin=this.adminService.getAll();
+    this.platService.delete(id);
+    this.plat=this.platService.getAll();
   }
 
  /* onFormSubmit(userForm:NgForm){

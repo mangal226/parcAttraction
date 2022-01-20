@@ -2,7 +2,7 @@
   color: rgb(128, 115, 0);
   width: 80%;
   height: 100px;
-  margin: 30px 253px;
+  margin: 0px 253px;
   font-size: 24px;
   font-family: "Rockwell", serif;
   box-sizing: content-box;
@@ -10,75 +10,12 @@
   background-color: white;
 }
 
-.restau1 {
-  background-image: url("../../assets/img/boutique1.jpg");
-  width: 700px;
-  height: 300px;
-  border: 4.5px solid purple;
-  padding: 00px;
-  margin-left: 150px;
-  margin-top: 50px;
+
+
+.table{
+margin-bottom: 200px;
+
 }
 
-.restau2 {
-  background-image: url("../../assets/img/boutique2.jpg");
-  width: 700px;
-  height: 300px;
-  border: 4.5px solid purple;
-  padding: 00px;
-  margin: 150px;
-  margin-left: 450px;
-}
 
-.restau3 {
-  background-image: url("../../assets/img/boutique2.jpg");
-  width: 700px;
-  height: 300px;
-  border: 4.5px solid purple;
-  padding: 00px;
-  margin-left: 60px;
-  margin: 150px;
-}
 
-.restau1,
-.restau2,
-.restau3 {
-  border: 4.5px solid #ffdf00;
-}
-
-input {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  width: 270px;
-  height: 30px;
-  padding: 00px 00px;
-  display: inline-block;
-  font-size: 14px;
-  background-color: blue;
-  color: white;
-}
-
-.nomRestau1 {
-  height: 30px;
-  padding: 20px 30px;
-  margin: 250px 200px;
-  background-color: orange;
-  color: black;
-}
-
-.nomRestau2 {
-  height: 30px;
-  padding: 20px 30px;
-  margin: 250px 200px;
-  background-color: orange;
-  color: black;
-}
-
-.nomRestau3 {
-  height: 30px;
-  padding: 20px 30px;
-  margin: 250px 200px;
-  background-color: orange;
-  color: black;
-}

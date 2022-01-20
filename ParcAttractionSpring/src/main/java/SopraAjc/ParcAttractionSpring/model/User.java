@@ -30,6 +30,26 @@ public class User implements UserDetails{
 	private String login;
 	@Column(name = "password", length = 200, nullable = false)
 	private String password;
+	@Column(name = "date_de_naissance", length = 200, nullable = false)
+	private String date_de_naissance;
+	@Column(name = "numero_de_telephone", length = 200, nullable = false)
+	private String numero_de_telephone;
+	@Column(name = "localisation", length = 200, nullable = false)
+	private String localisation;
+	@Column(name = "anciennete", length = 200, nullable = false)
+	private String anciennete;
+	@Column(name = "diplome", length = 200, nullable = false)
+	private String diplome;
+	@Column(name = "email", length = 200, nullable = false)
+	private String email;
+	@Column(name = "mangement", length = 200, nullable = false)
+	private String management;
+	@Column(name = "analyse_financiere", length = 200, nullable = false)
+	private String analyse_financiere;
+	@Column(name = "planification", length = 200, nullable = false)
+	private String planification;
+	@Column(name = "gestion_equipe", length = 200, nullable = false)
+	private String gestion_equipe;
 	@Column(name = "enabled", nullable = false)
 	private boolean enabled;
 	@ElementCollection(targetClass = Role.class, fetch=FetchType.EAGER)
