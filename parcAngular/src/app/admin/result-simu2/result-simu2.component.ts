@@ -1,18 +1,16 @@
-import { SimulationService } from './../../services/simulation.service';
 import { Component, OnInit } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { Simulation } from 'src/app/model/simulation';
+import { SimulationService } from 'src/app/services/simulation.service';
 
 @Component({
-  selector: 'app-result-simu',
-  templateUrl: './result-simu.component.html',
-  styleUrls: ['./result-simu.component.css']
+  selector: 'app-result-simu2',
+  templateUrl: './result-simu2.component.html',
+  styleUrls: ['./result-simu2.component.css']
 })
-export class ResultSimuComponent implements OnInit {
+export class ResultSimu2Component implements OnInit {
   simulation: Observable<Simulation[]> | null = null;
   simulationLocal?: Simulation[];
-  test:String[]=["toto","titi"];
-
 
   constructor(private simulationService: SimulationService) { }
 
@@ -27,3 +25,4 @@ export class ResultSimuComponent implements OnInit {
   }
 
 }
+

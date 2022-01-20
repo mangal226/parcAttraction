@@ -35,7 +35,7 @@ export class SimulationComponent implements OnInit {
     } else {
       console.log(this.simulation);
       this.simulationService.create(this.simulation).subscribe((ok) => {
-        this.router.navigate(['/admin/result-simu']);
+        this.router.navigate(['/admin/result-simu2']);
       })
     }
   }

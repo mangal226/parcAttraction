@@ -35,12 +35,13 @@ import { AttractionComponent } from './attraction/attraction.component';
 import { UpdateRestaurationComponent } from './update-restauration/update-restauration.component';
 import { UpdateBoutiqueComponent } from './update-boutique/update-boutique.component';
 import { PlatComponent } from './plat/plat.component';
+import { ResultSimu2Component } from './admin/result-simu2/result-simu2.component';
 //import { AdminComponent } from './model/admin/admin.component';
 
 
 @NgModule({
   declarations: [
-    //AttractionComponent,
+    AttractionComponent,
     AppComponent,
     HeaderComponent,
     AccueilComponent,
@@ -70,7 +71,7 @@ import { PlatComponent } from './plat/plat.component';
     UpdateRestaurationComponent,
     UpdateBoutiqueComponent,
     PlatComponent,
-    //AdminComponent,
+    ResultSimu2Component,
   ],
   imports: [
     BrowserModule,

@@ -23,6 +23,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { UpdateAttractionComponent } from './update-attraction/update-attraction.component';
 import { UpdateBoutiqueComponent } from './update-boutique/update-boutique.component';
 import { UpdateRestaurationComponent } from './update-restauration/update-restauration.component';
+import { ResultSimu2Component } from './admin/result-simu2/result-simu2.component';
 
 export const routes: Routes = [
   { path: '', component: AccueilComponent },
@@ -64,5 +65,6 @@ export const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'home', redirectTo: '', pathMatch: 'full' },
-  {path: 'admin/result-simu', component: ResultSimuComponent }
+  {path: 'admin/result-simu', component: ResultSimuComponent },
+  { path: 'admin/result-simu2', component: ResultSimu2Component}
 ];
